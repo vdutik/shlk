@@ -4,7 +4,7 @@
 <!-- Page Cover Section -->
 <section class="section page-cover">
   <div class="page-title">
-    <h1>About</h1>
+    <h1>Про нас</h1>
   </div>
 
   <canvas class="particles-background"></canvas>
@@ -17,13 +17,29 @@
     <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SPCC Caloocan School Building" />
   </div>
   <div class="content">
-    <h2>Systems Plus Computer College - Caloocan</h2>
+    <h2>Шацький лісовий технікум ім. В.В.Сулька</h2>
     <div class="description">
       <p>
-          Systems Plus Computer College (SPCC) is a private school founded in 1997. It is affiliated with Systems Plus Computer Foundation (SPCF) which was founded in 1985 at Balibago, Angeles City, Pampanga on June 27, 1985. With the growth of the school, campuses have been established in Cubao, Caloocan City, San Fernando, and in Miranda, Angeles City. SPCC - Caloocan has a Basic Education Department and a College Department.
+          Коледж створений на базі Шацького лісного технікуму ім. В.В.Сулька Наказом №484 від 16.11.2005 Державного комітету лісового господарства України.
+
+      </p>
+        <p>
+
+          Шацький лісний технікум заснований в 1963 році на основі наказу начальника Головного управління лісового господарства і лісозаготівель при Раді Міністрів УРСР від 20.06.1963року №134К і переданий в безпосереднє підпорядкування Міністерства лісового господарства УРСР. В 1997 році технікуму присвоєне ім’я першого директора, заслуженого лісівника України Сулька Валентина Васильовича.
+
+          В своїй навчально-виховній діяльності коледж керується Статутом, затвердженим та зареєстрованим Міністерством освіти і науки України, концепцію діяльності коледжу узгоджено з управлінням освіти облдержадміністрації.
+
+          Коледж проводить підготовку спеціалістів за держзамовленням, а також за договорами з фізичними особами, з підприємствами і організаціями за такими спеціальностями в межах ліцензованого обсягу: 205  «Лісове господарство», 205 «Лісозаготівля та первинна обробка деревини», 071  «Облік і опаодаткування» і за заочною формою спеціальності 205 «Лісове господарство».
+
       </p>
       <p>
-        Systems Plus Computer College offers meaningful opportunities for students who want to excel in the computer and technical education. The emphasis on academic excellence and well-grounded values are reflected in the degree programs offered by the school which showed evidence of innovation and high technology.
+          Підготовку фахівців здійснюють 49 викладачів з необхідною фаховою та педагогічною освітою. За наслідками атестації вищу категорію мають 37% викладачів і 28% першу. Серед викладачів є методисти, старші викладачі.
+      </p>
+        <p>
+
+          Педагогічний колектив стабільний. Навчально матеріальна база відповідає вимогам освітньо-кваліфікаційних програм, навчальних планів. Щорічно здійснюється капітальний ремонт окремих аудиторій. Загальна площа навчальних приміщень складає 8622м2. Учбова площа на одного студента становить 8,7 кв.м. Санітарно-технічний стан будівель відповідає санітарно -гігієнічним та естетичним вимогам.
+
+          Навчально – виховний процес в коледжі спрямований на розвиток творчих, розумових, фізичних здібностей студентів, виховання у них високих моральних якостей. Підготовка спеціалістів ведеться на основі взаємозв’язку з виробництвом, участі студентів та викладачів в науково-дослідницькій роботі.
       </p>
     </div>
   </div>
@@ -39,67 +55,67 @@
   <div class="tab-menu">
     <ul class="tab-nav">
       <li>
-        <a href="#" data-target="#tab-mission">Mission</a>
+        <a href="#" data-target="#tab-mission">Місія</a>
       </li>
       <li>
-        <a href="#" data-target="#tab-vision">Vision</a>
+        <a href="#" data-target="#tab-vision">Бачення</a>
       </li>
       <li>
-        <a href="#" data-target="#tab-values">Core Values</a>
+        <a href="#" data-target="#tab-values">Основні цінності</a>
       </li>
       <li>
-        <a href="#" data-target="#tab-president">President's Corner</a>
+        <a href="#" data-target="#tab-president">Директор</a>
       </li>
       <li>
-        <a href="#" data-target="#tab-hymn">Hymn</a>
+        <a href="#" data-target="#tab-hymn">Гімн</a>
       </li>
     </ul>
   </div>
   <div class="tab-content">
     <div id="tab-mission" class="tab-current">
-      <h2>Mission</h2>
+      <h2>Місія</h2>
       <p>
-        Systems Plus Computer College is committed to provide liberal, quality, transformative
-        and relevant education towards the holistic development of all stakeholders through
-        excellence in instruction, research and extension services.
+          Лісовий коледж прагне надавати ліберальну, якісну, трансформуючу та відповідну освіту
+          для цілісного розвитку всіх зацікавлених сторін завдяки досконалості в навчанні,
+          дослідженнях та послугах розширення.
       </p>
     </div>
     <div id="tab-vision">
-      <h2>Vision</h2>
+      <h2>Бачення</h2>
       <p>
-        A leading and globally competitive institution of learning through service and
-        innovation.
+          Провідний і конкурентоспроможний у всьому світі заклад навчання за допомогою послуг та інновацій.
       </p>
     </div>
     <div id="tab-values">
-      <h2>Core Values</h2>
-      <h3>Service</h3>
+      <h2>Основні цінності</h2>
+      <h3>Обслуговування</h3>
       <p>
-        Engage in school activities, community partnership, outreach endeavors, and social advocacies.
+          Беріть участь у шкільних заходах, партнерстві з громадою,
+          інформаційно-пропагандистській діяльності та соціальній адвокації.
       </p>
-      <h3>Professionalism</h3>
+      <h3>Професіоналізм</h3>
       <p>
-        Demonstrate and assume responsibility of actions.
+          Продемонструвати та взяти на себе відповідальність за дії.
       </p>
-      <h3>Competence</h3>
+      <h3>Компетентність</h3>
       <p>
-        Develop and pursue high standards of quality and superior performance.
+          Розвивайте та дотримуйтесь високих стандартів якості та високої продуктивності.
       </p>
-      <h3>Fellowship</h3>
+      <h3>Товариство</h3>
       <p>
-        Cooperate, collaborative and communicate effectively, treat each other with respect and fairness, and foster
-        camaraderie.
+          Співпрацюйте, співпрацюйте та ефективно спілкуйтеся,
+          ставтеся один до одного з повагою та справедливістю та виховуйте товариськість.
       </p>
     </div>
     <div id="tab-president">
       <h2>President's Corner</h2>
       <img src="{{ asset('spccweb/img/president.jpg') }}" alt="SPCF President" />
-      <h3>Lourdes R. Bustamante</h3>
-      <p>President</p>
+      <h3>Жмурко Ігор Васильвич</h3>
+      <p>Директор</p>
       <p>Systems Plus Computer Foundation</p>
     </div>
     <div id="tab-hymn">
-      <h2>SPCC Hymn</h2>
+      <h2>SPCC Гімн</h2>
       <div class="content">
         <p>
           Your vision in our hearts<br />

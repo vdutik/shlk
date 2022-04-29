@@ -33,7 +33,7 @@
                         </div>
                         @role('admin')
                         <div class="col text-right">
-                          <a href="/faculties/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+                          <a href="/faculties/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Назад</a>
                         </div>
                         @endrole
                     </div>
@@ -68,10 +68,10 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">Class</th>
-                                <th scope="col">Description</th>
-                                <th scope="col" class="text-center">Schedule</th>
-                                <th scope="col" class="text-center">Total Students</th>
+                                <th scope="col" class="text-center">Клас</th>
+                                <th scope="col">Опис</th>
+                                <th scope="col" class="text-center">Графік</th>
+                                <th scope="col" class="text-center">Загальна кількість студентів</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,7 +110,7 @@
               @else
                   <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No Class found</p>
+                          <p class="lead">Клас не знайдено</p>
                       </div>
                   </div>
               @endif

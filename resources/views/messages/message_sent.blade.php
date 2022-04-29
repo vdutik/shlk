@@ -9,10 +9,9 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>Message Sent!</small>
+                            <small>Повідомлення відправлено!</small>
                         </div>
-                        <p>
-                          Thank you for sending us a message. We received your message and will begin processing it soon.
+                            Дякуємо за ваше повідомлення. Ми постараємось опрацювати його якомога швидше.
                         </p>
                     </div>
                 </div>
@@ -20,7 +19,7 @@
                 <div class="row mt-3">
                   <div class="col ">
                       <a href="/" class="text-light">
-                          <small>Return Home</small>
+                          <small>Повернутись на головну</small>
                       </a>
                   </div>
               </div>

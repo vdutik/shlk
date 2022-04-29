@@ -689,7 +689,7 @@ section.about-brief .bg .circle-pattern-big {
 section.programs {
     color: #fff;
     background: #0f1c70;
-    padding: 80px 0;
+    padding: 30px 0;
     justify-items: center;
 }
 
@@ -698,11 +698,11 @@ section.programs div {
 }
 
 section.programs .content {
-    width: 500px;
+    width: 700px;
 }
 
 section.programs .headline {
-    font-size: 70px;
+    font-size: 45px;
     margin-left: -100px;
     letter-spacing: 0.1em;
 }
@@ -743,9 +743,21 @@ section.programs .bg .circle-pattern-small {
     left: 15%;
 }
 
+section.programs .items {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+section.programs .items .half {
+    display: inline-block;
+}
+
 /* Responsiveness */
 
 @media screen and (max-width: 1023px) {
+    section.programs .items {
+        display: block;
+    }
     section.programs .bg .circle-pattern-big {
         width: 200px;
         bottom: -3%;
@@ -2273,3 +2285,31 @@ section.article .button {
         margin: 25px 0;
     }
 }
+
+section.usefull-links .container  {
+    width: auto;
+
+
+}
+section.usefull-links .items {
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+
+}
+section.programs .items .half {
+    width: 300px;
+    padding: 10px;
+    justify-self: center;
+}
+section.usefull-links .items .half img{
+    height: auto;
+}
+
+
+.cat.nav-item a.dropdown-item{
+    text-decoration: aquamarine;
+}
+.cat.nav-item a.dropdown-item:hover{
+    color: #f9ae17;
+}
+

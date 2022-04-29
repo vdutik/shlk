@@ -51,7 +51,7 @@
                   @endif
                   @if($sclass->room != null)
                   <dt class="col-sm-5">
-                      Room:
+                      Аудиторія:
                   </dt>
                   <dd class="col-sm-7">
                       {{ $sclass->room }}

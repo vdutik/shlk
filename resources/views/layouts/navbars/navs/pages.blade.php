@@ -18,38 +18,42 @@
         @auth()
           <li>
             <a href="/profile">
-              Welcome, {{ auth()->user()->getName() }}!
+              ви, {{ auth()->user()->getName() }}!
             </a>
           </li>
           <li>
             <a href="{{ route('dashboard') }}">
-              Return to Portal
+             Повернутись до порталу
             </a>
           </li>
         @endauth
         @guest()
-          <li><a href="{{ route('login') }}">Login to Portal</a></li>
+          <li><a href="{{ route('login') }}">Авторизуватись</a></li>
         @endguest
       </ul>
     </nav>
     <nav class="nav-main">
       <ul>
         <li class="{{ $title == 'Home' ? 'active' : '' }}">
-          <a href="/">home</a>
+          <a href="/">головна</a>
         </li>
         <li class="{{ $title == 'About' ? 'active' : '' }}">
-          <a href="/about">about</a>
+          <a href="/about">про нас</a>
         </li>
         @if($tot_posts > 0)
         <li class="{{ $title == 'News' ? 'active' : '' }}">
-          <a href="/news">news</a>
+          <a href="/news">новини</a>
         </li>
         @endif
         <li class="{{ $title == 'Contact' ? 'active' : '' }}">
-          <a href="/contact">contact</a>
+          <a href="/contact">Контакти</a>
         </li>
-        <li class="cat {{ $title == 'Admissions' ? 'active' : '' }}">
-          <a href="/admission">admissions</a>
+        <li class="cat nav-item dropdown{{ $title == 'Admissions' ? 'active' : '' }}" aria-haspopup="true">
+{{--              <a href="/admission">Вступ</a>--}}
+              <ul class="dropdown" aria-label="submenu">
+                  <li><a class="dropdown-item" href="https://vstup.edbo.gov.ua/">Онлайн вступ</a></li>
+                  <li><a class="dropdown-item" href="/admission">Звичайний вступ</a></li>
+              </ul>
         </li>
       </ul>
     </nav>

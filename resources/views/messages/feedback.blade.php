@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col col-lg-3">
-                                <h3 class="mb-0">Messages</h3>
+                                <h3 class="mb-0">Повідомлення</h3>
                             </div>
                             <div class="col col-lg-6">
                                 <form action="/feedback?" method="get" class="form-horizontal">
@@ -20,7 +20,7 @@
                                         <div class="input-group input-group-sm pt-0">
                                             <input name="search" class="form-control" placeholder="Sender's name, email, or subject of the message" type="text">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-default" type="submit">Search</button>
+                                                <button class="btn btn-outline-default" type="submit">Пошук</button>
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
             @if($search != null && count($messages) == 0)
                 <div class="row mt-3 mb-5">
                     <div class="col text-center">
-                        <p class="lead">Message not found</p>
+                        <p class="lead">Повідомлення не знайдено</p>
                     </div>
                 </div>
             @endif
@@ -72,7 +72,7 @@
                                 <p class="card-text">
                                     {!! str_limit(strip_tags($msg->body), 200) !!}
                                 </p>
-                                <a href="/messages/{{ $msg->message_id }}" class="text-sm">See More</a>
+                                <a href="/messages/{{ $msg->message_id }}" class="text-sm">Більше</a>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="col text-center">
                     <div class="card shadow">
                         <div class="card-body">
-                            <p class="lead">No messages found</p>
+                            <p class="lead">Повідомлення не знайдено</p>
                         </div>
                     </div>
                 </div>

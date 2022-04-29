@@ -28,16 +28,16 @@ $(document).on('keydown', 'input[pattern]', function(e){
                     <div class="card-header border-0">
                       <div class="row align-items-center">
                           <div class="col">
-                              <h2>Encoding of Grades</h2>
+                              <h2>Кодування оцінок</h2>
                               <p class="text-muted text-sm">
                                   {{ $sclass->getCourse() }}
                               </p>
                           </div>
                           <div class="col text-right">
                             @role('faculty')
-                              <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Return</a>
+                              <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Назад</a>
                             @else
-                              <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Return</a>
+                              <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Назад</a>
                             @endrole
                           </div>
                       </div>
@@ -53,14 +53,14 @@ $(document).on('keydown', 'input[pattern]', function(e){
                         <table class="table table-encode align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                  <th scope="col" class="text-center">Student No.</th>
-                                  <th scope="col" class="text-center">Name</th>
-                                  <th scope="col" class="text-center input-grade">Prelims</th>
+                                  <th scope="col" class="text-center">Студент No.</th>
+                                  <th scope="col" class="text-center">Ім'я</th>
+                                  <th scope="col" class="text-center input-grade">Вступний екзамен</th>
                                   @if(date('Y-m-d') >= $acad_term->midtermsEvent->start_date)
-                                    <th scope="col" class="text-center input-grade">Midterms</th>
+                                    <th scope="col" class="text-center input-grade">Проміжний екзамен</th>
                                   @endif
                                   @if(date('Y-m-d') >= $acad_term->finalsEvent->start_date)
-                                    <th scope="col" class="text-center input-grade">Finals</th>
+                                    <th scope="col" class="text-center input-grade">Кінцевий екзамен</th>
                                   @endif
                                 </tr>
                             </thead>
@@ -138,9 +138,9 @@ $(document).on('keydown', 'input[pattern]', function(e){
                     <div class="card-footer">
                         <button type="submit" class="btn btn-outline-info">
                           <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                          <span class="btn-inner--text">Save Changes</span>
+                          <span class="btn-inner--text">Зберегти зміни</span>
                         </button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Відмінити</button>
                     </div>
 
                     </form>

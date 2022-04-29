@@ -23,16 +23,16 @@
                     </div>
                     <a href="{{ route('profile.edit') }}" class="dropdown-item {{ $title == 'Profile' ? 'active' : '' }}">
                         <i class="ni ni-single-02"></i>
-                        <span>Profile</span>
+                        <span>Профіль</span>
                     </a>
                     @role('writer|admin')
                     <a href="/posts/create" class="dropdown-item {{ $title == 'Write Post' ? 'active' : '' }}">
                         <i class="ni ni-fat-add"></i>
-                        <span>Write Post</span>
+                        <span>Написати пост</span>
                     </a>
                     <a href="/posts" class="dropdown-item {{ $title == 'View My Posts' ? 'active' : '' }}">
                         <i class="ni ni-single-copy-04"></i>
-                        <span>View My Posts</span>
+                        <span>Переглянути мої пости</span>
                     </a>
                     @endrole
                     @role('admin|moderator')
@@ -42,28 +42,28 @@
                     </a>
                     <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
                         <i class="ni ni-check-bold"></i>
-                        <span>Approval of Posts</span>
+                        <span>Підтверджені пости</span>
                     </a>
                     @endrole
                     @role('admin')
                     <a href="/events" class="dropdown-item {{ $title == 'Events' ? 'active' : '' }}">
                         <i class="ni ni-calendar-grid-58"></i>
-                        <span>Events</span>
+                        <span>Події</span>
                     </a>
                     <a href="/feedback" class="dropdown-item {{ $title == 'Messages' ? 'active' : '' }}">
                         <i class="ni ni-email-83"></i>
-                        <span>Messages</span>
+                        <span>Повідомлення</span>
                     </a>
                     @endrole
                     <a href="/app/about" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>
-                        <span>About</span>
+                        <span>Про нас</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>Logout</span>
+                        <span>Вихід з облікового запису</span>
                     </a>
                 </div>
             </li>

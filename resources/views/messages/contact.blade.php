@@ -4,7 +4,7 @@
 <!-- Page Cover Section -->
 <section class="section page-cover">
   <div class="page-title">
-    <h1>Contact</h1>
+    <h1>Зв'язок</h1>
   </div>
 
   <canvas class="particles-background"></canvas>
@@ -14,14 +14,14 @@
 <!-- Contact Section -->
 <section class="section contact">
   <p class="description">
-    Got something to ask? Inquire and send us a message.
+    У вас є питання? Запитайте та відправте нам повідомлення.
   </p>
   <form method="POST" action="{{ action('MessagesController@store') }}" class="contact-form" autocomplete="off">
     @csrf
 
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Juan Dela Cruz" required />
+      <label for="name">Ім'я</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Василь Іванович Македонський" required />
     </div>
     <div class="form-group">
       <label for="email">Email</label>
@@ -29,17 +29,17 @@
       />
     </div>
     <div class="form-group">
-      <label for="subject">Subject</label>
-      <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" />
+      <label for="subject">Тема</label>
+      <input type="text" class="form-control" id="subject" name="subject" placeholder="Введіть тему" />
     </div>
     <div class="form-group">
-      <label for="body">Message</label>
-      <textarea class="form-control" name="body" id="body" rows="1" placeholder="Enter Message"
+      <label for="body">Повідомлення</label>
+      <textarea class="form-control" name="body" id="body" rows="1" placeholder="Введіть текст повідомлення"
         required></textarea>
     </div>
     <div class="form-group">
       <button type="submit" value="submit" class="btn btn-submit">
-        Send Message
+        Надіслати
       </button>
     </div>
   </form>

@@ -4,7 +4,7 @@
 <!-- Page Cover Section -->
 <section class="section page-cover">
   <div class="page-title">
-    <h1>News</h1>
+    <h1>Новини</h1>
   </div>
 
   <canvas class="particles-background"></canvas>
@@ -32,7 +32,7 @@
       <p class="article-content">
         {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
       </p>
-      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Read More</a>
+      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>
     </div>
   </article>
 
@@ -65,7 +65,7 @@
       <p class="article-content">
         {!! str_limit(strip_tags($post->body), 135) !!}
       </p>
-      <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
+      <a href="/articles/{{ $post->post_id }}" class="link">Докладніше</a>
     </article>
     @endif
   @endforeach

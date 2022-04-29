@@ -26,7 +26,7 @@ $(document).ready(function() {
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">Completion Grade</h3>
+                                <h3 class="mb-0">Оцінка завершення</h3>
                                 <p class="text-muted text-md">
                                   {{ $grade->sclass->getCourse() }} |
                                   {{ $grade->student->getStudentNo() }}
@@ -43,7 +43,7 @@ $(document).ready(function() {
                             <div class="pl-lg-4 row mt-4">
                               <div class="form-group col row">
                                 <div class="ml-3 form-control-label pt-1">
-                                  Completion Grade
+                                    Оцінка завершення
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
                                   <input name="grade" class="custom-control-input" id="grade1" type="radio" value="3.00" {{ old('grade') == '3.00' || old('grade') == null ? 'checked' : '' }}>
@@ -60,8 +60,8 @@ $(document).ready(function() {
                                 <div class="col-12 col-lg-4 col-md-6">
                                     <label class="form-control-label" for="note">Note</label>
                                     <select name="note" class="select2 form-control m-b" value="{{ old('note') }}" required>
-                                        <option value="Project">Project</option>
-                                        <option value="Final Exam">Final Exam</option>
+                                        <option value="Project">Проект</option>
+                                        <option value="Final Exam">Фінальний екзамен</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,9 +73,9 @@ $(document).ready(function() {
                             <div class="pl-lg-4 row mt-4">
                                 <div class="col">
                                     <button id="btnSubmit" type="submit" class="btn btn-success">
-                                        Save Completion Grade
+                                       Зберегти
                                     </button>
-                                    <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Відміна</button>
                                 </div>
                             </div>
                         </form>

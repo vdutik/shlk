@@ -13,7 +13,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col col-lg-3">
-                            <h3 class="mb-0">Events</h3>
+                            <h3 class="mb-0">Події</h3>
                         </div>
                         <div class="col col-lg-4">
                             <form action="/events?" method="get" class="form-horizontal">
@@ -21,7 +21,7 @@
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. Prelims Examination" type="text">
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-default" type="submit">Search</button>
+                                            <button class="btn btn-outline-default" type="submit">Пошук</button>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                         @endif
                         @role('admin|registrar')
                         <div class="col text-right">
-                            <a href="/events/create" class="btn btn-sm btn-primary">Add Event</a>
+                            <a href="/events/create" class="btn btn-sm btn-primary">Добавити подію</a>
                         </div>
                         @endrole
                     </div>
@@ -46,7 +46,7 @@
                 @if($search != null && count($events) == 0)
                     <div class="row mt-3 mb-5">
                         <div class="col text-center">
-                            <p class="lead">Event not found</p>
+                            <p class="lead">Події не знайдено</p>
                         </div>
                     </div>
                 @endif
@@ -57,8 +57,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col" class="text-center">ID</th>
-                                    <th scope="col">Event Title</th>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">Назва події</th>
+                                    <th scope="col">Дата</th>
                                     <th scope="col">Academic Term</th>
                                     @role('admin|registrar')
                                     <th scope="col"></th>
@@ -88,14 +88,14 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="/events/{{ $event->event_id }}/edit">
-                                                    Edit
+                                                    Редагувати
                                                 </a>
                                                 <form action="{{ action('EventsController@destroy', $event->event_id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
 
                                                     <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $event->title }} event?') ? this.parentElement.submit() : ''">
-                                                        Delete
+                                                        Видалити
                                                     </button>
                                                 </form>
                                             </div>
@@ -114,9 +114,9 @@
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No events found</p>
+                          <p class="lead">Подій не знайдено</p>
                           <br>
-                          <a href="/events/create" class="btn btn-primary btn-lg">Add Event</a>
+                          <a href="/events/create" class="btn btn-primary btn-lg">Добавити подію</a>
                       </div>
                   </div>
               @endif

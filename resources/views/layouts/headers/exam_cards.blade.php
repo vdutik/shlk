@@ -7,7 +7,7 @@
               <div class="col-xl-3 col-sm-6">
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
-                          <h5 class="card-title text-uppercase text-muted mb-0">Current Academic Term</h5>
+                          <h5 class="card-title text-uppercase text-muted mb-0">Поточний аккадемічний термін</h5>
                           <span class="h2 font-weight-bold mb-0">S.Y. {{ $curAcadTerm->sy }}</span>
                           <p class="mt-3 mb-0 text-muted text-sm">
                               <span class="text-nowrap">{{ $curAcadTerm->getSem() }}</span>
@@ -18,12 +18,12 @@
               <div class="col-xl-3 col-sm-6">
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
-                          <h5 class="card-title text-uppercase text-muted mb-0">Prelims Examination</h5>
+                          <h5 class="card-title text-uppercase text-muted mb-0">Попередній іспит</h5>
                           <span class="h2 font-weight-bold mb-0">
                             @if($curAcadTerm->prelimsEvent != null)
                                 {{ $curAcadTerm->prelimsEvent->getDate() }}
                             @else
-                                TBA
+                                  буде оголошено пізніше
                             @endif
                           </span>
                           <p class="mt-3 mb-0 text-muted text-sm">
@@ -35,7 +35,7 @@
               <div class="col-xl-3 col-sm-6">
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
-                          <h5 class="card-title text-uppercase text-muted mb-0">Midterms Examination</h5>
+                          <h5 class="card-title text-uppercase text-muted mb-0">Проміжний іспит</h5>
                           <span class="h2 font-weight-bold mb-0">
                             @if($curAcadTerm->midtermsEvent != null)
                                 {{ $curAcadTerm->midtermsEvent->getDate() }}
@@ -52,7 +52,7 @@
               <div class="col-xl-3 col-sm-6">
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
-                          <h5 class="card-title text-uppercase text-muted mb-0">Finals Examination</h5>
+                          <h5 class="card-title text-uppercase text-muted mb-0">Кінцевий іспит</h5>
                           <span class="h2 font-weight-bold mb-0">
                             @if($curAcadTerm->finalsEvent != null)
                                 {{ $curAcadTerm->finalsEvent->getDate() }}
