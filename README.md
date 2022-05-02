@@ -33,13 +33,13 @@ cd 'C:/xampp/htdocs'
 b. Clone the Repository
 
 ```bash
-git clone https://github.com/jorenrui/spccweb.git
+git clone https://github.com/vdutik/shlk.git
 ```
 
-c. Go to the `spccweb` directory
+c. Go to the `shlk` directory
 
 ```bash
-cd 'spccweb'
+cd 'shlk'
 ```
 
 d. Install Dependencies
@@ -61,8 +61,8 @@ a. Go to `C:/xampp/apache/conf/extra/httpd-vhosts.conf`. Edit then save.
 </VirtualHost>
 
 <VirtualHost *:80>
-    DocumentRoot "C:/xampp/htdocs/spccweb/public"
-    ServerName spccweb.me
+    DocumentRoot "C:/xampp/htdocs/shlk/public"
+    ServerName shlk.loc
 </VirtualHost>
 ```
 
@@ -72,14 +72,14 @@ b. Open Notepad as **Administrator**. Then Open File: `C:/Windows/System32/drive
 # At the bottom of the file
 
 127.0.0.1 localhost
-127.0.0.1 spccweb.me
+127.0.0.1 shlk.loc
 ```
 
 #### 3. Database Configuration <a name="database"></a>
 
 a. Run both `Apache` and `mySQL` in the XAMPP Control Panel.
 
-b. Go to `localhost/phpmyadmin` in your browser. Then login and create a database named `spcc`. In the main directory of `spccweb`, find `.env.example`. Open it and update the database information below. After that, save it as `.env`.
+b. Go to `localhost/phpmyadmin` in your browser. Then login and create a database named `shlk_db`. In the main directory of `shlk`, find `.env.example`. Open it and update the database information below. After that, save it as `.env`.
 
 > **Note**
 >
@@ -93,8 +93,10 @@ b. Go to `localhost/phpmyadmin` in your browser. Then login and create a databas
 
 ```
 APP_NAME='SPCC Caloocan'
+APP_URL=http://shlk.loc
+
 ...
-DB_DATABASE=spcc
+DB_DATABASE=shlk_db
 DB_USERNAME=myUsername
 DB_PASSWORD=myPassword
 ```
