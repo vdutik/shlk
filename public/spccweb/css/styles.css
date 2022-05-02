@@ -746,7 +746,7 @@ section.programs .bg .circle-pattern-small {
 
 section.programs .items {
     display: flex;
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
     padding-left: 10px;
 }
 section.programs .items .half {
@@ -2229,7 +2229,7 @@ section.article .meta {
     font-family: 'Cormorant Infant', serif;
 }
 
-section.article img {
+section.article img.cover_image  {
     width: 80vw;
     height: auto;
     margin: 50px 0;
@@ -2265,7 +2265,7 @@ section.article .button {
 
 @media only screen and (max-width: 768px) {
     section.article article,
-    section.article img {
+    section.article img.cover_image {
         width: 90vw;
     }
 
@@ -2276,7 +2276,7 @@ section.article .button {
 
 @media only screen and (max-width: 400px) {
     section.article article,
-    section.article img,
+    section.article img.cover_image,
     section.article .news-meta,
     section.article .article-content {
         width: 90vw;

@@ -92,7 +92,7 @@ b. Go to `localhost/phpmyadmin` in your browser. Then login and create a databas
 > _You can leave the password blank._
 
 ```
-APP_NAME='SPCC Caloocan'
+APP_NAME='ShLk Collegue'
 APP_URL=http://shlk.loc
 
 ...
@@ -167,7 +167,7 @@ username & password: 042030001
 
 #### 5. Check the App <a name="check"></a>
 
-a. Open a browser and go to `spccweb.me`. Make sure that both `Apache` and `MySQL` are running on the XAMPP Control Panel.
+a. Open a browser and go to `shlk.loc`. Make sure that both `Apache` and `MySQL` are running on the XAMPP Control Panel.
 
 b. Try to login.
 
@@ -190,25 +190,25 @@ docker exec -it spccweb-app composer install
 c. Copy the `env.example` to `.env` and configure database access:
 
 ```
-docker exec -it spccweb-app cp .env.example .env
+docker exec -it shlk-app cp .env.example .env
 ```
 
 d. Generate the Application Key:
 
 ```
-docker exec -it spccweb-app php artisan key:generate
+docker exec -it shlk-app php artisan key:generate
 ```
 
 e. Run the Database Migration:
 
 ```
-docker exec -it spccweb-app php artisan migrate
+docker exec -it shlk-app php artisan migrate
 ```
 
 f. Populate the Database by running the Database Seeder (if any);
 
 ```
-docker exec -it spccweb-app php artisan db:seed
+docker exec -it shlk-app php artisan db:seed
 ```
 
 g. Check the app:

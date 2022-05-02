@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
     use HasMediaTrait;
-    
+
     protected $table = 'posts';
     public $primaryKey = 'post_id';
     public $timestamps = true;
@@ -21,5 +23,11 @@ class Post extends Model
 
     public function user() {
     	return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(350)
+            ->height(250);
     }
 }

@@ -2,14 +2,14 @@ version: '3'
 services:
   mysql:
     image: mysql
-    container_name: spccweb-db
+    container_name: shlk-db
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=spcc
-      - MYSQL_USER=spcc
+      - MYSQL_DATABASE=shlk_db
+      - MYSQL_USER=shlk
       - MYSQL_PASSWORD=root
   app:
     image: ambientum/php:7.3-nginx
@@ -20,7 +20,7 @@ services:
       - "8000:8080"
     environment:
       - XDEBUG_ENABLED=true
-      - APP_NAME='SPCC - Caloocan'
+      - APP_NAME='SHLK - Collegue'
       - APP_URL=http://localhost:8000
     depends_on:
       - mysql

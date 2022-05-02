@@ -19,8 +19,8 @@ class MediaLibraryController extends Controller
      */
     public function index(Request $request): View
     {
-        $mediaLibrary = MediaLibrary::first();
-        $media = $mediaLibrary?$mediaLibrary->media()->get():[];
+//        $mediaLibrary = MediaLibrary::first();
+        $media = Media::query()->get()?:[];
         return view('admin.media.index', [
             'media' =>$media
         ]);
@@ -52,7 +52,7 @@ class MediaLibraryController extends Controller
         if ($request->filled('name')) {
             $name = $request->input('name');
         }
-    
+
         MediaLibrary::first()
             ->addMedia($image)
             ->usingName($name)

@@ -14,6 +14,7 @@
     <caption>{{ trans_choice('media.count', optional($media)->count()) }}</caption>
     <thead>
     <tr>
+        <th>@lang('media.attributes.id')</th>
         <th>@lang('media.attributes.image')</th>
         <th>@lang('media.attributes.name')</th>
         <th>@lang('media.attributes.url')</th>
@@ -24,6 +25,9 @@
     <tbody>
     @foreach($media as $medium)
         <tr>
+            <td>
+                {{$medium->id}}
+            </td>
             <td>
                 <a href="{{ $medium->getUrl() }}" target="_blank">
                     <img src="{{ $medium->getUrl('thumb') }}" alt="{{ $medium->name }}" width="100">

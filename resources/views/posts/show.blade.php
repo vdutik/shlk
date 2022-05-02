@@ -10,18 +10,18 @@
 
                     @switch($post->status)
                         @case('Published')
-                          <span class="badge badge-success badge-float">Published</span>
+                          <span class="badge badge-success badge-float">Опубліковані</span>
                           @break
 
                         @default
-                          <span class="badge badge-warning badge-float">Pending</span>
+                          <span class="badge badge-warning badge-float">Очікують підтвердження</span>
                           @break
                     @endswitch
 
                     <img class="card-img-top" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
-                        <h5 class="mb-4">Written by {{ $post->user->getName() }}</h5>
+                        <h5 class="mb-4">Написаий автором{{ $post->user->getName() }}</h5>
                         <div class="card-text">
                             {!! $post->body !!}
                         </div>

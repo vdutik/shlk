@@ -94,9 +94,11 @@
                                       <input type="file" id="post_images" name="post_images[]" multiple="true"  style="display: none">
                                   </div>
                                   <div class="post_images">
-                                  @foreach($post->media() as $media)
-                                          @dump($media)
-                                      @endforeach
+                                  @foreach($post->media as $media)
+                                          <a href="{{ $media->getUrl() }}" target="_blank"> Ідентифікатор фотографії: {{$media->id}}
+                                              <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}" width="100">
+                                          </a>
+                                  @endforeach
                                   </div>
                               </div>
                           </div>
