@@ -33,30 +33,38 @@
       </ul>
     </nav>
     <nav class="nav-main">
-      <ul>
-        <li class="{{ $title == 'Home' ? 'active' : '' }}">
-          <a href="/">головна</a>
-        </li>
-        <li class="{{ $title == 'About' ? 'active' : '' }}">
-          <a href="/about">про нас</a>
-        </li>
-        @if($tot_posts > 0)
-        <li class="{{ $title == 'News' ? 'active' : '' }}">
-          <a href="/news">новини</a>
-        </li>
-        @endif
-        <li class="{{ $title == 'Contact' ? 'active' : '' }}">
-          <a href="/contact">Контакти</a>
-        </li>
-        <li class="cat nav-item dropdown{{ $title == 'Admissions' ? 'active' : '' }}" aria-haspopup="true">
+        {!! $MyNavBar->asUl() !!}
+{{--      <ul>--}}
+{{--        <li class="{{ $title == 'Home' ? 'active' : '' }}">--}}
+{{--          <a href="/">головна</a>--}}
+{{--        </li>--}}
+{{--        <li class="{{ $title == 'About' ? 'active' : '' }}">--}}
+{{--          <a href="/about">про нас</a>--}}
+{{--        </li>--}}
+{{--        @if($tot_posts > 0)--}}
+{{--        <li class="{{ $title == 'News' ? 'active' : '' }}">--}}
+{{--          <a href="/news">новини</a>--}}
+{{--        </li>--}}
+{{--        @endif--}}
+{{--        <li class="{{ $title == 'Contact' ? 'active' : '' }}">--}}
+{{--          <a href="/contact">Контакти</a>--}}
+{{--        </li>--}}
+{{--        <li class="cat nav-item dropdown{{ $title == 'Admissions' ? 'active' : '' }}" aria-haspopup="true">--}}
 {{--              <a href="/admission">Вступ</a>--}}
-              <ul class="dropdown" aria-label="submenu">
-                  <li><a class="dropdown-item" href="https://vstup.edbo.gov.ua/">Онлайн вступ</a></li>
-                  <li><a class="dropdown-item" href="/admission">Звичайний вступ</a></li>
-              </ul>
-        </li>
-      </ul>
+{{--              <ul class="dropdown" aria-label="submenu">--}}
+{{--                  <li><a class="dropdown-item" href="https://vstup.edbo.gov.ua/">Онлайн вступ</a></li>--}}
+{{--                  <li><a class="dropdown-item" href="/admission">Звичайний вступ</a></li>--}}
+{{--              </ul>--}}
+{{--        </li>--}}
+{{--      </ul>--}}
     </nav>
+
+
   </div>
 </header>
 <!-- end Site Header -->
+<div>
+{{--    @dd($MyNavBar)--}}
+
+
+</div>

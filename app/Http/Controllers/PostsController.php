@@ -142,8 +142,10 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+            'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
+
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
@@ -164,8 +166,20 @@ class PostsController extends Controller
             $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
         }
 
-        // Update Post
         $post = Post::find($id);
+        
+        if ($request->has('post_images')){
+            foreach ($request->post_images as $postImage){
+                $name = $postImage->getClientOriginalName();
+                $post->addMedia($postImage)
+
+                    ->usingName($name)
+                    ->toMediaCollection();
+            }
+        }
+
+
+        // Update Post
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->updated_at = now();

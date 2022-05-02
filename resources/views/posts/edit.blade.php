@@ -62,6 +62,9 @@
                                 <div class="form-group">
                                     <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
                                     <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
+                                    <span>
+                                        {{$post->cover_image}}
+                                    </span>
                                 </div>
                               </div>
                           </div>
@@ -81,6 +84,22 @@
                             </div>
                           </div>
 
+                          <div class="row">
+                              <div class="col-12 col-lg-5">
+                                  <div class="form-control-label mb-2">
+                                      Прикріплені фотографії
+                                  </div>
+                                  <div class="form-group">
+                                      <label id="browse-image" for="post_images" class="btn btn-outline-default">Choose images </label>
+                                      <input type="file" id="post_images" name="post_images[]" multiple="true"  style="display: none">
+                                  </div>
+                                  <div class="post_images">
+                                  @foreach($post->media() as $media)
+                                          @dump($media)
+                                      @endforeach
+                                  </div>
+                              </div>
+                          </div>
                           <div class="row">
                               <div class="col-12 col-lg-12">
                                 <button id="btn-publish" type="submit" class="btn btn-outline-primary">Update</button>

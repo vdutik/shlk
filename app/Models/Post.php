@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Post extends Model
 {
+    use HasMediaTrait;
+    
     protected $table = 'posts';
     public $primaryKey = 'post_id';
     public $timestamps = true;

@@ -188,6 +188,10 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::get('faculty/load/{class}/students','FacultyAccessController@showStudentMasterlist');
 });
 
+Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
+    Route::resource('storge/media', 'MediaLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
+});
+
 Route::group(['middleware' => ['auth', 'role:student']], function () {
 	Route::resource('student', 'StudentAccessController')->only('index');
 

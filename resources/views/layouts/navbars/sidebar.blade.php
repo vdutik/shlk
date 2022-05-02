@@ -245,6 +245,31 @@
                     </div>
                 </li>
                 @endrole
+
+                @role('admin|registrar')
+                <li class="nav-item {{ $title == 'Media' ? 'active' : '' }}">
+                    <a class="nav-link" href="#navbar-media" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-media">
+                        <i class="ni ni-single-02"></i>
+                        <span class="nav-link-text">Редагувати медіа файли</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-media">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/storge/media">
+                                    Список медіафайлів
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/storge/media/create">
+                                    Добавити новий медіа файл
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                @endrole
             </ul>
             <!-- Divider -->
             <hr class="my-3">
