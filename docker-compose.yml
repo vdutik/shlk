@@ -12,8 +12,8 @@ services:
       - MYSQL_USER=shlk
       - MYSQL_PASSWORD=root
   app:
-    image: ambientum/php:7.3-nginx
-    container_name: spccweb-app
+    image: ambientum/php:7.4-nginx
+    container_name: shlk-app
     volumes:
       - .:/var/www/app
     ports:
