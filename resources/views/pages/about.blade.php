@@ -1,4 +1,4 @@
-@extends('layouts.pages', ['title' => 'About'])
+@extends('layouts.pages', ['title' => 'Про коледж'])
 
 @section('content')
 <!-- Page Cover Section -->

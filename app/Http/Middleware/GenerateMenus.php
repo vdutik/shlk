@@ -25,8 +25,8 @@ class GenerateMenus
             $menu->add('Вступ', 'admission')->nickname('admission');
 
             $menu->admission->attr(['class'=>' cat collapsed navbar navbar-about dropdown  dropdown-toggle','data-toggle' => 'dropdown']);
-            $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua');
-            $menu->item('admission')->add("Оффлайн вступ",'admission');
+//            $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua');
+//            $menu->item('admission')->add("Оффлайн вступ",'admission');
         });
 
         return $next($request);

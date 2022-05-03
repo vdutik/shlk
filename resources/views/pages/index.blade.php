@@ -1,4 +1,4 @@
-@extends('layouts.pages', ['title' => 'Home'])
+@extends('layouts.pages', ['title' => 'Головна'])
 
 @section('content')
 <!-- Hero Section -->

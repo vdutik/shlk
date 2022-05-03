@@ -78,7 +78,7 @@ section.hero a {
 .site-header li.active a,
 section.hero a:hover,
 section.hero a:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 .section a.link {
@@ -93,7 +93,7 @@ section.hero a:active {
 
 .section a.link:hover,
 .section a.link:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 @media only screen and (max-width: 768px) {
@@ -118,7 +118,7 @@ section.hero a:active {
 }
 
 .site-header .logo img {
-    width: 400px;
+    width: 500px;
 }
 
 .site-nav {
@@ -253,7 +253,7 @@ ul.pagination .page-item.disabled {
     }
 
     .site-nav.responsive li:hover {
-        background: #f9ae17;
+        background: #394522;
     }
 
     .site-nav.responsive a:hover {
@@ -389,7 +389,7 @@ section.hero .particles-background {
     }
 
     .site-header .logo img {
-        width: 250px;
+        width: 300px;
     }
 }
 
@@ -446,7 +446,7 @@ section.upcoming-events .btn {
 
 section.upcoming-events .btn:hover,
 section.upcoming-events .btn:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.upcoming-events .card {
@@ -457,7 +457,7 @@ section.upcoming-events .card {
     border-radius: 10px;
     color: #BDB76B;
     display: inline-block;
-    background: #f9ae17;
+    background: #394522;
 }
 
 section.upcoming-events .card .date {
@@ -517,7 +517,8 @@ section.annoucement .content {
     max-width: 1200px;
     width: 85vw;
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-bottom: 50px;
     padding: 100px;
     color: #BDB76B;
     border: 5px solid #BDB76B;
@@ -575,7 +576,7 @@ section.annoucement p {
  * ======================================= */
 
 section.about-brief {
-    padding: 150px 0;
+    padding: 100px 0;
     background: #fff;
     grid-template-columns: 1fr;
 }
@@ -819,7 +820,7 @@ section.programs .items .half {
  * ======================================= */
 
 section.latest-news {
-    margin: 150px auto;
+    margin: 50px auto;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -856,7 +857,7 @@ section.latest-news article a.title {
 
 section.latest-news article a.title:hover,
 section.latest-news article a.title:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.latest-news .meta {
@@ -1035,7 +1036,7 @@ section.latest-news .bg .circle-pattern-small {
 
 .site-footer .contact-info a:hover,
 .site-footer .contact-info a:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 .site-footer .content i {
@@ -1055,7 +1056,7 @@ section.latest-news .bg .circle-pattern-small {
 }
 
 .site-footer .credits a {
-    color: #f9ae17;
+    color: #394522;
 }
 
 .site-footer .copyright::before {
@@ -1165,7 +1166,7 @@ section.page-cover .page-title {
 section.page-cover h1 {
     margin-top: 80px;
     margin-bottom: -50px;
-    color: #f9ae17;
+    color: #394522;
     padding: 20px 50px;
     font-size: 50px;
     font-weight: 400;
@@ -1173,7 +1174,7 @@ section.page-cover h1 {
     position: relative;
     text-transform: uppercase;
     font-family: 'Cormorant Infant', serif;
-    border: 5px solid #f9ae17;
+    border: 5px solid #394522;
 }
 
 section.page-cover .particles-background {
@@ -1297,7 +1298,7 @@ section.info-tab {
 
 section.info-tab .tab-menu {
     padding: 50px 25px;
-    background: #f9ae17;
+    background: #394522;
 }
 
 section.info-tab .tab-nav {
@@ -1487,7 +1488,7 @@ section.contact .description {
 }
 
 section.contact .description b {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.contact form {
@@ -1520,13 +1521,13 @@ section.contact textarea {
 section.contact .form-group:hover,
 section.contact input:focus,
 section.contact textarea:focus {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.contact input:focus,
 section.contact input:hover,
 section.contact textarea:focus section.contact textarea:hover {
-    border: 2px solid #f9ae17;
+    border: 2px solid #394522;
 }
 
 section.contact textarea {
@@ -2021,7 +2022,7 @@ section.featured-news a.title {
 
 section.featured-news a.title:hover,
 section.featured-news a.title:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.featured-news a.link {
@@ -2149,7 +2150,7 @@ section.news a.title {
 
 section.news a.title:hover,
 section.news a.title:active {
-    color: #f9ae17;
+    color: #394522;
 }
 
 section.news .meta {
@@ -2311,6 +2312,6 @@ section.usefull-links .items .half img{
     text-decoration: aquamarine;
 }
 .cat.nav-item a.dropdown-item:hover{
-    color: #f9ae17;
+    color: #394522;
 }
 
