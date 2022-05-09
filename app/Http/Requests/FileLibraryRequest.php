@@ -24,7 +24,7 @@ class FileLibraryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required',
+            'file' => 'required|max:10000|mimes:doc,docx,pdf,xsl,xlsx',
             'name' => 'nullable|string|max:255'
         ];
     }
