@@ -29,11 +29,21 @@ use Illuminate\Support\Facades\Storage;
 class File extends Model
 {
     protected $fillable = [
-        'model_type','model_id' ,  'name', 'file_name', 'description', 'collection_name', 'mime_type', 'extension', 'size', 'disk', 'path'
+        'model_type','model_id' ,  'name', 'file_name', 'description', 'collection_name', 'mime_type', 'extension', 'size', 'disk', 'path','custom_properties'
     ];
 
     public function fullPath(): string
     {
         return Storage::disk($this->disk)->path($this->path);
     }
+
+    public function getUrlPath(): string
+    {
+        return '/storage/'.$this->path.'/'.$this->name;
+    }
+
+
+    protected $casts = [
+        'custom_properties' => 'array'
+    ];
 }

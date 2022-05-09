@@ -53,7 +53,7 @@ class MediaLibraryController extends Controller
             $name = $request->input('name');
         }
 
-        MediaLibrary::first()
+        MediaLibrary::firstOrCreate([])
             ->addMedia($image)
             ->usingName($name)
             ->toMediaCollection();
@@ -61,14 +61,6 @@ class MediaLibraryController extends Controller
         return redirect()->route('media.index')->withSuccess(__('media.created'));
     }
 
-    protected function convertPdfToImage(string $pdfFile) : string
-    {
-        $imageFile = pathinfo($pdfFile, PATHINFO_DIRNAME).'/'.pathinfo($pdfFile, PATHINFO_FILENAME).'.jpg';
-
-        (new Pdf($pdfFile))->saveImage($imageFile);
-
-        return $imageFile;
-    }
 
     /**
      * Remove the specified resource from storage.

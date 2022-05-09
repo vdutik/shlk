@@ -6,6 +6,7 @@ namespace App\Services\Stateless;
 
 use App\Models\File;
 use App\Services\UploadService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 
 class FileService extends AbstractModelService
@@ -34,23 +35,32 @@ class FileService extends AbstractModelService
         return File::class;
     }
 
-    public function saveUploadedFile(UploadedFile $uploadedFile, $description = null, $useOriginalName = false)
+    public function saveUploadedFile(UploadedFile $uploadedFile, $name = null, Model $model = null, $description = null, $useOriginalName = false)
     {
         $originalName = $uploadedFile->getClientOriginalName();
+        $name = $this->getFileName($uploadedFile, $name);
         $file = $this->uploadService->storeUploadedFile($uploadedFile, $useOriginalName
             ? $originalName
-            : null
+            : $name
         );
-        return $this->createFile([
-            'name' => $file->getFilename(),
-            'original_name' => $originalName,
+        $params = [
+            'name' => $name,
+            'file_name' => $originalName,
             'description' => $description,
             'mime_type' => $file->getMimeType(),
-            'extension' => $file->getExtension(),
+            'extension' => $this->getExtension($file),
             'size' => $file->getSize(),
             'disk' => $this->uploadService->getStorageName(),
-            'path' => $this->uploadService->getInStoragePath($file->path())
-        ]);
+            'path' => $this->uploadService->getInStoragePath($file->getPath()),
+            'collection_name' => 'default',
+            'custom_properties' => []
+        ];
+        if ($model) {
+            $params['model_type'] = $model->getMorphClass();
+            $params['model_id'] = $model->id;
+        }
+
+        return $this->createFile($params);
     }
 
     public function createFile(array $attributes)
@@ -75,7 +85,7 @@ class FileService extends AbstractModelService
         $file = $this->findFileOrFail($file);
 
         $deleted = (File::destroy($file->id) > 0);
-        if($deleted){
+        if ($deleted) {
             $this->uploadService->deleteFile($file->path, $withDir);
         }
 
@@ -97,5 +107,34 @@ class FileService extends AbstractModelService
     public function findFileOrFail($file)
     {
         return $this->findOrFail($file);
+    }
+
+    /**
+     * @param UploadedFile $uploadedFile
+     * @param $customName
+     * @return string
+     */
+    private function getFileName(UploadedFile $uploadedFile, $customName = null): string
+    {
+        $name = $uploadedFile->getClientOriginalName();
+        if ($customName) {
+            $name = $customName . "." .$this->getExtension($uploadedFile);
+        }
+
+        return $name;
+    }
+
+    /**
+     * @param UploadedFile $uploadedFile
+     * @return string
+     */
+    private function getExtension( $uploadedFile): string
+    {
+        if (!empty($uploadedFile->getExtension())) {
+            return $uploadedFile->getExtension();
+        }
+        $name = $uploadedFile->getClientOriginalName();
+
+        return last(explode('.', $name));
     }
 }

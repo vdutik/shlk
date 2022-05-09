@@ -2307,9 +2307,9 @@ section.usefull-links .items .half img{
     height: auto;
 }
 
-
-.cat.nav-item a.dropdown-item{
+li.cat.dropdown-item{
     text-decoration: aquamarine;
+    color: aquamarine;
 }
 .cat.nav-item a.dropdown-item:hover{
     color: #394522;

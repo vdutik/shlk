@@ -23,10 +23,13 @@ class GenerateMenus
             $menu->add('Новини', 'news');
             $menu->add('Зв\'язок', 'contact');
             $menu->add('Вступ', 'admission')->nickname('admission');
+            $menu->admission->attr(['class'=>' cat dropdown-item']);
 
-            $menu->admission->attr(['class'=>' cat collapsed navbar navbar-about dropdown  dropdown-toggle','data-toggle' => 'dropdown']);
-//            $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua');
-//            $menu->item('admission')->add("Оффлайн вступ",'admission');
+            $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua')->nickname('drop1');
+            $menu->drop1->attr(['class'=> 'hover-dropdown-item']);
+
+            $menu->item('admission')->add("Оффлайн вступ",'admission')->nickname('drop2');
+            $menu->drop2->attr(['class'=> 'hover-dropdown-item']);
         });
 
         return $next($request);
