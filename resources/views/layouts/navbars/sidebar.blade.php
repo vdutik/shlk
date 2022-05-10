@@ -295,6 +295,30 @@
                 </li>
 
                 @endrole
+                @role('admin|registrar')
+                <li class="nav-item {{ $title == 'Tags' ? 'active' : '' }}">
+                    <a class="nav-link" href="#navbar-tags" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-tags">
+                        <i class="ni ni-single-02"></i>
+                        <span class="nav-link-text">Редагувати теги</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-tags">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tags">
+                                    Список тегів
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tags/create">
+                                    Добавити новий тег
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                @endrole
             </ul>
             <!-- Divider -->
             <hr class="my-3">

@@ -196,6 +196,10 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
     Route::resource('storage/file', 'FileLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
 });
 
+Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
+    Route::resource('tags', 'TagsController')->only(['index', 'show', 'create', 'store', 'destroy']);
+});
+
 Route::group(['middleware' => ['auth', 'role:student']], function () {
 	Route::resource('student', 'StudentAccessController')->only('index');
 

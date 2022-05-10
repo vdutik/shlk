@@ -65,7 +65,8 @@ class FileLibraryController extends Controller
      */
     public function destroy(File $file): RedirectResponse
     {
-        $file->delete();
+        app("FileService")->deleteFile($file,true);
+
 
         return redirect()->route('file.index')->withSuccess(__('file.deleted'));
     }

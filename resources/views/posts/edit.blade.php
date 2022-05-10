@@ -75,6 +75,19 @@
                                 <input id="title" name="title" class="form-control mb-3" type="text" placeholder="Enter title..." value="{{$post->title}}" required>
                             </div>
                           </div>
+                          <div class="row">
+                              <div class="col-12 ">
+                                  <label class="form-control-label" for="title">Теги</label>
+                                  <select class="form-control" name="tags[]" multiple="">
+                                      @foreach($tags as $tag)
+                                          <option value="{{$tag->id}}"
+                                                  @if($post->tags->where('id',$tag->id)->count()==1)selected="selected"@endif>
+                                              {{__($tag->slug)}}
+                                          </option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
 
                           <div class="row mb-7">
                             <div class="col-12 col-lg-12">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -45,7 +46,9 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'cover_image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+            'tags.*' => 'integer',
+            'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
         $cover_image = $request->file('cover_image');
@@ -79,6 +82,14 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
         $post->status = $status;
         $post->save();
+
+        if ($request->has('tags')){
+            $tags = [];
+            foreach ($request->tags as $tagId){
+                $tags[] = (int) $tagId;
+            }
+            $post->tags()->sync($tags);
+        }
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
             return redirect('/posts')->with('success', 'Post Published');
@@ -120,6 +131,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        $tags = Tag::all();
 
         // Check for correct user
         if(!auth()->user()->hasPermissionTo('edit posts') &&
@@ -127,7 +139,7 @@ class PostsController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
-        return view('posts.edit')->with('post', $post);
+        return view('posts.edit')->with('post', $post)->with('tags',$tags);
     }
 
     /**
@@ -143,9 +155,9 @@ class PostsController extends Controller
             'title' => 'required',
             'body' => 'required',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+            'tags.*' => 'integer',
             'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
-
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
@@ -167,7 +179,7 @@ class PostsController extends Controller
         }
 
         $post = Post::find($id);
-        
+
         if ($request->has('post_images')){
             foreach ($request->post_images as $postImage){
                 $name = $postImage->getClientOriginalName();
@@ -177,7 +189,13 @@ class PostsController extends Controller
                     ->toMediaCollection();
             }
         }
-
+        if ($request->has('tags')){
+            $tags = [];
+            foreach ($request->tags as $tagId){
+                $tags[] = (int) $tagId;
+            }
+            $post->tags()->sync($tags);
+        }
 
         // Update Post
         $post->title = $request->input('title');
