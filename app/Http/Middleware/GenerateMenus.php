@@ -30,6 +30,7 @@ class GenerateMenus
             $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua')->nickname('drop1');
             $menu->drop1->attr(['class'=> 'hover-dropdown-item']);
 
+
             $menu->item('admission')->add("Оффлайн вступ",'admission')->nickname('drop2');
             $menu->drop2->attr(['class'=> 'hover-dropdown-item']);
         });

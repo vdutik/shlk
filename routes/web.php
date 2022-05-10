@@ -189,7 +189,15 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
-    Route::resource('storge/media', 'MediaLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
+    Route::resource('storage/media', 'MediaLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
+    Route::resource('storage/file', 'FileLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
+    Route::resource('tags', 'TagsController')->only(['index', 'show', 'create', 'store', 'destroy']);
 });
 
 Route::group(['middleware' => ['auth', 'role:student']], function () {

@@ -101,7 +101,8 @@ class UploadService
         $path = $this->storage->putFileAs($this->uploadFolderPath . $subFolder, $uploadedFile, $fileName);
 
         if (empty($path)) {
-            UploadServiceException::throwUploadFileNotStoredException($uploadedFile);
+            dd("ExceptiontthrowUploadFileNotStoredException($uploadedFile);");
+//            ExceptiontthrowUploadFileNotStoredException($uploadedFile);
         }
 
         $file = new \Symfony\Component\HttpFoundation\File\File($this->storage->path($path));
@@ -112,7 +113,8 @@ class UploadService
     private function checkExtension(UploadedFile $file)
     {
         if($this->availableExtensions && !in_array($file->getExtension(), $this->availableExtensions)){
-            UploadServiceException::throwExtensionIsNotAvailableException($file);
+            dd("ExceptiontthrowUploadFileNotStoredException();");
+            //            UploadServiceException::throwExtensionIsNotAvailableException($file);
         }
     }
 
