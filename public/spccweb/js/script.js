@@ -55,3 +55,84 @@ $('.tab-nav a').click(function (e) {
     });
 
 })();
+
+$(document).ready(function() {
+    const swiper = new Swiper('.image-slider', {
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev' //кнопки
+      },
+  
+      pagination: {
+          el: '.swiper-pagination', //пагінація
+          
+      },
+  
+      type: 'fraction',
+      renderFraction: function(currentClass, totalClass) {
+          return 'Фото <span class="' + currentClass + '">' +
+          ' з ' +
+          '<span class="' + totalClass + '"></span>'; //вивід фракції 
+      },
+  
+      simulateTouch: true, //перетаскування на ПК 
+      
+      keyboard:{
+          enabled: true,
+          pageUpDown: true, //керування клавіатурою 
+      },
+  
+      mouseWheel:{
+          sensitivity: 1, //прокрутка мишкою 
+      },
+  
+      autoHeight: true, //автовисота картинок 
+  
+      loop: true, // безкінечний свайп
+  
+      speed: 800,
+  
+      effect: 'fade',
+      fadeEffect: {
+          crossFade: true,
+      },
+  
+      breakpoints: {
+          320: {
+              slidePerView: 1
+          },
+          480: {
+              slidePerView: 1
+          },
+          922: {
+              slidePerView: 1
+          },
+      },
+  
+      zoom: {
+          maxRatio: 2,
+          minRatio: 1,
+      },    
+
+  
+  //Завантаження сладій в з бд
+     /** virtual: {
+          slides: (function (){
+              let slide = []
+              for (let i = 0; i < 30; i++){
+                  slide.push(`<div class="image-slider">Слайд №${i}<>/div`);
+              }
+              return slide;
+          }()),
+      },*/
+  
+      on: {
+          init: function(){
+              console.log('start');
+          },
+          slideChange: function(){
+              console.log('change');
+          },
+      },
+  });
+  });
