@@ -96,154 +96,154 @@
                     </a>
                 </li>
                 @role('faculty|admin')
-                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="/faculty">
-                        <i class="ni ni-calendar-grid-58"></i> Schedule
-                    </a>
-                </li>
-                <li class="nav-item {{ $title == 'View Faculty Load' ? 'active' : '' }}">
-                    <a class="nav-link" href="/faculty/load">
-                        <i class="ni ni-bullet-list-67"></i> View Faculty Load
-                    </a>
-                </li>
-                @endrole
-                @role('admin|registrar')
-                <li class="nav-item {{ $title == 'Examination Period' ? 'active' : '' }}">
-                    <a class="nav-link" href="/acad_terms">
-                        <i class="ni ni-ruler-pencil"></i> Examination Period
-                    </a>
-                </li>
-                @endrole
-                @role('admin|head registrar')
-                <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">
-                    <a class="nav-link" href="/classes">
-                        <i class="ni ni-calendar-grid-58"></i> Class Scheduling
-                    </a>
-                </li>
-                @endrole
-                @role('admin|registrar|head registrar')
-                <li class="nav-item {{ $title == 'Grade Report' ? 'active' : '' }}">
-                    <a class="nav-link" href="/grades">
-                        <i class="ni ni-chart-bar-32"></i> Grade Report
-                    </a>
-                </li>
+{{--                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/faculty">--}}
+{{--                        <i class="ni ni-calendar-grid-58"></i> Schedule--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item {{ $title == 'View Faculty Load' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/faculty/load">--}}
+{{--                        <i class="ni ni-bullet-list-67"></i> View Faculty Load--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                @endrole--}}
+{{--                @role('admin|registrar')--}}
+{{--                <li class="nav-item {{ $title == 'Examination Period' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/acad_terms">--}}
+{{--                        <i class="ni ni-ruler-pencil"></i> Examination Period--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                @endrole--}}
+{{--                @role('admin|head registrar')--}}
+{{--                <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/classes">--}}
+{{--                        <i class="ni ni-calendar-grid-58"></i> Class Scheduling--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                @endrole--}}
+{{--                @role('admin|registrar|head registrar')--}}
+{{--                <li class="nav-item {{ $title == 'Grade Report' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/grades">--}}
+{{--                        <i class="ni ni-chart-bar-32"></i> Grade Report--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 @endrole
                 @role('student')
-                <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="/student">
-                        <i class="ni ni-calendar-grid-58"></i> Schedule
-                    </a>
-                </li>
-                <li class="nav-item {{ $title == 'View Enlistment' ? 'active' : '' }}">
-                    <a class="nav-link" href="/student/enlistment">
-                        <i class="ni ni-bullet-list-67"></i> View Enlistment
-                    </a>
-                </li>
-                <li class="nav-item {{ $title == 'View Curriculum' ? 'active' : '' }}">
-                    <a class="nav-link" href="/student/curriculum">
-                        <i class="ni ni-collection"></i> View Curriculum
-                    </a>
-                </li>
+{{--                <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/student">--}}
+{{--                        <i class="ni ni-calendar-grid-58"></i> Schedule--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item {{ $title == 'View Enlistment' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/student/enlistment">--}}
+{{--                        <i class="ni ni-bullet-list-67"></i> View Enlistment--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item {{ $title == 'View Curriculum' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="/student/curriculum">--}}
+{{--                        <i class="ni ni-collection"></i> View Curriculum--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 @endrole
                 @role('admin')
-                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-faculties" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faculties">
-                        <i class="ni ni-badge"></i>
-                        <span class="nav-link-text">Manage Faculty</span>
-                    </a>
+{{--                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="#navbar-faculties" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faculties">--}}
+{{--                        <i class="ni ni-badge"></i>--}}
+{{--                        <span class="nav-link-text">Manage Faculty</span>--}}
+{{--                    </a>--}}
 
-                    <div class="collapse" id="navbar-faculties">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/faculties">
-                                    Faculty
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/archived/faculties">
-                                    Archived Faculty
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+{{--                    <div class="collapse" id="navbar-faculties">--}}
+{{--                        <ul class="nav nav-sm flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/faculties">--}}
+{{--                                    Faculty--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/archived/faculties">--}}
+{{--                                    Archived Faculty--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 @endrole
                 @role('head registrar')
-                <li class="nav-item {{ $title == 'Registrar Staff' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-registrars" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-registrars">
-                        <i class="ni ni-badge"></i>
-                        <span class="nav-link-text">Manage Registrar Staff</span>
-                    </a>
+{{--                <li class="nav-item {{ $title == 'Registrar Staff' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="#navbar-registrars" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-registrars">--}}
+{{--                        <i class="ni ni-badge"></i>--}}
+{{--                        <span class="nav-link-text">Manage Registrar Staff</span>--}}
+{{--                    </a>--}}
 
-                    <div class="collapse" id="navbar-registrars">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/registrars">
-                                    Registrars
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/archived/registrars">
-                                    Archived Registrars
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+{{--                    <div class="collapse" id="navbar-registrars">--}}
+{{--                        <ul class="nav nav-sm flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/registrars">--}}
+{{--                                    Registrars--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/archived/registrars">--}}
+{{--                                    Archived Registrars--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 @endrole
                 @role('admin|registrar')
-                <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-text">Manage Students</span>
-                    </a>
+{{--                <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">--}}
+{{--                        <i class="ni ni-single-02"></i>--}}
+{{--                        <span class="nav-link-text">Manage Students</span>--}}
+{{--                    </a>--}}
 
-                    <div class="collapse" id="navbar-students">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/students">
-                                    Students
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/unpaid/students">
-                                    Unpaid Students
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/graduate/students">
-                                    Graduate Students
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/archived/students">
-                                    Archived Students
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-curriculum" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-curriculum">
-                        <i class="ni ni-collection"></i>
-                        <span class="nav-link-text">Manage Curriculum</span>
-                    </a>
+{{--                    <div class="collapse" id="navbar-students">--}}
+{{--                        <ul class="nav nav-sm flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/students">--}}
+{{--                                    Students--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/unpaid/students">--}}
+{{--                                    Unpaid Students--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/graduate/students">--}}
+{{--                                    Graduate Students--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/archived/students">--}}
+{{--                                    Archived Students--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">--}}
+{{--                    <a class="nav-link" href="#navbar-curriculum" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-curriculum">--}}
+{{--                        <i class="ni ni-collection"></i>--}}
+{{--                        <span class="nav-link-text">Manage Curriculum</span>--}}
+{{--                    </a>--}}
 
-                    <div class="collapse" id="navbar-curriculum">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/curriculums">
-                                    Curriculum Masterlist
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/courses">
-                                    Course Masterlist
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+{{--                    <div class="collapse" id="navbar-curriculum">--}}
+{{--                        <ul class="nav nav-sm flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/curriculums">--}}
+{{--                                    Curriculum Masterlist--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/courses">--}}
+{{--                                    Course Masterlist--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 @endrole
 
                 @role('admin|registrar')
