@@ -52,5 +52,7 @@
 </section>
 <!-- end Contact Section -->
 
-<div class="section contact-map"></div>
+<div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2088.8787446079136!2d23.92136532422654!3d51.49061167828034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4723fb672a2a9699%3A0xf71f674c8538ff31!2z0KjQsNGG0YzQutC40Lkg0LvRltGB0L7QstC40Lkg0LrQvtC70LXQtNC2INGW0LwuINCh0YLQtdC_0LDQvdCwINCR0LDQvdC00LXRgNC4!5e0!3m2!1suk!2sua!4v1652432375985!5m2!1suk!2sua"  style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 @endsection

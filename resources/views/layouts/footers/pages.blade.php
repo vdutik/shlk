@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="site-footer">
   <div class="school-info">
-    <img src="{{ asset('spccweb/img/logo-with-shadows.png') }}" alt="SPCC Logo" />
+    <img src="{{ asset('spccweb/img/logo-with-shadows.png') }}" width="120px" alt="Shlk Logo" />
     <div class="headline">Шацький лісовий фаховий коледж ім. В.В.Сулька</div>
     <div class="sub-headline">
         <a href="https://www.google.com/maps/place/%D0%A8%D0%B0%D1%86%D0%BA%D0%B8%D0%B9+%D0%BB%D0%B5%D1%81%D0%BD%D0%BE%D0%B9+%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6/@51.4896705,23.9212732,17.85z/data=!4m5!3m4!1s0x4723fb672a2a9699:0xf71f674c8538ff31!8m2!3d51.4894695!4d23.9228032?hl=ru-RU">

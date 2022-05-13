@@ -28,12 +28,13 @@
           </li>
         @endauth
         @guest()
-          <li><a href="{{ route('login') }}">Авторизуватись</a></li>
+{{--          <li><a href="{{ route('login') }}">Авторизуватись</a></li>--}}
         @endguest
       </ul>
     </nav>
     <nav class="nav-main">
         {!! $MyNavBar->asUl() !!}
+
 {{--      <ul>--}}
 {{--        <li class="{{ $title == 'Home' ? 'active' : '' }}">--}}
 {{--          <a href="/">головна</a>--}}
