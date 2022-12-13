@@ -1,43 +1,42 @@
-{{--@extends('layouts.pages', ['title' => $title??'Новини'])--}}
+@extends('layouts.pages', ['title' => $title??'Новини'])
 
-{{--@section('content')--}}
+@section('content')
 <!-- Page Cover Section -->
 <section class="section page-cover">
   <div class="page-title">
-{{--    <h1>{{$title??'Новини'}}</h1>--}}
+    <h1>{{$title??'Новини'}}</h1>
   </div>
 
   <canvas class="particles-background"></canvas>
 </section>
 <!-- end Page Cover Section -->
 
-{{--@if(count($latest_post) == 1)--}}
+@if(count($latest_post) == 1)
 <!-- Featured News -->
 <section class="section featured-news">
   <article>
     <div class="cover-image">
-{{--      <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">--}}
+      <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">
     </div>
     <div class="content">
       <div class="news-meta">
         <h2>
-{{--          <a href="/articles/{{ $latest_post[0]->post_id }}" class="title">--}}
-{{--            {{ $latest_post[0]->title }}--}}
+          <a href="/articles/{{ $latest_post[0]->post_id }}" class="title">
+            {{ $latest_post[0]->title }}
           </a>
         </h2>
         <div class="meta">
-{{--          <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>--}}
+          <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>
         </div>
       </div>
       <p class="article-content">
-{{--        {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}--}}
+        {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
       </p>
-{{--      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>--}}
+      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>
     </div>
   </article>
 
   <div class="bg">
-{{--    <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-top" />--}}
     <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-bottom" />
   </div>
 </section>
