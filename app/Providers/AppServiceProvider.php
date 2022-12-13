@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Stateless\FileService;
 use App\Services\UploadService;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -35,9 +36,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    //     if(config('app.env') === 'production') {
-    //         \URL::forceScheme('https');
-    //     }
+         if(config('app.env') === 'production') {
+             \URL::forceScheme('https');
+         }
+        Carbon::setLocale('uK');
+        $this->app->setLocale('uk');
+
     }
 }

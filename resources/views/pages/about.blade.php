@@ -115,7 +115,7 @@
       <p>Systems Plus Computer Foundation</p>
     </div>
     <div id="tab-hymn">
-      <h2>SPCC Гімн</h2>
+      <h2>SHLK Гімн</h2>
       <div class="content">
         <p>
           Your vision in our hearts<br />

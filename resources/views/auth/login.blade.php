@@ -10,7 +10,7 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center mb-4">
                             <img src="{{ asset('spccweb/img/spcc-logo.png') }}" alt="SPCC Logo" width="100"/>
-                            <h1>SPCC - Caloocan Portal</h1>
+                            <h1>SHLK - Portal</h1>
                         </div>
                         <div class="text-center text-muted mb-4">
                             <small>

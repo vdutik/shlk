@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -11,17 +12,10 @@ class Event extends Model
     public $timestamps = false;
 
     public function getEventDate() {
-        $start_date = strtotime($this->attributes['start_date']);
-        $end_date = strtotime($this->attributes['end_date']);
+        $start_date = Carbon::createFromFormat('Y-m-d',$this->attributes['start_date'])->format('d:m');;
+        $end_date = Carbon::createFromFormat('Y-m-d',$this->attributes['end_date'])->format('d:m:Y');
 
-        if ($start_date == $end_date) {
-            return date('d M', $start_date);
-        }
-        else if (date('M-Y', $start_date) == date('M-Y', $end_date)) {
-            return date('d', $start_date) . '-' . date('d M', $end_date);
-        }
-
-        return date('M d', $start_date) . ' - '. date('M d', $end_date);
+        return  $start_date . ' - '. $end_date;
     }
 
     public function getDate() {

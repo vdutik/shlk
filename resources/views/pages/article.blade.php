@@ -17,7 +17,7 @@
     </div>
     <img class="cover_image" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
     <div class="article-content">
-      {!! $post->body !!}
+      {!! html_entity_decode($post->body) !!}
     </div>
       <div class="row">
           <section class="slider-container">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                   @endforeach
-                
+
             </div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
@@ -73,7 +73,7 @@
   <div class="button">
     <a href="javascript:history.back()" class="link">Назад</a>
   </div>
-  
+
 </section>
 
 <!-- end Article -->

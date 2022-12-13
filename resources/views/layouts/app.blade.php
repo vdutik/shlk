@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SPCC Caloocan') }}</title>
+        <title>{{ config('app.name', 'SHLK Caloocan') }}</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <!-- Fonts -->

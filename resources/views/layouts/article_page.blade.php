@@ -9,11 +9,11 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'SPCC Caloocan') }} | {{ isset($article) ? $article : $title }}</title>
+  <title>{{ config('app.name', 'SHLK Caloocan') }} | {{ isset($article) ? $article : $title }}</title>
   <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
 
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-  
+
   <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- <link  href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet"> -->
@@ -31,7 +31,7 @@
   @yield('content')
 
   @include('layouts.footers.pages')
-  
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <!-- <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> -->

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Event;
 use App\Models\Setting;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -42,20 +43,52 @@ class PagesController extends Controller
         return view('pages.about')->with('tot_posts', $tot_posts);
     }
 
-    public function news()
+    public function news(?string $tag = 'news')
     {
+
         $tot_posts = count(Post::all());
 
         $latest_post = Post::where('status', 'LIKE', 'Published')
+                            ->whereHas('tags',function (Builder $builder) use ($tag){
+                                $builder->where('slug', $tag);
+                            })
                             ->orderBy('created_at', 'desc')
                             ->limit(1)
                             ->get();
 
         $posts = Post::where('status', 'LIKE', 'Published')
+                        ->whereHas('tags',function (Builder $builder)use ($tag){
+                            $builder->where('slug', $tag);
+                        })
                         ->orderBy('created_at', 'desc')
                         ->paginate(15);
+        $title = __('pages.titile_'.$tag);
 
-        return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts'));
+        return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts','title'));
+    }
+
+    public function posts(?string $tag = 'news')
+    {
+
+        $tot_posts = count(Post::all());
+
+        $latest_post = Post::where('status', 'LIKE', 'Published')
+            ->whereHas('tags',function (Builder $builder) use ($tag){
+                $builder->where('slug', $tag);
+            })
+            ->orderBy('created_at', 'desc')
+            ->limit(1)
+            ->get();
+
+        $posts = Post::where('status', 'LIKE', 'Published')
+            ->whereHas('tags',function (Builder $builder)use ($tag){
+                $builder->where('slug', $tag);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+        $title = __('pages.titile_'.$tag);
+
+        return view('pages.posts')->with(compact('latest_post', 'posts', 'tot_posts','title'));
     }
 
     public function articles($id)
