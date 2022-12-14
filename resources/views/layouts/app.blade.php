@@ -9,7 +9,7 @@
 
         <title>{{ config('app.name', 'SHLK Caloocan') }}</title>
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+{{--        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 
 <head>
   <meta charset="UTF-8" />
@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <!-- CSRF Token -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+{{--  <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 
-  <title>{{ config('app.name', 'SHLK ') }} | Team</title>
+{{--  <title>{{ config('app.name', 'SHLK ') }} | Team</title>--}}
   <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
 
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+{{--  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />

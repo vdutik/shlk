@@ -12,7 +12,7 @@
   <title>{{ config('app.name', 'SHLK Caloocan') }} | {{ isset($article) ? $article : $title }}</title>
   <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
 
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+{{--  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
 
   <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
 

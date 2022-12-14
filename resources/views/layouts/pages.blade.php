@@ -12,7 +12,7 @@
   <title>{{ config('app.name', 'ШЛФК ім. В.В.Сулька') }} | {{ isset($article) ? $article : $title }}</title>
   <meta name="description" content="Шацький лісовий фаховий технікум ім. В.В.Сулька смт. Шацьк" />
 
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+{{--  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
 
   <link rel="stylesheet" href="{{ asset('vendor/normalize/normalize.min.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
