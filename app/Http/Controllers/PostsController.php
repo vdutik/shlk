@@ -157,10 +157,12 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'cover_image_name' => 'sometimes|string',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'tags.*' => 'integer',
             'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
+        $post = Post::find($id);
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
@@ -179,9 +181,13 @@ class PostsController extends Controller
 
             // Upload the Image
             $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
+
+        }
+        if (!$request->has('cover_image_name')){
+            $post->clearMediaCollectionExcept('default',$post->media->where('name','!=',$post->cover_image));
+            $post->cover_image = '';
         }
 
-        $post = Post::find($id);
 
         if ($request->has('post_images')){
             foreach ($request->post_images as $postImage){
@@ -190,9 +196,6 @@ class PostsController extends Controller
                     ->usingName($name)
                     ->toMediaCollection();
             }
-        }else{
-            $post->clearMediaCollection();
-            $post->cover_image = '';
         }
         if ($request->has('tags')){
             $tags = [];
@@ -213,6 +216,7 @@ class PostsController extends Controller
         }
 
         $post->save();
+        $tags = Tag::all();
 
         return redirect('/posts/' . $post->post_id)->with('success', 'Post Updated');
     }
@@ -233,7 +237,7 @@ class PostsController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
         DB::transaction(function () use ($post){
-            $post->tags->delete();
+            $post->tags()->sync([]);
             $post->delete();
         });
 

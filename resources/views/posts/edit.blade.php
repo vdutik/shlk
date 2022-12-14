@@ -20,6 +20,7 @@
 
       $('#cover_image_clean').on('click', function () {
           $('#cover_image').remove();
+          $('#cover_image_name').remove();
            $('#cover_image_name').hide();
       });
 
@@ -67,6 +68,7 @@
                                 <div class="form-group">
                                     <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
                                     <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
+                                    <input type="input" id="cover_image_name" name="cover_image_name" value="{{$post->cover_image?:"text"}}" style="display: none">
                                     @if($post->cover_image)
                                         <span id="cover_image_clean">x</span>
                                     @endif
