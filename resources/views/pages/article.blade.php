@@ -15,7 +15,9 @@
         </span>
       </div>
     </div>
-    <img class="cover_image" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+      @if($post->cover_image)
+        <img class="cover_image" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+      @endif
     <div class="article-content">
       {!! html_entity_decode($post->body) !!}
     </div>
