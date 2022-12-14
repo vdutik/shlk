@@ -13,6 +13,6 @@ class Message extends Model
     public function getDateCreated() {
         $created_at = strtotime($this->attributes['created_at']);
 
-        return date('M d, Y', $created_at);
+        return date('d m Y', $created_at);
     }
 }

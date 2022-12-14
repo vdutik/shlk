@@ -26,7 +26,7 @@
           </a>
         </h2>
         <div class="meta">
-          <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>
+          <span class="publish-date">{{ $latest_post[0]->created_at->format('d m Y') }}</span>
         </div>
       </div>
       <p class="article-content">
@@ -58,7 +58,7 @@
           </a>
         </h2>
         <div class="meta">
-          <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
+          <span class="publish-date">{{ $post->created_at->format('d m Y') }}</span>
         </div>
       </div>
       <p class="article-content">

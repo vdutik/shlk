@@ -19,7 +19,7 @@ class Post extends Model implements HasMedia
     public function getDateCreated() {
         $created_at = strtotime($this->attributes['created_at']);
 
-        return date('M d, Y', $created_at);
+        return date('d m Y', $created_at);
     }
 
     public function user() {

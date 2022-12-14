@@ -17,18 +17,19 @@
                           <span class="badge badge-warning badge-float">Очікують підтвердження</span>
                           @break
                     @endswitch
-
-                    <img class="card-img-top" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+                    @if($post->cover_image)
+                        <img class="card-img-top" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+                    @endif
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
                         <h5 class="mb-4">Написаий автором{{ $post->user->getName() }}</h5>
                         <div class="card-text">
-                            {!! $post->body !!}
+                            {!! html_entity_decode($post->body) !!}
                         </div>
                         <hr>
                         <p>
-                            Created on {{ $post->created_at->format('g:iA M d, Y') }}
-                            | Updated on {{ $post->created_at->format('g:iA M d, Y') }}
+                            Created on {{ $post->created_at->format('g:iA d m Y') }}
+                            | Updated on {{ $post->created_at->format('g:iA d m Y') }}
                         </p>
                         <div class="button-group row mt-5">
                             <div class="col-4">

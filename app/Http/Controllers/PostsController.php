@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -46,27 +47,28 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+            'cover_image' => 'sometimes|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'tags.*' => 'integer',
             'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
+
         $cover_image = $request->file('cover_image');
+        if ($cover_image){
+            $filename = $cover_image->getClientOriginalName();
 
+            // Get just filename
+            $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
+
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+
+            $fileNameToStore = $filename . '.' . $extension;
+
+            // Upload the Image
+            $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
+        }
         // Get the filename with the extension
-        $filename = $cover_image->getClientOriginalName();
-
-        // Get just filename
-        $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
-
-        // Get just ext
-        $extension = $request->file('cover_image')->getClientOriginalExtension();
-
-        $fileNameToStore = $filename . '.' . $extension;
-
-        // Upload the Image
-        $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
-
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
             $status = 'Published';
@@ -79,7 +81,8 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
+
+        $post->cover_image = $fileNameToStore??"";
         $post->status = $status;
         $post->save();
 
@@ -184,10 +187,12 @@ class PostsController extends Controller
             foreach ($request->post_images as $postImage){
                 $name = $postImage->getClientOriginalName();
                 $post->addMedia($postImage)
-
                     ->usingName($name)
                     ->toMediaCollection();
             }
+        }else{
+            $post->clearMediaCollection();
+            $post->cover_image = '';
         }
         if ($request->has('tags')){
             $tags = [];
@@ -227,8 +232,10 @@ class PostsController extends Controller
             auth()->user()->id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
-
-        $post->delete();
+        DB::transaction(function () use ($post){
+            $post->tags->delete();
+            $post->delete();
+        });
 
         Storage::disk('public')->delete('cover_images/'. $post->cover_image);
 

@@ -19,8 +19,9 @@
                           <span class="badge badge-warning badge-float">Pending</span>
                           @break
                       @endswitch
-
-                      <img class="card-img-top card-img-top-post" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+                       @if($post->cover_image)
+                          <img class="card-img-top card-img-top-post" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+                       @endif
                       <div class="card-body card-body-post">
                         <h3 class="card-title">{{ $post->title }}</h3>
                         <p class="card-text card-text-post">

@@ -18,6 +18,11 @@
           setInterval(intervalFunc, 1);
       });
 
+      $('#cover_image_clean').on('click', function () {
+          $('#cover_image').remove();
+           $('#cover_image_name').hide();
+      });
+
       let quill = new Quill('#editor', {
         modules: {
           toolbar: [
@@ -62,7 +67,10 @@
                                 <div class="form-group">
                                     <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
                                     <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
-                                    <span>
+                                    @if($post->cover_image)
+                                        <span id="cover_image_clean">x</span>
+                                    @endif
+                                    <span id="cover_image_name">
                                         {{$post->cover_image}}
                                     </span>
                                 </div>
