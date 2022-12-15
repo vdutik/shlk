@@ -16,7 +16,9 @@
 <section class="section featured-news">
   <article>
     <div class="cover-image">
+      @if($latest_post[0]->cover_image)
       <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">
+      @endif
     </div>
     <div class="content">
       <div class="news-meta">

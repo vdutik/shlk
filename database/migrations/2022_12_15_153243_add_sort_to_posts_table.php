@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagsTable extends Migration
+class AddSortToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreatePostTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tags', function (Blueprint $table) {
-
-           $table->unsignedInteger('post_id');
-           $table->unsignedBigInteger('tag_id');
-
-           $table->foreign('post_id')->references('post_id')->on('posts');
-           $table->foreign('tag_id')->references('id')->on('tags');
+        Schema::table('posts', function (Blueprint $table) {
+           $table->integer('sort')->default(500);
         });
     }
 
@@ -30,6 +25,7 @@ class CreatePostTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
-    }
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn(['sort']);
+        });    }
 }

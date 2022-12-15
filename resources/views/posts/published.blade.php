@@ -14,10 +14,14 @@
                       @endif
                       <div class="card-body card-body-post">
                         <h3 class="card-title">{{ $post->title }}</h3>
-                        <p class="card-text card-text-post">
+                        <span class="card-text card-text-post">
+                         Сортувальне число:  {{$post->sort}}
+                        </span>
+                          <p class="card-text card-text-post">
                           {!! str_limit(strip_tags($post->body), 80) !!}
                         </p>
-                        <p><small>Written by {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>
+
+                        <p><small>Створено {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>
                         <div class="button-group row">
                           <div class="col-8">
                             <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">View</a>

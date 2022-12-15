@@ -47,6 +47,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'sort' => 'required|int|min:1',
             'cover_image' => 'sometimes|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'tags.*' => 'integer',
             'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
@@ -80,6 +81,7 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->sort = $request->sort;
         $post->user_id = auth()->user()->id;
 
         $post->cover_image = $fileNameToStore??"";
@@ -158,6 +160,7 @@ class PostsController extends Controller
             'title' => 'required',
             'body' => 'required',
             'cover_image_name' => 'sometimes|string',
+            'sort' => 'required|int|min:1',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'tags.*' => 'integer',
             'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
@@ -209,6 +212,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->updated_at = now();
+        $post->sort = $request->sort;
 
         if($request->hasFile('cover_image')) {
             Storage::disk('public')->delete('cover_images/'. $post->cover_image);

@@ -14,8 +14,8 @@ class PagesController extends Controller
     public function index()
     {
         $tot_posts = count(Post::all());
-
-        $posts = Post::where('status', 'LIKE', 'Published')
+        /** @var Post $posts */
+        $posts = Post::where('status', 'Published')
                         ->orderBy('created_at', 'desc')
                         ->limit(3)
                         ->get();
@@ -52,14 +52,15 @@ class PagesController extends Controller
                             ->whereHas('tags',function (Builder $builder) use ($tag){
                                 $builder->where('slug', $tag);
                             })
-                            ->orderBy('created_at', 'desc')
-                            ->limit(1)
+                            ->orderBy('sort', 'desc')
+                            ->orderBy('created_at', 'desc')                            ->limit(1)
                             ->get();
 
         $posts = Post::where('status', 'LIKE', 'Published')
                         ->whereHas('tags',function (Builder $builder)use ($tag){
                             $builder->where('slug', $tag);
                         })
+                        ->orderBy('sort', 'desc')
                         ->orderBy('created_at', 'desc')
                         ->paginate(15);
         $title = __('pages.titile_'.$tag);
@@ -72,20 +73,23 @@ class PagesController extends Controller
 
         $tot_posts = count(Post::all());
 
-        $latest_post = Post::where('status', 'LIKE', 'Published')
+        $latest_post = Post::where('status', 'Published')
             ->whereHas('tags',function (Builder $builder) use ($tag){
                 $builder->where('slug', $tag);
             })
+            ->orderBy('sort', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(1)
             ->get();
 
-        $posts = Post::where('status', 'LIKE', 'Published')
+        $posts = Post::where('status', 'Published')
             ->whereHas('tags',function (Builder $builder)use ($tag){
                 $builder->where('slug', $tag);
             })
+            ->orderBy('sort', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
+
         $title = __('pages.titile_'.$tag);
 
         return view('pages.posts')->with(compact('latest_post', 'posts', 'tot_posts','title'));

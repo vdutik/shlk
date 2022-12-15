@@ -22,14 +22,15 @@
                     @endif
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
-                        <h5 class="mb-4">Написаий автором{{ $post->user->getName() }}</h5>
+                        <h5 class="mb-4">Написаий автором {{ $post->user->getName() }}</h5>
+                        <h5 class="mb-4">Сортувальне число  {{ $post->sort }}</h5>
                         <div class="card-text">
                             {!! html_entity_decode($post->body) !!}
                         </div>
                         <hr>
                         <p>
-                            Created on {{ $post->created_at->format('g:iA d m Y') }}
-                            | Updated on {{ $post->created_at->format('g:iA d m Y') }}
+                            Створено о {{ $post->created_at->format('g:iA d m Y') }}
+                            | оновлено о {{ $post->created_at->format('g:iA d m Y') }}
                         </p>
                         <div class="button-group row mt-5">
                             <div class="col-4">

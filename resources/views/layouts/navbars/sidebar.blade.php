@@ -282,12 +282,12 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="/storage/file">
-                                    Список медіафайлів
+                                    Список файлів
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/storage/file/create">
-                                    Добавити новий медіа файл
+                                    Добавити новий файл
                                 </a>
                             </li>
                         </ul>

@@ -86,6 +86,12 @@
                             </div>
                           </div>
                           <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <label class="form-control-label" for="title">Сортувальне число </label>
+                                <input id="sort" name="sort" class="form-control mb-3" type="text" placeholder="Введіть сортувальне число...." value="{{$post->sort}}" required>
+                            </div>
+                          </div>
+                          <div class="row">
                               <div class="col-12 ">
                                   <label class="form-control-label" for="title">Теги</label>
                                   <select class="form-control" name="tags[]" multiple="">

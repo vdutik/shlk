@@ -7,7 +7,7 @@
     <div class="container-fluid mt--7">
         <div class="col text-right">
             <a href="{{ route('tags.create') }}" class="btn btn-primary btn-sm align-self-center bcg-white">
-                <i class="fa fa-plus-square" aria-hidden="true"></i> __{{'forms.actions.add'}}
+                <i class="fa fa-plus-square" aria-hidden="true"></i> {{__('forms.actions.add')}}
             </a>
         </div>
 <table class="table tag table-striped table-sm table-responsive-md">

@@ -69,6 +69,13 @@
                             </div>
                           </div>
 
+                          <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <label class="form-control-label" for="title">Сортувальне число</label>
+                                <input id="sort" value="500" name="sort" class="form-control mb-3" type="text" placeholder="Введіть сортувальне число" required>
+                            </div>
+                          </div>
+
                           <div class="row mb-7">
                             <div class="col-12 col-lg-12">
                               <label class="form-control-label" for="title">Body</label>
