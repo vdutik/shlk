@@ -15,6 +15,7 @@ return [
 
     'titile_news' => 'Новини',
     'titile_public_info' => 'Публічна інформація',
+    'titile_for_student' => 'Студенту',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

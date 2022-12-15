@@ -23,6 +23,7 @@ class GenerateMenus
             $menu->add('Про нас', 'about');
             $menu->add('Новини', 'news');
             $menu->add('Публічна інформація', 'page/public_info');
+            $menu->add('Студенту', 'news/for_student');
             $menu->add('Зв\'язок', 'contact');
 
             $menu->add('Вступ', 'admission')->nickname('admission');

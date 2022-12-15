@@ -14,7 +14,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/page/{tag?}', 'PagesController@posts');
-Route::get('/news/', 'PagesController@news');
+Route::get('/news/{tag?}', 'PagesController@news');
 Route::get('/public_info', 'PagesController@public_info');
 Route::get('/articles/{article}', 'PagesController@articles');
 Route::get('/admission', 'PagesController@admission');
