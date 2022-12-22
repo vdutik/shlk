@@ -24,9 +24,9 @@ class GenerateMenus
             $menu->add('Новини', 'news');
             $menu->add('Публічна інформація', 'page/public_info');
             $menu->add('Студенту', 'news/for_student');
-            $menu->add('Зв\'язок', 'contact');
+            $menu->add('Абітурієнту', 'news/admission')->nickname('admission');
 
-            $menu->add('Вступ', 'admission')->nickname('admission');
+            $menu->add('Зв\'язок', 'contact');
             $menu->admission->attr(['class'=>'hover cat dropdown-item']);
 
             $menu->item('admission')->add("Онлайн вступ",'https://vstup.edbo.gov.ua')->nickname('drop1');

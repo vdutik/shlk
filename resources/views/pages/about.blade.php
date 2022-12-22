@@ -112,7 +112,8 @@
       <img src="{{ asset('spccweb/img/president.jpg') }}" alt="SPCF President" />
       <h3>Жмурко Ігор Васильвич</h3>
       <p>Директор</p>
-      <p>Systems Plus Computer Foundation</p>
+      <p>
+      </p>
     </div>
     <div id="tab-hymn">
       <h2>SHLK Гімн</h2>
