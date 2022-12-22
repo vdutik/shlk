@@ -24,7 +24,7 @@ class MediaLibraryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'required|image',
+            'image' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'name' => 'nullable|string|max:255'
         ];
     }
