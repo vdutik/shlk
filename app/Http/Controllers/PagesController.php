@@ -111,9 +111,10 @@ class PagesController extends Controller
         return view('pages.admission')->with('tot_posts', $tot_posts);
     }
 
-    public function team()
+    public function structure()
     {
-        return view('pages.team');
+        $title = 'Адміністрація';
+        return view('pages.structure',compact('title'));
     }
 
     public function forgotPassword()

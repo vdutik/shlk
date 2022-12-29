@@ -19,6 +19,7 @@ Route::get('/public_info', 'PagesController@public_info');
 Route::get('/articles/{article}', 'PagesController@articles');
 Route::get('/admission', 'PagesController@admission');
 Route::get('/team', 'PagesController@team');
+Route::get('/structure', 'PagesController@structure');
 Route::get('/forgot_password', 'PagesController@forgotPassword');
 
 Route::resource('contact','MessagesController')->only(['index', 'store']);

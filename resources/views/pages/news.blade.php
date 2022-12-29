@@ -16,7 +16,11 @@
 <section class="section featured-news">
   <article>
     <div class="cover-image">
-      <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">
+      @if($latest_post[0]->cover_image)
+        <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">
+      @else
+        <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
+      @endif
     </div>
     <div class="content">
       <div class="news-meta">
@@ -30,7 +34,7 @@
         </div>
       </div>
       <p class="article-content">
-        {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
+        {!! Str::limit(strip_tags($latest_post[0]->body), 135) !!}
       </p>
       <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>
     </div>
@@ -50,7 +54,12 @@
   @foreach ($posts as $post)
     @if($post->post_id != $latest_post[0]->post_id)
     <article>
-      <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+      @
+      @if($post->cover_image)
+        <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
+      @else
+{{--        <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>--}}
+      @endif
       <div class="news-meta">
         <h2>
           <a href="/articles/{{ $post->post_id }}" class="title">
@@ -62,7 +71,7 @@
         </div>
       </div>
       <p class="article-content">
-          {!! Str::limit(html_entity_decode($post->body), 135) !!}
+          {!! Str::limit(strip_tags($post->body), 135) !!}
       </p>
       <a href="/articles/{{ $post->post_id }}" class="link">Докладніше</a>
     </article>

@@ -32,7 +32,7 @@
         </div>
       </div>
       <p class="article-content">
-        {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
+        {!! Str::limit(strip_tags($latest_post[0]->body), 135) !!}
       </p>
       <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>
     </div>

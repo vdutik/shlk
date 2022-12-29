@@ -222,7 +222,11 @@
 
             @foreach ($posts as $post)
                 <article>
-                    <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}"/>
+                    @if($post->cover_image)
+                        <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}"/>
+                    @else
+                        <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
+                    @endif
                     <h3>
                         <a href="/articles/{{ $post->post_id }}" class="title">
                             {{ $post->title }}
@@ -232,8 +236,9 @@
                         <span class="publish-date">{{ $post->getDateCreated() }}</span>
                     </div>
                     <p class="article-content">
-                        {!! str_limit(strip_tags($post->body), 135) !!}
+                        {!! Str::limit(strip_tags($post->body), 40) !!}
                     </p>
+
                     <a href="/articles/{{ $post->post_id }}" class="link">Докладніше </a>
                 </article>
             @endforeach
