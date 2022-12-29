@@ -65,7 +65,7 @@
         </div>
       </div>
       <p class="article-content posts">
-        {!! Str::limit(html_entity_decode($post->body), 135) !!}
+        {!! Str::limit(strip_tags($post->body), 135) !!}
       </p>
       <a href="/articles/{{ $post->post_id }}" class="link">Докладніше</a>
     </article>
