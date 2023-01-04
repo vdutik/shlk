@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('index');
 Route::get('/about', 'PagesController@about');
 Route::get('/page/{tag?}', 'PagesController@posts');
 Route::get('/news/{tag?}', 'PagesController@news');

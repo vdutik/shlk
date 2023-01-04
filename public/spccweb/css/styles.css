@@ -2333,19 +2333,20 @@ section.programs .course a {
 section.usefull-links .items .half img{
     height: auto;
 }
-
-.cat.nav-item a.dropdown-item:hover{
+#siteNav .cat.nav-item a.dropdown-item:hover {
     color: #394522;
 }
 
-.cat.dropdown-item{
+#siteNav .cat.dropdown-item {
     position: relative;
     display: inline-block;
 }
-li.hover > ul li a{
+
+#siteNav li.hover > ul li a {
     font-size: 16px;
 }
-li.hover > ul{
+
+#siteNav li.hover > ul {
     display: none;
     position: absolute;
     background-color: #ffffff;
@@ -2354,18 +2355,19 @@ li.hover > ul{
     padding: 12px 0px;
     z-index: 1;
     left: -100px;
-    top:40px;
-    border-radius:5px ;
+    top: 40px;
+    border-radius: 5px;
 }
 
-li.hover:hover ul,li.hover:active ul{
+#siteNav li.hover:hover ul, li.hover:active ul {
     display: block;
 }
-li.hover li{
-    padding: 10px 15px;
 
+#siteNav li.hover li {
+    padding: 10px 15px;
 }
-li.hover .hover-dropdown-item:hover a,li.hover .hover-dropdown-item:active a{
+
+#siteNav li.hover .hover-dropdown-item:hover a, li.hover .hover-dropdown-item:active a {
     padding: 10px 20px;
     display: block;
     color: #394522;
@@ -2374,8 +2376,19 @@ li.hover .hover-dropdown-item:hover a,li.hover .hover-dropdown-item:active a{
     box-shadow: 0 5px 11px 0 #394522, 0 4px 15px 0 #394522;
     transition: all .1s linear;
 }
+
+#siteNav li.hover .hover-dropdown-item .hover-subitem:hover a, li.hover .hover-dropdown-item .hover-subitem:active a {
+    padding: 10px 20px;
+    display: block;
+    color: #394522;
+    background-color: #BDB76B;
+    border-radius: 0.125rem;
+    box-shadow: 0 5px 11px 0 #394522, 0 4px 15px 0 #394522;
+    transition: all .1s linear;
+}
+
 @media only screen and (max-width: 1023px) {
-    li.hover .hover-dropdown-item a,li.hover .hover-dropdown-item a{
+    #siteNav li.hover .hover-dropdown-item a, li.hover .hover-dropdown-item a {
         padding: 10px 20px;
         display: block;
         color: #394522;
@@ -2384,36 +2397,41 @@ li.hover .hover-dropdown-item:hover a,li.hover .hover-dropdown-item:active a{
         box-shadow: 0 5px 11px 0 #394522, 0 4px 15px 0 #394522;
         transition: all .1s linear;
     }
-    .site-header li.cat:hover a, .site-header li.cat:active a, .site-header li.cat.active a{
+
+    .site-header li.cat:hover a, .site-header li.cat:active a, .site-header li.cat.active a {
         color: #394522;
     }
+
     .site-header li.cat:hover > a, .site-header li.cat:active > a, .site-header li.cat.active > a {
         color: #BDB76B;
     }
-    .site-nav li.cat:hover, .site-nav li.cat:active, .site-nav li.cat.active{
+
+    .site-nav li.cat:hover, .site-nav li.cat:active, .site-nav li.cat.active {
         background: #394522;
         color: #ffffff;
     }
-    li.hover.active li{
+
+    #siteNav li.hover.active li {
         color: #394522;
     }
-    .site-nav.responsive .hover li, .hover.cat{
+
+    #siteNav .site-nav.responsive .hover li, .hover.cat {
         background: #394522;
         color: #BDB76B;
     }
-    .site-header nav li{
+
+    .site-header nav li {
         padding: 5px 5px;
     }
-    li.hover > ul {
+
+    #siteNav li.hover > ul {
         font-size: 8px;
         position: relative;
         background-color: #BDB76B;
         left: 50px;
-        top:0px;
+        top: 0px;
     }
- }
-
-
+}
 .course {
     display: -webkit-box;
     display: -moz-box;

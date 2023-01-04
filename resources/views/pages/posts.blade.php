@@ -32,7 +32,7 @@
         </div>
       </div>
       <p class="article-content">
-        {!! Str::limit(strip_tags($latest_post[0]->body), 135) !!}
+        {!! Str::limit(strip_tags(htmlspecialchars_decode($latest_post[0]->body)), 135) !!}
       </p>
       <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Докладніше</a>
     </div>
@@ -65,7 +65,7 @@
         </div>
       </div>
       <p class="article-content posts">
-        {!! Str::limit(strip_tags($post->body), 135) !!}
+        {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)), 135) !!}
       </p>
       <a href="/articles/{{ $post->post_id }}" class="link">Докладніше</a>
     </article>

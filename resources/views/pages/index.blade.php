@@ -236,7 +236,7 @@
                         <span class="publish-date">{{ $post->getDateCreated() }}</span>
                     </div>
                     <p class="article-content">
-                        {!! Str::limit(strip_tags($post->body), 40) !!}
+                        {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
                     </p>
 
                     <a href="/articles/{{ $post->post_id }}" class="link">Докладніше </a>
