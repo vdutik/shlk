@@ -92,7 +92,7 @@ b. Go to `localhost/phpmyadmin` in your browser. Then login and create a databas
 > _You can leave the password blank._
 
 ```
-APP_NAME='ShLk Collegue'
+APP_NAME='ShLk College'
 APP_URL=http://shlk.loc
 
 ...

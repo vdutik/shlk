@@ -20,7 +20,7 @@ services:
       - "8000:8080"
     environment:
       - XDEBUG_ENABLED=true
-      - APP_NAME='SHLK - Collegue'
+      - APP_NAME='SHLK - College'
       - APP_URL=http://localhost:8000
     depends_on:
       - mysql

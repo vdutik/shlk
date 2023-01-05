@@ -9,7 +9,7 @@
             <a href="/admission" class="btn">стати спеціалістом</a>
         </div>
         <div class="image">
-            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK Collegue"/>
+            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK College"/>
         </div>
         <canvas class="particles-background"></canvas>
     </section>
