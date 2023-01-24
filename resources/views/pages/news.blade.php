@@ -54,7 +54,6 @@
   @foreach ($posts as $post)
     @if($post->post_id != $latest_post[0]->post_id)
     <article>
-      @
       @if($post->cover_image)
         <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
       @else
