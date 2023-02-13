@@ -14,7 +14,7 @@
 <!-- About Section -->
 <section class="section about">
   <div class="image">
-    <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SPCC Caloocan School Building" />
+    <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK Building" />
   </div>
   <div class="content">
     <h2>Шацький лісовий технікум ім. В.В.Сулька</h2>

@@ -23,11 +23,11 @@
       <div class="card shadow card-grade-slip">
         <div class="card-body row align-items-center">
           <div class="col">
-            <img src="{{ asset('spccweb/img/spcc-logo.png') }}" alt="SPCC Caloocan Logo" style="position: absolute; width: 130px; margin-top: 15px;">
+            <img src="{{ asset('spccweb/img/spcc-logo.png') }}" alt="SHLK Logo" style="position: absolute; width: 130px; margin-top: 15px;">
             <div class="text-center">
-              <h2 class="m-0">SYSTEMS PLUS COMPUTER COLLEGE</h2>
-              <p class="m-0">10TH AVENUE, CALOOCAN CITY</p>
-              <p class="m-0"><strong>FINAL GRADES</strong></p>
+              <h2 class="m-0">SHLK COLLEGE</h2>
+{{--              <p class="m-0">10TH AVENUE, CALOOCAN CITY</p>--}}
+{{--              <p class="m-0"><strong>FINAL GRADES</strong></p>--}}
               <p class="text-uppercase m-0">
                 <strong><i>
                 {{ $acad_term->getAcadTerm2() }}

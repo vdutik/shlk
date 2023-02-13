@@ -24,9 +24,9 @@
         <div class="card-body row align-items-center">
           <div class="col">
             <h2 class="text-center mt-0">
-              SYSTEMS PLUS COMPUTER COLLEGE
+              SHLK COLLEGE
               <br>
-              <span class="text-sm">Caloocan Campus</span>
+              <span class="text-sm"> </span>
             </h2>
             <h3 class="text-center mt-4 mb-4">
               {{ $sclass->getCourse() }}

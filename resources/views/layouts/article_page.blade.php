@@ -9,8 +9,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'SHLK Caloocan') }} | {{ isset($article) ? $article : $title }}</title>
-  <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
+  <title>{{ config('app.name', 'SHLK') }} | {{ isset($article) ? $article : $title }}</title>
+  <meta name="description" content="SHLK College -  Website." />
 
 {{--  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
 

@@ -10,7 +10,7 @@
 {{--  <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 
 {{--  <title>{{ config('app.name', 'SHLK ') }} | Team</title>--}}
-  <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
+  <meta name="description" content="SHLK College - Website." />
 
 {{--  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">--}}
 

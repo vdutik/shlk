@@ -24,10 +24,9 @@
         <div class="card-body row align-items-center">
           <div class="col">
             <h2 class="text-center mt-0">
-              SYSTEMS PLUS COMPUTER COLLEGE
+              SHLK COLLEGE
             </h2>
             <h3 class="text-center mt-0 mb-4">
-              Caloocan Campus
             </h3>
 
             @foreach ($curriculum_details as $cur_details)
