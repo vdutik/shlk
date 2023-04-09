@@ -13,11 +13,10 @@ return [
     |
     */
 
-
-    'title_news' => 'Новини',
-    'title_public_info' => 'Публічна інформація',
-    'title_for_student' => 'Студенту',
-    'title_admission' => 'Абітурієнту',
+    'title_news' => 'News',
+    'title_public_info' => 'Public information',
+    'title_for_student' => 'For students',
+    'title_admission' => 'Admission',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
