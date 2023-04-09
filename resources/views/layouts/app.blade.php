@@ -33,13 +33,22 @@
 
         <div class="main-content">
             @include('layouts.navbars.navbar')
+            <form action="{{ LaravelLocalization::getLocalizedURL() }}" method="POST" id="language-switcher" class="language-switcher">
+                @csrf
+                @method('GET')
+                <select name="locale" onchange="document.getElementById('language-switcher').submit();">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <option value="{{ $localeCode }}" @if(App::getLocale() === $localeCode) selected @endif>{{ $properties['native'] }}</option>
+                    @endforeach
+                </select>
+            </form>
             @yield('content')
         </div>
 
         @guest()
+
             @include('layouts.footers.guest')
         @endguest
-
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -47,5 +56,6 @@
 
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
     </body>
 </html>

@@ -48,15 +48,15 @@ class GenerateMenus
     public static function getMenuData()
     {
         return [
-            ['Головна', route('index'), 'menu-item'],
-            ['Про нас', 'about', 'menu-item'],
-            ['Новини', 'news', 'menu-item'],
-            ['Публічна інформація', 'page/public_info', 'menu-item'],
-            ['Студенту', 'news/for_student', 'menu-item'],
-            ['Абітурієнту', 'news/admission', 'menu-item'],
-            ['Зв\'язок', 'contact', 'hover cat dropdown-item', [
-                ['Онлайн вступ','https://vstup.edbo.gov.ua','hover-dropdown-item'],
-                ['Оффлайн вступ','admission','hover-dropdown-item'],
+            [__('general.main'), route('index'), 'menu-item'],
+            [__('general.about'), route('about'), 'menu-item'],
+            [__('general.news'), route('news'), 'menu-item'],
+            [__('general.public_info'), route('page','public_info'), 'menu-item'],
+            [__('general.for_student'), route('news','for_student'), 'menu-item'],
+            [__('general.admission'), route('news','admission'), 'menu-item'],
+            [__('general.contact'), route('contact.index'), 'hover cat dropdown-item', [
+                [__('general.online_admmision'),'https://vstup.edbo.gov.ua','hover-dropdown-item'],
+                [__('general.ofline_admmision'),route('admission'),'hover-dropdown-item'],
 //                ['Product 4', 'products/4', 'hover-dropdown-item', [
 //                    ['Product 4-1', 'products/4/1', 'third-dropdown-item'],
 //                    ['Product 4-2', 'products/4/2', 'third-dropdown-item'],

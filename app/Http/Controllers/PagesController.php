@@ -63,7 +63,7 @@ class PagesController extends Controller
                         ->orderBy('sort', 'desc')
                         ->orderBy('created_at', 'desc')
                         ->paginate(15);
-        $title = __('pages.titile_'.$tag);
+        $title = __('pages.title_'.$tag);
 
         return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts','title'));
     }
@@ -90,7 +90,7 @@ class PagesController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(15);
 
-        $title = __('pages.titile_'.$tag);
+        $title = __('pages.title_'.$tag);
 
         return view('pages.posts')->with(compact('latest_post', 'posts', 'tot_posts','title'));
     }

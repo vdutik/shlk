@@ -2452,3 +2452,21 @@ section.usefull-links .items .half img{
     -o-transition: 0.3s;
     transition: 0.3s;
 }
+
+.language-switcher {
+    position: absolute;
+    top: 100px;
+    z-index: 12;
+    right: 20px;
+}
+.language-switcher select {
+    background: #BDB76B;
+    color: #394522;
+    border: 1px solid #ffffff;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}

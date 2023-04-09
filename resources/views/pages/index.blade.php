@@ -1,6 +1,7 @@
-@extends('layouts.pages', ['title' => 'Головна'])
+@extends('layouts.pages', ['title' => __('general.main')])
 
 @section('content')
+
     <!-- Hero Section -->
     <section class="section hero">
         <div class="content">
@@ -252,4 +253,5 @@
         </section>
     @endif
     <!-- end Latest News Section-->
+
 @endsection

@@ -27,7 +27,15 @@
 <body>
 
   @include('layouts.navbars.navs.pages')
-
+  <form action="{{ LaravelLocalization::getLocalizedURL() }}" method="POST" id="language-switcher" class="language-switcher">
+    @csrf
+    @method('GET')
+    <select name="locale" onchange="document.getElementById('language-switcher').submit();">
+      @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <option value="{{ $localeCode }}" @if(App::getLocale() === $localeCode) selected @endif>{{ $properties['native'] }}</option>
+      @endforeach
+    </select>
+  </form>
   @yield('content')
 
   @include('layouts.footers.pages')

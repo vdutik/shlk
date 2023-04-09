@@ -12,10 +12,10 @@ class Event extends Model
     public $timestamps = false;
 
     public function getEventDate() {
-        $start_date = Carbon::createFromFormat('Y-m-d',$this->attributes['start_date'])->format('d:m');;
-        $end_date = Carbon::createFromFormat('Y-m-d',$this->attributes['end_date'])->format('d:m:Y');
+        $start_date = Carbon::createFromFormat('Y-m-d',$this->attributes['start_date'])->toDateString();
+        $end_date = Carbon::createFromFormat('Y-m-d',$this->attributes['end_date'])->format('d-m');
 
-        return  $start_date . ' - '. $end_date;
+        return  $start_date . ' / '. $end_date;
     }
 
     public function getDate() {
