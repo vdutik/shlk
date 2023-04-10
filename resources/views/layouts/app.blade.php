@@ -33,7 +33,7 @@
 
         <div class="main-content">
             @include('layouts.navbars.navbar')
-            <form action="{{ LaravelLocalization::getLocalizedURL() }}" method="POST" id="language-switcher" class="language-switcher">
+            <form action="{{ LaravelLocalization::getNonLocalizedURL() }}" method="POST" id="language-switcher" class="language-switcher">
                 @csrf
                 @method('GET')
                 <select name="locale" onchange="document.getElementById('language-switcher').submit();">

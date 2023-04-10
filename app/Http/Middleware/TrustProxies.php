@@ -20,4 +20,13 @@ class TrustProxies extends Middleware
      * @var int
      */
     protected $headers = Request::HEADER_X_FORWARDED_ALL;
+
+    public function handle($request, \Closure $next, $headers = Request::HEADER_X_FORWARDED_ALL)
+    {
+        if (!$request->secure() && env('APP_ENV') === 'production') {
+            return redirect()->secure($request->getRequestUri());
+        }
+
+        return $next($request);
+    }
 }
