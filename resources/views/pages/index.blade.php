@@ -6,8 +6,12 @@
     <section class="section hero">
         <div class="content">
             <h1 class="headline">ШЛФК ім. В.В.Сулька</h1>
-            <p class="description">Прагнення до досконалості</p>
-            <a href="/admission" class="btn">стати спеціалістом</a>
+            <p class="description">
+                {{__('general.about_college_text_main')}}
+            </p>
+            <a href="/admission" class="btn">
+                {{__('general.admission_to_college')}}
+            </a>
         </div>
         <div class="image">
             <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK College"/>
@@ -20,7 +24,9 @@
     @if(count($events) > 0)
         <section class="section upcoming-events">
             <div class="title">
-                <h2 class="headline">Наступні події</h2>
+                <h2 class="headline">
+                    {{__('general.upcoming_events')}}
+                </h2>
                 @if(count($events) > 4)
                     <div class="pagination">
                         <button class="btn btn-left">
@@ -58,7 +64,7 @@
     <!-- Annoucement Section -->
     <section class="section programs usefull-links">
         <div class="content">
-            <h2 class="headline">Корисні посилання</h2>
+            <h2 class="headline">{{__('terms_and_conditions.useful_links')}}</h2>
             <div class="container " id="hanging-icons">
                 <div class="items">
                     <div class=" half">
@@ -118,15 +124,10 @@
                 </a>
             </h3>
             <p class="description">
-                Коледж створений на базі Шацького лісного технікуму ім. В.В.Сулька Наказом №484 від 16.11.2005
-                Державного комітету лісового господарства України.
+                {!! nl2br(__('terms_and_conditions.about_college_text_main')) !!}
 
-                Шацький лісний технікум заснований в 1963 році на основі наказу начальника Головного управління лісового
-                господарства і лісозаготівель при Раді Міністрів УРСР від 20.06.1963року №134К і переданий в
-                безпосереднє підпорядкування Міністерства лісового господарства УРСР. В 1997 році технікуму присвоєне
-                ім’я першого директора, заслуженого лісівника України Сулька Валентина Васильовича.
             </p>
-            <a href="/about" class="link">Дізнатись більше</a>
+            <a href="/about" class="link">{{__('general.read_more')}}</a>
         </div>
 
         <div class="bg">
@@ -143,7 +144,7 @@
             <div class="container">
                 <div class="row animate-box">
                     <div class="col-md-offset-3 text-center fh5co-heading">
-                        <h2 class="headline">Програми навчання</h2>
+                        <h2 class="headline">{{__('terms_and_conditions.program_title')}}</h2>
                         {{--                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>--}}
                     </div>
                 </div>
@@ -155,12 +156,11 @@
                             <span></span>
 
                             <div class="desc">
-                                <h3><a href="#">Бухгалтерський облік</a></h3>
-                                <p> терміни навчання
-                                    на базі 9 класів – 3 роки
-                                    на базі 11 класів – 2 роки
-                                </p>
-                                {{--                        <span><a href="#" class="btn btn-primary btn-sm btn-course">Take A Course</a></span>--}}
+                                <h3><a href="#">{{__('terms_and_conditions.accounting_program')}}</a></h3>
+                                <p>
+                                {{__('terms_and_conditions.accounting_duration')}}
+                            </p>
+                            {{--                        <span><a href="#" class="btn btn-primary btn-sm btn-course">Take A Course</a></span>--}}
                             </div>
                         </div>
                     </div>
@@ -169,10 +169,12 @@
                             <a href="#" class="course-img" style="background-image: url(images/project-2.jpg);">
                             </a>
                             <div class="desc">
-                                <h3><a href="#">Лісове господарство</a></h3>
-                                <p>терміни навчання
-                                    на базі 9 класів – 4 роки
-                                    на базі 11 класів – 3 роки</p>
+                                <h3><a href="#">
+                                        {{__('terms_and_conditions.forest_program')}}
+                                    </a></h3>
+                                <p>
+                                    {{__('terms_and_conditions.forest_duration')}}
+                                </p>
                                 {{--                        <span><a href="#" class="btn btn-primary btn-sm btn-course">Take A Course</a></span>--}}
                             </div>
                         </div>
@@ -182,10 +184,12 @@
                             <a href="#" class="course-img" style="background-image: url(images/project-3.jpg);">
                             </a>
                             <div class="desc">
-                                <h3><a href="#">Лісозаготівля та первинна обробка деревини</a></h3>
-                                <p>терміни навчання
-                                    на базі 9 класів – 4 роки,
-                                    на базі 11 класів – 3 роки</p>
+                                <h3><a href="#">
+                                        {{__('terms_and_conditions.wood_processing_program')}}
+                                    </a></h3>
+                                <p>
+                                    {{__('terms_and_conditions.wood_processing_duration')}}
+                                </p>
                                 {{--                        <span><a href="#" class="btn btn-primary btn-sm btn-course">Take A Course</a></span>--}}
                             </div>
                         </div>
@@ -195,12 +199,12 @@
                             <a href="#" class="course-img" style="background-image: url(images/project-4.jpg);">
                             </a>
                             <div class="desc">
-                                <h3><a href="#">Окрім основної спеціальності студенти мають можливість здобути робітничу
-                                        професію</a></h3>
-                                <p>лісоруб ІV розряду (для хлопців);
-                                    робітник зеленого господарства ІІІ розряду (для дівчат);
-                                    таксидерміст
-                                    оператор комп’ютерного набору.</p>
+                                <h3><a href="#">
+                                        {{__('terms_and_conditions.additional_training_program')}}
+                                    </a></h3>
+                                <p>
+                                    {{__('terms_and_conditions.additional_training_duration')}}
+                                </p>
                                 {{--                        <span><a href="#" class="btn btn-primary btn-sm btn-course">Take A Course</a></span>--}}
                             </div>
                         </div>
@@ -219,7 +223,9 @@
     <!-- Latest News Section -->
     @if(count($posts) > 2)
         <section class="section latest-news">
-            <h2 class="headline">Останні новини</h2>
+            <h2 class="headline">
+                {{__('general.latest_news')}}
+            </h2>
 
             @foreach ($posts as $post)
                 <article>
@@ -240,7 +246,9 @@
                         {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
                     </p>
 
-                    <a href="/articles/{{ $post->post_id }}" class="link">Докладніше </a>
+                    <a href="/articles/{{ $post->post_id }}" class="link">
+                        {{__('general.read_more')}}
+                    </a>
                 </article>
             @endforeach
 
