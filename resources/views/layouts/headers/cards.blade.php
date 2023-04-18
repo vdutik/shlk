@@ -90,7 +90,7 @@
                     <div class="card card-stats mb-xl-0">
                         <div class="card-body">
                             <a href="/annoucement" class="btn btn-sm btn-outline-primary float-right">Редагувати</a>
-                            <h5 class="card-title text-uppercase text-muted mb-0">Оголошення</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">{{__('general.announcement')}}</h5>
                             <span class="h2 font-weight-bold mb-0">
                                 {{ $annoucement }}
                             </span>

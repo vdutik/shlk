@@ -23,9 +23,9 @@
       <div class="card shadow card-grade-slip">
         <div class="card-body row align-items-center">
           <div class="col">
-            <img src="{{ asset('spccweb/img/spcc-logo.png') }}" alt="SHLK Logo" style="position: absolute; width: 130px; margin-top: 15px;">
+            <img src="{{ asset('spccweb/img/spcc-logo.png') }}" alt="{{__('general.short_name')}} Logo" style="position: absolute; width: 130px; margin-top: 15px;">
             <div class="text-center">
-              <h2 class="m-0">SHLK COLLEGE</h2>
+              <h2 class="m-0">{{__('general.short_name')}}</h2>
 {{--              <p class="m-0">10TH AVENUE, CALOOCAN CITY</p>--}}
 {{--              <p class="m-0"><strong>FINAL GRADES</strong></p>--}}
               <p class="text-uppercase m-0">

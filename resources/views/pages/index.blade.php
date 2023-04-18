@@ -5,7 +5,7 @@
     <!-- Hero Section -->
     <section class="section hero">
         <div class="content">
-            <h1 class="headline">ШЛФК ім. В.В.Сулька</h1>
+            <h1 class="headline">{{__('general.short_name')}}</h1>
             <p class="description">
                 {{__('general.about_college_text_main')}}
             </p>
@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="image">
-            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK College"/>
+            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="{{__('general.short_name')}}"/>
         </div>
         <canvas class="particles-background"></canvas>
     </section>
@@ -52,7 +52,7 @@
     <section class="section annoucement">
         @if($annoucement != null)
             <div class="content">
-                <h2 class="headline">Оголошення</h2>
+                <h2 class="headline">{{__('general.announcement')}}</h2>
                 <p>
                     {{ $annoucement }}
                 </p>
@@ -117,10 +117,10 @@
             <img src="{{ asset('spccweb/img/spcnian.jpg') }}" alt="Shlk"/>
         </div>
         <div class="content">
-            <h2 class="headline">Шацький лісовий технікум ім. В.В.Сулька</h2>
+            <h2 class="headline">{{__('general.full_name')}}</h2>
             <h3 class="sub-headline">
                 <a href="https://www.google.com/maps/place/%D0%A8%D0%B0%D1%86%D0%BA%D0%B8%D0%B9+%D0%BB%D0%B5%D1%81%D0%BD%D0%BE%D0%B9+%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6/@51.4896705,23.9212732,17.85z/data=!4m5!3m4!1s0x4723fb672a2a9699:0xf71f674c8538ff31!8m2!3d51.4894695!4d23.9228032?hl=ru-RU">
-                    смт. Шацьк
+                    {{__('general.shatsk')}}
                 </a>
             </h3>
             <p class="description">

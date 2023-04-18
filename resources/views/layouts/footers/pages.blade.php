@@ -1,43 +1,40 @@
 <!-- Footer -->
 <footer class="site-footer">
   <div class="school-info">
-    <img src="{{ asset('spccweb/img/logo-with-shadows.png') }}" width="120px" alt="Shlk Logo" />
-    <div class="headline">Шацький лісовий фаховий коледж ім. В.В.Сулька</div>
+    <img src="{{ asset('spccweb/img/logo-with-shadows.png') }}" width="120px" alt="{{__('general.short_name')}} Logo" />
+    <div class="headline">{{__('general.full_name')}}</div>
     <div class="sub-headline">
         <a href="https://www.google.com/maps/place/%D0%A8%D0%B0%D1%86%D0%BA%D0%B8%D0%B9+%D0%BB%D0%B5%D1%81%D0%BD%D0%BE%D0%B9+%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%B4%D0%B6/@51.4896705,23.9212732,17.85z/data=!4m5!3m4!1s0x4723fb672a2a9699:0xf71f674c8538ff31!8m2!3d51.4894695!4d23.9228032?hl=ru-RU">
-            смт. Шацьк
+          {{__('general.shatsk')}}
         </a>
     </div>
     <div class="content">
     </div>
     <div class="credited-logo">
-      <img src="{{ asset('spccweb/img/ched-logo.png') }}" alt="CHED Logo" />
-      <img src="{{ asset('spccweb/img/tesda-logo.png') }}" alt="Tesda Logo" />
-      <img src="{{ asset('spccweb/img/deped-logo.png') }}" alt="DepEd Logo" />
+
     </div>
   </div>
 
   <div class="contact-info">
     <div class="item">
-      <p class="field">відвідай нас</p>
+      <p class="field">{{__('general.visit_us')}}</p>
       <p class="content">
-          Наша адреса: 44000, Волинська область, смт. Шацьк, вул. 50 років
-          Перемоги, 20
+        {{__('general.our_address')}}
       </p>
     </div>
 
     <div class="item">
-      <p class="field">наші контакти</p>
+      <p class="field">{{__('general.our_contact')}}</p>
       <ul class="content">
-        <li>Приймальна комісія: <a href="tel:(03355) 2-04-60">(03355) 2-04-60</a></li>
-        <li>Приймальна комісія: <a href="tel:+380681160851">+380681160851</a></li>
-        <li>Приймальна  директора: <a href="tel:+380335520531">+380335520531</a></li>
-        <li>Електронна адреса: <span>shatsk.college@gmail.com</span></li>
+        <li>{{__('general.admission_committee')}}: <a href="tel:(03355) 2-04-60">(03355) 2-04-60</a></li>
+        <li>{{__('general.admission_committee')}}: <a href="tel:+380681160851">+380681160851</a></li>
+        <li>{{__('general.director_reception')}}: <a href="tel:+380335520531">+380335520531</a></li>
+        <li>{{__('general.email_address')}}: <span>shatsk.college@gmail.com</span></li>
       </ul>
     </div>
 
     <div class="item">
-      <p class="field">Соціальні мережі media.</p>
+      <p class="field">{{__('general.social')}}</p>
       <div class="content">
         <a target="_blank"
            href="https://www.facebook.com/%D0%A8%D0%B0%D1%86%D1%8C%D0%BA%D0%B8%D0%B9-%D0%BB%D1%96%D1%81%D0%BE%D0%B2%D0%B8%D0%B9-%D1%84%D0%B0%D1%85%D0%BE%D0%B2%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BB%D0%B5%D0%B4%D0%B6-%D1%96%D0%BC%D0%B5%D0%BD%D1%96-%D0%92%D0%92%D0%A1%D1%83%D0%BB%D1%8C%D0%BA%D0%B0-102354248032572/">

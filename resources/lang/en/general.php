@@ -14,4 +14,15 @@ return [
     'about_college_text_main'=>'Pursuit of perfection',
     'admission_to_college'=>'become a specialist',
     'upcoming_events'=>'Upcoming events',
+    'full_name' => 'Shatsk Forest Applied College named after V. V. Sulko',
+    'short_name' => 'SFAС named after V. V. Sulko',
+    'shatsk' => 'Shatsk',
+    'visit_us' => 'visit us',
+    'our_contact' => 'our contacts',
+    'social' => 'Social networks media.',
+    'our_address' => 'Our address: 44000, Volyn region, Shatsk, 50 years of Victory, 20',
+    'admission_committee' => 'Admission committee',
+    'director_reception' => 'Director\'s reception',
+    'email_address' => 'Email address',
+    'announcement'=>'Announcement'
 ];

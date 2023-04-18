@@ -11,7 +11,7 @@
                       <div class="row">
                         <div class="col text-center">
                             <img src="{{ asset('spccweb/img/brand.png') }}" alt="logo" class="my-2">
-                            <h1 class="lead">SHLK College </p>
+                            <h1 class="lead">{{__('general.short_name')}} </p>
                             <p>Version 1.0.0</p>
                         </div>
                       </div>

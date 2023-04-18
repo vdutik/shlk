@@ -14,10 +14,10 @@
 <!-- About Section -->
 <section class="section about">
   <div class="image">
-    <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SHLK Building" />
+    <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="{{__('general.short_name')}} Building" />
   </div>
   <div class="content">
-    <h2>Шацький лісовий технікум ім. В.В.Сулька</h2>
+    <h2>{{__('general.full_name')}}</h2>
     <div class="description">
       <p>
           Коледж створений на базі Шацького лісного технікуму ім. В.В.Сулька Наказом №484 від 16.11.2005 Державного комітету лісового господарства України.
@@ -116,7 +116,7 @@
       </p>
     </div>
     <div id="tab-hymn">
-      <h2>SHLK Гімн</h2>
+      <h2>{{__('general.short_name')}} Гімн</h2>
       <div class="content">
         <p>
           Your vision in our hearts<br />

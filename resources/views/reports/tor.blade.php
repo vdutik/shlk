@@ -201,7 +201,7 @@
                       @if($loop->first)
                         <tr>
                           <td class="text-bold">{{ $sclasses[0]->acadTerm->getAcadTerm3()}}</td>
-                          <td class="text-bold">SHLK COLLEGE - Caloocan</td>
+                          <td class="text-bold">{{__('general.short_name')}}</td>
                           <td></td>
                           <td></td>
                           <td></td>

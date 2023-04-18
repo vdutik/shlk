@@ -24,7 +24,7 @@
         <div class="card-body row align-items-center">
           <div class="col">
             <h2 class="text-center mt-0">
-              SHLK COLLEGE
+                {{__('general.short_name')}}
               <br>
               <span class="text-sm"> </span>
             </h2>
