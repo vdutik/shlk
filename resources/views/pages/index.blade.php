@@ -235,7 +235,7 @@
                         <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
                     @endif
                     <h3>
-                        <a href="/articles/{{ $post->post_id }}" class="title">
+                        <a href="<?=\LaravelLocalization::localizeUrl('/articles/'. $post->post_id)?>" class="title">
                             {{ $post->title }}
                         </a>
                     </h3>
@@ -246,7 +246,7 @@
                         {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
                     </p>
 
-                    <a href="/articles/{{ $post->post_id }}" class="link">
+                    <a href="<?=\LaravelLocalization::localizeUrl('/articles/'. $post->post_id)?>" class="link">
                         {{__('general.read_more')}}
                     </a>
                 </article>
