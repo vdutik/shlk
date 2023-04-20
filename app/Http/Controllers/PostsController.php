@@ -158,7 +158,9 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'title_en' => 'required',
             'body' => 'required',
+            'body_en' => 'required',
             'cover_image_name' => 'sometimes|string',
             'sort' => 'required|int|min:1',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
@@ -210,7 +212,9 @@ class PostsController extends Controller
 
         // Update Post
         $post->title = $request->input('title');
+        $post->title_en = $request->input('title_en');
         $post->body = $request->input('body');
+        $post->body_en = $request->input('body_en');
         $post->updated_at = now();
         $post->sort = $request->sort;
 
@@ -256,8 +260,8 @@ class PostsController extends Controller
 
     public function published() {
         $posts = Post::where('status', 'LIKE', 'Published')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(15);
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
 
         return view('posts.published')->with('posts', $posts);
     }
@@ -272,8 +276,8 @@ class PostsController extends Controller
 
     public function approval() {
         $posts = Post::where('status', 'LIKE', 'Pending')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(15);
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
 
         return view('posts.approval')->with('posts', $posts);
     }

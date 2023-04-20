@@ -19,6 +19,13 @@ class PagesController extends Controller
                         ->orderBy('created_at', 'desc')
                         ->limit(3)
                         ->get();
+        if (app()->getLocale() != 'uk' ) {
+            $posts->each(function ($post) {
+                $lang = app()->getLocale();
+                $post->title = !empty($post->{'title_' . $lang}) ? $post->{'title_' . $lang} : $post->title;
+                $post->body = !empty($post->{'body_' . $lang}) ? $post->{'body_' . $lang} : $post->body;
+            });
+        }
 
         $events = Event::where('start_date', '>=', date('Y-m-d'))
                         ->orWhere('end_date', '<=', date('Y-m-d'))
@@ -63,6 +70,15 @@ class PagesController extends Controller
                         ->orderBy('sort', 'desc')
                         ->orderBy('created_at', 'desc')
                         ->paginate(15);
+
+        if (app()->getLocale() != 'uk' ) {
+            $posts->each(function ($post) {
+                $lang = app()->getLocale();
+                $post->title = !empty($post->{'title_' . $lang}) ? $post->{'title_' . $lang} : $post->title;
+                $post->body = !empty($post->{'body_' . $lang}) ? $post->{'body_' . $lang} : $post->body;
+            });
+        }
+
         $title = __('pages.title_'.$tag);
 
         return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts','title'));
@@ -90,6 +106,14 @@ class PagesController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(15);
 
+        if (app()->getLocale() != 'uk' ) {
+            $posts->each(function ($post) {
+                $lang = app()->getLocale();
+                $post->title = !empty($post->{'title_' . $lang}) ? $post->{'title_' . $lang} : $post->title;
+                $post->body = !empty($post->{'body_' . $lang}) ? $post->{'body_' . $lang} : $post->body;
+            });
+        }
+
         $title = __('pages.title_'.$tag);
 
         return view('pages.posts')->with(compact('latest_post', 'posts', 'tot_posts','title'));
@@ -100,7 +124,11 @@ class PagesController extends Controller
         $tot_posts = count(Post::all());
 
         $post = Post::find($id);
-
+        if (app()->getLocale() != 'uk' ) {
+            $lang = app()->getLocale();
+            $post->title = !empty($post->{'title_' . $lang}) ? $post->{'title_' . $lang} : $post->title;
+            $post->body = !empty($post->{'body_' . $lang}) ? $post->{'body_' . $lang} : $post->body;
+        }
         return view('pages.article')->with(compact('post', 'tot_posts'));
     }
 
