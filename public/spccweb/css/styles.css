@@ -2499,3 +2499,77 @@ section.usefull-links .items .half img{
     text-transform: uppercase;
     cursor: pointer;
 }
+
+#slider-main {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+}
+
+#slider-main ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    list-style: none;
+}
+
+#slider-main ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 1000px;
+    height: 500px;
+    background: #ccc;
+    text-align: center;
+    line-height: 300px;
+}
+
+a.control_prev, a.control_next {
+    position: absolute;
+    top: 45%;
+    z-index: 999;
+    display: block;
+    padding: 3% 1%;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+
+a.control_prev:hover, a.control_next:hover {
+    opacity: 1;
+    -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev {
+    border-radius: 0 10px 10px 0;
+}
+
+a.control_next {
+    right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.slider_option {
+    position: relative;
+    margin: 10px auto;
+    width: 160px;
+    font-size: 18px;
+}
+
+#slider-main ul li {
+    background-color: white;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+}

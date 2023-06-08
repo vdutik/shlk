@@ -14,7 +14,23 @@
             </a>
         </div>
         <div class="image">
-            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="{{__('general.short_name')}}"/>
+{{--            <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="{{__('general.short_name')}}"/>--}}
+
+            <div id="slider-main">
+                <a href="javascript:void(0)" class="control_next">></a>
+                <a href="javascript:void(0)" class="control_prev"><</a>
+                <ul>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}')  ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
+                </ul>
+            </div>
+
+            <div class="slider_option">
+                <input type="checkbox" checked style="display: none" id="checkbox">
+
+            </div>
         </div>
         <canvas class="particles-background"></canvas>
     </section>
@@ -235,7 +251,7 @@
                         <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
                     @endif
                     <h3>
-                        <a href="/articles/{{ $post->post_id }}" class="title">
+                        <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="title">
                             {{ $post->title }}
                         </a>
                     </h3>
@@ -246,7 +262,7 @@
                         {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
                     </p>
 
-                    <a href="/articles/{{ $post->post_id }}" class="link">
+                    <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="link">
                         {{__('general.read_more')}}
                     </a>
                 </article>

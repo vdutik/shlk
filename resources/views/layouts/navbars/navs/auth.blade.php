@@ -42,7 +42,7 @@
                     </a>
                     <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
                         <i class="ni ni-check-bold"></i>
-                        <span>Підтверджені пости</span>
+                        <span>Не підтверджені пости</span>
                     </a>
                     @endrole
                     @role('admin')

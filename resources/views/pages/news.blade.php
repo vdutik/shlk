@@ -36,7 +36,7 @@
       <p class="article-content">
         {!! Str::limit(strip_tags(htmlspecialchars_decode($latest_post[0]->body)), 135) !!}
       </p>
-      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">{{__('general.read_more')}}</a>
+      <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$latest_post[0]->post_id))?>" class="link">{{__('general.read_more')}}</a>
     </div>
   </article>
 
@@ -72,7 +72,7 @@
       <p class="article-content">
           {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)), 135) !!}
       </p>
-      <a href="/articles/{{ $post->post_id }}" class="link">{{__('general.read_more')}}</a>
+      <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="link">{{__('general.read_more')}}</a>
     </article>
     @endif
   @endforeach
