@@ -62,41 +62,41 @@ $(document).ready(function() {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev' //кнопки
       },
-  
+
       pagination: {
           el: '.swiper-pagination', //пагінація
-          
+
       },
-  
+
       type: 'fraction',
       renderFraction: function(currentClass, totalClass) {
           return 'Фото <span class="' + currentClass + '">' +
           ' з ' +
-          '<span class="' + totalClass + '"></span>'; //вивід фракції 
+          '<span class="' + totalClass + '"></span>'; //вивід фракції
       },
-  
-      simulateTouch: true, //перетаскування на ПК 
-      
+
+      simulateTouch: true, //перетаскування на ПК
+
       keyboard:{
           enabled: true,
-          pageUpDown: true, //керування клавіатурою 
+          pageUpDown: true, //керування клавіатурою
       },
-  
+
       mouseWheel:{
-          sensitivity: 1, //прокрутка мишкою 
+          sensitivity: 1, //прокрутка мишкою
       },
-  
-      autoHeight: true, //автовисота картинок 
-  
+
+      autoHeight: true, //автовисота картинок
+
       loop: true, // безкінечний свайп
-  
+
       speed: 800,
-  
+
       effect: 'fade',
       fadeEffect: {
           crossFade: true,
       },
-  
+
       breakpoints: {
           320: {
               slidePerView: 1
@@ -108,13 +108,13 @@ $(document).ready(function() {
               slidePerView: 1
           },
       },
-  
+
       zoom: {
           maxRatio: 2,
           minRatio: 1,
-      },    
+      },
 
-  
+
   //Завантаження сладій в з бд
      /** virtual: {
           slides: (function (){
@@ -125,7 +125,7 @@ $(document).ready(function() {
               return slide;
           }()),
       },*/
-  
+
       on: {
           init: function(){
               console.log('start');
@@ -136,3 +136,51 @@ $(document).ready(function() {
       },
   });
   });
+
+
+jQuery(document).ready(function ($) {
+
+    // $('#checkbox').change(function(){
+    setInterval(function () {
+        moveRight();
+    }, 6000);
+    // });
+
+    var slideCount = $('#slider-main ul li').length;
+    var slideWidth = $('#slider-main ul li').width();
+    var slideHeight = $('#slider-main ul li').height();
+    var sliderUlWidth = slideCount * slideWidth;
+
+    $('#slider-main').css({ width: slideWidth, height: slideHeight });
+
+    $('#slider-main ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+    $('#slider-main ul li:last-child').prependTo('#slider-main ul');
+
+    function moveLeft() {
+        $('#slider-main ul').animate({
+            left: + slideWidth
+        }, 500, function () {
+            $('#slider-main ul li:last-child').prependTo('#slider-main ul');
+            $('#slider-main ul').css('left', '');
+        });
+    };
+
+    function moveRight() {
+        $('#slider-main ul').animate({
+            left: - slideWidth
+        }, 500, function () {
+            $('#slider-main ul li:first-child').appendTo('#slider-main ul');
+            $('#slider-main ul').css('left', '');
+        });
+    };
+
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+
+});
