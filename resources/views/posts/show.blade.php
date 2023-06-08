@@ -60,8 +60,8 @@
                         </div>
                         <hr>
                         <p>
-                            Створено о {{ $post->created_at->format('g:iA d m Y') }}
-                            | оновлено о {{ $post->created_at->format('g:iA d m Y') }}
+                            {{__('general.created_at')}}  {{ $post->created_at->format('Y:m:d H') }}
+                            | {{__('general.updated_at')}} {{ $post->updated_at->format('Y:m:d H') }}
                         </p>
                         <div class="button-group row mt-5">
                             <div class="col-4">
