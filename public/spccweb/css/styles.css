@@ -223,6 +223,12 @@ ul.pagination .page-item.disabled {
         display: none;
     }
 
+    .site-header-scrollable {
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
+    }
+
     .site-header .mobile-nav {
         text-align: right;
         display: block;
@@ -2377,6 +2383,20 @@ section.usefull-links .items .half img{
     transition: all .1s linear;
 }
 
+#siteNav li.hover .hover-dropdown-item ul{
+    padding: 0;
+    display: none;
+}
+
+#siteNav li.hover .hover-dropdown-item:hover ul{
+    right: 100%;
+    position: absolute;
+    background: white;
+    display: block;
+    margin-top: -50px;
+    border-radius: 5px;
+}
+
 #siteNav li.hover .hover-dropdown-item .hover-subitem:hover a, li.hover .hover-dropdown-item .hover-subitem:active a {
     padding: 10px 20px;
     display: block;
@@ -2427,9 +2447,18 @@ section.usefull-links .items .half img{
     #siteNav li.hover > ul {
         font-size: 8px;
         position: relative;
-        background-color: #4d4b09;
-        left: 50px;
+        background-color: #daddd5;
+        left: 0px;
         top: 0px;
+    }
+
+    #siteNav li.hover .hover-dropdown-item:hover ul{
+        right: 100%;
+        position: inherit;
+        background: white;
+        display: block;
+        border-radius: 5px;
+        margin-top: 0;
     }
 }
 .course {

@@ -1,9 +1,12 @@
 function toggleNavResponsive() {
     let siteNav = document.getElementById('siteNav');
+    let siteHeader = document.getElementsByClassName('site-header')[0];
 
     if (siteNav.className === 'site-nav') {
+        siteHeader.className += ' site-header-scrollable'
         siteNav.className += ' responsive';
     } else {
+        siteHeader.className = 'site-header'
         siteNav.className = 'site-nav';
     }
 
