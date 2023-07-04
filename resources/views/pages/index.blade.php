@@ -21,9 +21,9 @@
                 <a href="javascript:void(0)" class="control_prev"><</a>
                 <ul>
                     <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}')  ;"></li>
-                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
-                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
-                    <li style="background-image: url('{{ asset('spccweb/img/hero.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero2.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero3.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero4.jpg') }}') ;"></li>
                 </ul>
             </div>
 
