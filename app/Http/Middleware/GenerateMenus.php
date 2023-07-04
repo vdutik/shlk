@@ -55,8 +55,8 @@ class GenerateMenus
             [__('general.for_student'), route('news','for_student'), 'menu-item'],
             [__('general.admission'), route('news','admission'), 'menu-item'],
             [__('general.contact'), route('contact.index'), 'hover cat dropdown-item', [
-                [__('general.online_admmision'),'https://vstup.edbo.gov.ua','hover-dropdown-item'],
-                [__('general.ofline_admmision'),route('admission'),'hover-dropdown-item'],
+                [__('general.online_admmision'),'https://cabinet.edbo.gov.ua/login/register','hover-dropdown-item'],
+//                [__('general.ofline_admmision'),route('admission'),'hover-dropdown-item'],
 //                ['Product 4', 'products/4', 'hover-dropdown-item', [
 //                    ['Product 4-1', 'products/4/1', 'third-dropdown-item'],
 //                    ['Product 4-2', 'products/4/2', 'third-dropdown-item'],
