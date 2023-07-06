@@ -2527,6 +2527,26 @@ section.usefull-links .items .half img{
     text-align: center;
     line-height: 300px;
 }
+@media(max-width: 1450px) {
+    #slider-main ul li {
+        width: 800px;
+        height: 400px;
+    }
+}
+
+@media(max-width: 1250px) {
+    #slider-main ul li {
+        width: 500px;
+        height: 250px;
+    }
+}
+
+@media(max-width: 850px) {
+    #slider-main ul li {
+        width: 350px;
+        height: 175px;
+    }
+}
 
 a.control_prev, a.control_next {
     position: absolute;
