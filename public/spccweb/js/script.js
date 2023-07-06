@@ -141,7 +141,10 @@ $(document).ready(function() {
   });
 
 
-jQuery(document).ready(function ($) {
+jQuery(document).ready(initSlider($));
+jQuery(window).on('resize', initSlider($));
+
+function initSlider ($) {
 
     // $('#checkbox').change(function(){
     setInterval(function () {
@@ -186,4 +189,4 @@ jQuery(document).ready(function ($) {
         moveRight();
     });
 
-});
+}
