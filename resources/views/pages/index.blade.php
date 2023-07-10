@@ -24,6 +24,7 @@
                     <li style="background-image: url('{{ asset('spccweb/img/hero2.jpg') }}') ;"></li>
                     <li style="background-image: url('{{ asset('spccweb/img/hero3.jpg') }}') ;"></li>
                     <li style="background-image: url('{{ asset('spccweb/img/hero4.jpg') }}') ;"></li>
+                    <li style="background-image: url('{{ asset('spccweb/img/hero5.jpg') }}') ;"></li>
                 </ul>
             </div>
 
