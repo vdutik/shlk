@@ -9,7 +9,7 @@
             <p class="description">
                 {{__('general.about_college_text_main')}}
             </p>
-            <a href="/admission" class="btn">
+            <a href="/news/admission" class="btn">
                 {{__('general.admission_to_college')}}
             </a>
         </div>
