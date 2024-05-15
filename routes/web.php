@@ -23,7 +23,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/news/{tag?}', 'PagesController@news')->name('news');
     Route::get('/public_info', 'PagesController@public_info')->name('public_info');
     Route::get('/articles/{article}', 'PagesController@articles')->name('articles');
-    Route::get('/admission', 'PagesController@admission')->name('admission');
+    Route::get('/admission', [PagesController::class, 'admission'])->name('admission');
 //    Route::get('/team', 'PagesController@team');
     Route::get('/structure', 'PagesController@structure')->name('structure');
     Route::get('/forgot_password', 'PagesController@forgotPassword');
