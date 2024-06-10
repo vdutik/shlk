@@ -43,7 +43,7 @@ class FetchAndSavePostsCommand extends Command
                 return;
             }
 
-            $since = strtotime('-3 day');
+            $since = strtotime(env('SINCE_DATE'));
             $posts = $this->getFacebookPosts($accountData['id'], $since, $accountData['access_token']);
 
             foreach (array_reverse($posts) as $post) {
