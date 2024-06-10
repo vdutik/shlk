@@ -47,18 +47,19 @@
                 },
                 theme: 'snow'
             });
-
-            let initialBody = $("input#body").val();
-            $("#editor .ql-editor").html(initialBody);
-
-            let initialBodyEn = $("input#body_en").val();
-            $("#editor_en .ql-editor").html(initialBodyEn);
+            quill.clipboard.dangerouslyPasteHTML('{!! $post->body !!}');
+            quillEn.clipboard.dangerouslyPasteHTML('{!! $post->body_en !!}');
+            // let initialBody = $("input#body").val();
+            // $("#editor .ql-editor").html(initialBody);
+            //
+            // let initialBodyEn = $("input#body_en").val();
+            // $("#editor_en .ql-editor").html(initialBodyEn);
 
             $("#btn-publish").click(function(){
-                let body = $("#editor *").html();
+                let body = quill.root.innerHTML;
                 $("input#body").val(body);
 
-                let bodyEn = $("#editor_en *").html();
+                let bodyEn = quillEn.root.innerHTML;
                 $("input#body_en").val(bodyEn);
             });
 
@@ -151,7 +152,7 @@
                             <div class="row mb-7 lang uk">
                                 <div class="col-12 col-lg-12">
                                     <label class="form-control-label" for="title">Body</label>
-                                    <input id="body" name="body" type="hidden" value="{{$post->body}}" required>
+                                    <input id="body" name="body" type="hidden" value="{{ htmlspecialchars($post->body) }}" required>
                                     <div id="editor" style="font-family: 'Open Sans', sans-serif"></div>
                                 </div>
                             </div>
@@ -159,7 +160,7 @@
                             <div class="row mb-7 lang en">
                                 <div class="col-12 col-lg-12">
                                     <label class="form-control-label" for="title">Body (Eng.)</label>
-                                    <input id="body_en" name="body_en" type="hidden" value="{{$post->body_en}}" required>
+                                    <input id="body_en" name="body_en" type="hidden" value="{{ htmlspecialchars($post->body_en) }}" required>
                                     <div id="editor_en" style="font-family: 'Open Sans', sans-serif"></div>
                                 </div>
                             </div>

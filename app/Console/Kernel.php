@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        FetchAndSavePostsCommand::class,
     ];
 
     /**
@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('git:checkout')->hourly();
         $schedule->command('git:clean')->hourly();
+        $schedule->command('fetch:facebook-posts')->cron('0 */4 * * *');
         // $schedule->command('inspire')
         //          ->hourly();
     }
