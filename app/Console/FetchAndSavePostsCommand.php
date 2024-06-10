@@ -43,7 +43,7 @@ class FetchAndSavePostsCommand extends Command
                 return;
             }
 
-            $since = strtotime('-3 day');
+            $since = Carbon::now()->subDays(env('FACEBOOK_SINCE_DATE'))->startOfDay()->timestamp;
             $posts = $this->getFacebookPosts($accountData['id'], $since, $accountData['access_token']);
 
             foreach (array_reverse($posts) as $post) {
