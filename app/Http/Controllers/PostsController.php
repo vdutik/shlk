@@ -137,6 +137,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $tags = Tag::all();
+        $statuses = Post::STATUSES;
 
         // Check for correct user
         if(!auth()->user()->hasPermissionTo('edit posts') &&
@@ -144,7 +145,11 @@ class PostsController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
-        return view('posts.edit')->with('post', $post)->with('tags',$tags);
+        return view('posts.edit')->with([
+            'post' => $post,
+            'tags' => $tags,
+            'statuses' => $statuses
+        ]);
     }
 
     /**
@@ -165,7 +170,8 @@ class PostsController extends Controller
             'sort' => 'required|int|min:1',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'tags.*' => 'integer',
-            'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'post_images.*' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+            'status' => 'in:Published,Pending,Hidden',
         ]);
         $post = Post::find($id);
 
@@ -217,6 +223,7 @@ class PostsController extends Controller
         $post->body_en = $request->input('body_en');
         $post->updated_at = now();
         $post->sort = $request->sort;
+        $post->status = $request->input('status');
 
         if($request->hasFile('cover_image')) {
             Storage::disk('public')->delete('cover_images/'. $post->cover_image);
@@ -281,5 +288,4 @@ class PostsController extends Controller
 
         return view('posts.approval')->with('posts', $posts);
     }
-
 }

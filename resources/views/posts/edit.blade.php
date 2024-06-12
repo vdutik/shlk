@@ -5,55 +5,107 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('vendor/quilljs-1.3.6/quill.min.js') }}"></script>
+    <script src="{{ asset('vendor/quilljs-1.3.6/quill.min.js') }}"></script>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-      let intervalFunc = function () {
-          let image_path = $('#cover_image').val().split('\\');
-          $('#browse-image').html(image_path[image_path.length - 1]);
-      };
+    <script type="text/javascript">
+        $(document).ready(function() {
+            let intervalFunc = function () {
+                let image_path = $('#cover_image').val().split('\\');
+                $('#browse-image').html(image_path[image_path.length - 1]);
+            };
 
-      $('#cover_image').on('click', function () {
-          setInterval(intervalFunc, 1);
-      });
+            $('#cover_image').on('click', function () {
+                setInterval(intervalFunc, 1);
+            });
 
-      $('#cover_image_clean').on('click', function () {
-          $('#cover_image').remove();
-          $('#cover_image_name').remove();
-           $('#cover_image_name').hide();
-      });
+            $('#cover_image_clean').on('click', function () {
+                $('#cover_image').remove();
+                $('#cover_image_name').remove();
+                $('#cover_image_name').hide();
+            });
 
-      let quill = new Quill('#editor', {
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': [] }]
-          ]
-        },
-        theme: 'snow'
-      });
+            const Delta = Quill.import('delta');
 
-            let quillEn = new Quill('#editor_en', {
+            const BlockEmbed = Quill.import('blots/block/embed');
+
+            class ImageBlot extends BlockEmbed {
+                static blotName = 'imageCustom';
+                static tagName = 'img';
+
+                static create(value) {
+                    let node = super.create();
+                    node.setAttribute('src', value.url);
+                    node.setAttribute('class', value.class);
+                    return node;
+                }
+
+                static value(node) {
+                    return {
+                        url: node.getAttribute('src'),
+                        class: node.getAttribute('class')
+                    };
+                }
+            }
+
+            Quill.register(ImageBlot);
+
+            let quill = new Quill('#editor', {
                 modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, false] }],
-                        ['bold', 'italic', 'underline'],
-                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                        [{ 'align': [] }]
-                    ]
+                    toolbar: {
+                        container: [
+                            [{ header: [1, 2, 3, false] }],
+                            ['bold', 'italic', 'underline'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            [{ 'align': [] }],
+                            ['image']
+                        ],
+                        handlers: {
+                            'image': function() {
+                                let range = this.quill.getSelection();
+                                let value = prompt('Enter image URL:');
+
+                                quill.insertEmbed(range.index, 'imageCustom', {
+                                    url: value,
+                                    class: 'body-image'
+                                }, Quill.sources.USER);
+                            }
+                        }
+                    }
                 },
                 theme: 'snow'
             });
-            quill.clipboard.dangerouslyPasteHTML('{!! $post->body !!}');
-            quillEn.clipboard.dangerouslyPasteHTML('{!! $post->body_en !!}');
-            // let initialBody = $("input#body").val();
-            // $("#editor .ql-editor").html(initialBody);
-            //
-            // let initialBodyEn = $("input#body_en").val();
-            // $("#editor_en .ql-editor").html(initialBodyEn);
+
+            let quillEn = new Quill('#editor_en', {
+                modules: {
+                    toolbar: {
+                        container: [
+                            [{ header: [1, 2, 3, false] }],
+                            ['bold', 'italic', 'underline'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            [{ 'align': [] }],
+                            ['image']
+                        ],
+                        handlers: {
+                            'image': function() {
+                                let range = this.quill.getSelection();
+                                let value = prompt('Enter image URL:');
+
+                                quillEn.insertEmbed(range.index, 'imageCustom', {
+                                    url: value,
+                                    class: 'body-image'
+                                }, Quill.sources.USER);
+                            }
+                        }
+                    }
+                },
+                theme: 'snow'
+            });
+
+            let postBody = {!! json_encode($post->body) !!};
+            let postBodyEn = {!! json_encode($post->body_en) !!};
+
+            quill.clipboard.dangerouslyPasteHTML(postBody);
+            quillEn.clipboard.dangerouslyPasteHTML(postBodyEn);
 
             $("#btn-publish").click(function(){
                 let body = quill.root.innerHTML;
@@ -63,18 +115,16 @@
                 $("input#body_en").val(bodyEn);
             });
 
-
             let selecter_lang = $('select[name="lang"]').val();
 
             $('.lang').hide();
             $('.lang.uk').show();
 
             $('select[name="lang"]').change(function(){
-              var selectedValue = $(this).val();
-              $('.lang').hide(); // скрыть все элементы с классом myDiv
-              $(".lang." + selectedValue).show(); // показать элемент с id равным выбранному значению
+                var selectedValue = $(this).val();
+                $('.lang').hide(); // скрыть все элементы с классом myDiv
+                $(".lang." + selectedValue).show(); // показать элемент с id равным выбранному значению
             });
-
         });
     </script>
 @endpush
@@ -87,36 +137,45 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-body">
-                      <form method="POST" action="{{ action('PostsController@update', $post->post_id) }}" enctype="multipart/form-data">
-                          @csrf
-                          @method('PUT')
+                        <form method="POST" action="{{ action('PostsController@update', $post->post_id) }}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
-
-                          <div class="row col-md-2">
-                              <select class="custom-select" name="lang" >
-                                  <option value="uk">Українська</option>
-                                  <option value="en">Англійська</option>
-                              </select>
-                          </div>
-                          <div class="row">
-                              <div class="col-12 col-lg-5">
-                                <div class="form-control-label mb-2">
-                                  Cover Image
-                                </div>
-                                <div class="form-group">
-                                    <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
-                                    <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
-                                    <input type="input" id="cover_image_name" name="cover_image_name" value="{{$post->cover_image?:"text"}}" style="display: none">
-                                    @if($post->cover_image)
-                                        <span id="cover_image_clean">x</span>
-                                    @endif
-                                    <span id="cover_image_name">
+                            <div class="row col-md-2">
+                                <select class="custom-select" name="lang" >
+                                    <option value="uk">Українська</option>
+                                    <option value="en">Англійська</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-5">
+                                    <div class="form-control-label mb-2">
+                                        Cover Image
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
+                                        <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
+                                        <input type="input" id="cover_image_name" name="cover_image_name" value="{{$post->cover_image?:"text"}}" style="display: none">
+                                        @if($post->cover_image)
+                                            <span id="cover_image_clean">x</span>
+                                        @endif
+                                        <span id="cover_image_name">
                                         {{$post->cover_image}}
                                     </span>
+                                    </div>
                                 </div>
-                              </div>
-                          </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-12 col-lg-8">
+                                    <label class="form-control-label" for="status">Статус</label>
+                                    <select class="custom-select" name="status">
+                                        @foreach($statuses as $status)
+                                            <option value="{{ $status }}" {{ $status == $post->status ? 'selected' : '' }}>{{ __('general.statuses.' . strtolower($status)) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="row lang uk">
                                 <div class="col-12 col-lg-8">
                                     <label class="form-control-label" for="title">Title</label>

@@ -24,5 +24,12 @@ return [
     'admission_committee' => 'Admission committee',
     'director_reception' => 'Director\'s reception',
     'email_address' => 'Email address',
-    'announcement'=>'Announcement'
+    'announcement'=>'Announcement',
+    'created_at' => 'Published',
+    'updated_at' => 'Updated',
+    'statuses' => [
+        'pending' => 'Pending',
+        'published' => 'Published',
+        'hidden' => 'Hidden',
+    ]
 ];

@@ -10,8 +10,8 @@
       </h1>
       <div class="meta">
         <span class="publish-date">
-          {{__('general.created_at')}} {{ $post->created_at->format('Y:m:d H') }}
-          | {{__('general.updated_at')}} {{ $post->updated_at->format('Y:m:d H') }}
+          {{__('general.created_at')}} {{ $post->created_at->format('Y-m-d H:i') }}
+          | {{__('general.updated_at')}} {{ $post->updated_at->format('Y-m-d H:i') }}
         </span>
       </div>
     </div>

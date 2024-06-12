@@ -24,7 +24,13 @@ return [
     'admission_committee' => 'Приймальна комісія',
     'director_reception' => 'Приймальня директора',
     'email_address' => 'Адреса електронної пошти',
-    'announcement'=>'Оголошення'
-
+    'announcement'=>'Оголошення',
+    'created_at' => 'Опубліковано',
+    'updated_at' => 'Оновлено',
+    'statuses' => [
+        'pending' => 'В очікуванні',
+        'published' => 'Опубліковано',
+        'hidden' => 'Прихований',
+    ]
 
 ];
