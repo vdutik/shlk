@@ -37,12 +37,20 @@
 
                             @switch($post->status)
                                 @case('Published')
-                                <span class="badge badge-success badge-float">Published</span>
-                                @break
+                                    <span class="badge badge-success badge-float">Опубліковані</span>
+                                    @break
+
+                                @case('Pending')
+                                    <span class="badge badge-warning badge-float">Очікують підтвердження</span>
+                                    @break
+
+                                @case('Hidden')
+                                    <span class="badge badge-secondary badge-float">Приховані</span>
+                                    @break
 
                                 @default
-                                <span class="badge badge-warning badge-float">Pending</span>
-                                @break
+                                    <span class="badge badge-secondary badge-float">Невідомий статус</span>
+
                             @endswitch
                             @if($post->cover_image)
                                 <img class="card-img-top card-img-top-post" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">

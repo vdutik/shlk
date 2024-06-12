@@ -2593,3 +2593,8 @@ a.control_next {
     background-repeat: no-repeat;
     background-position: left top;
 }
+
+.body-image{
+    width: 700px;
+    height: auto;
+}

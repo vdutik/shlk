@@ -12,6 +12,16 @@ class Post extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    const STATUS_PENDING = 'Pending';
+    const STATUS_PUBLISHED = 'Published';
+    const STATUS_HIDDEN  = 'Hidden';
+
+    const STATUSES = [
+        self::STATUS_PENDING,
+        self::STATUS_PUBLISHED,
+        self::STATUS_HIDDEN
+    ];
+
     protected $table = 'posts';
     public $primaryKey = 'post_id';
     public $timestamps = true;

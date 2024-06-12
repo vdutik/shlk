@@ -31,9 +31,17 @@
                         <span class="badge badge-success badge-float">Опубліковані</span>
                         @break
 
+                        @case('Pending')
+                            <span class="badge badge-warning badge-float">Очікують підтвердження</span>
+                            @break
+
+                        @case('Hidden')
+                            <span class="badge badge-secondary badge-float">Приховані</span>
+                            @break
+
                         @default
-                        <span class="badge badge-warning badge-float">Очікують підтвердження</span>
-                        @break
+                            <span class="badge badge-secondary badge-float">Невідомий статус</span>
+
                     @endswitch
                     @if($post->cover_image)
                         <img class="card-img-top" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
@@ -60,8 +68,8 @@
                         </div>
                         <hr>
                         <p>
-                            {{__('general.created_at')}}  {{ $post->created_at->format('Y:m:d H') }}
-                            | {{__('general.updated_at')}} {{ $post->updated_at->format('Y:m:d H') }}
+                            {{__('general.created_at')}}  {{ $post->created_at->format('Y-m-d H:i') }}
+                            | {{__('general.updated_at')}} {{ $post->updated_at->format('Y-m-d H:i') }}
                         </p>
                         <div class="button-group row mt-5">
                             <div class="col-4">

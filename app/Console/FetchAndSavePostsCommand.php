@@ -12,6 +12,7 @@ use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class FetchAndSavePostsCommand extends Command
 {
@@ -24,32 +25,28 @@ class FetchAndSavePostsCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
-        $this->facebook = new Facebook([
-            'app_id' => env('FACEBOOK_APP_ID'),
-            'app_secret' => env('FACEBOOK_APP_SECRET'),
-            'default_graph_version' => 'v20.0',
-        ]);
-
-        $this->accessToken = env('FACEBOOK_APP_ACCESS_TOKEN');
     }
 
     public function handle()
     {
         try {
+            $this->initializeFacebook();
+
             $accountData = $this->getFacebookAccountData();
             if (empty($accountData)) {
                 Log::error('No Facebook accounts found.');
                 return;
             }
 
-            $since = Carbon::now()->subDays(env('FACEBOOK_SINCE_DATE'))->startOfDay()->timestamp;
+            $since = Carbon::now()->subDays(env('FACEBOOK_SINCE_DATE', 3))->startOfDay()->timestamp;
             $posts = $this->getFacebookPosts($accountData['id'], $since, $accountData['access_token']);
 
             foreach (array_reverse($posts) as $post) {
                 $postData = $this->getPostDetails($post['id'], $accountData['access_token']);
                 if ($postData && !$this->postExists($postData['id'])) {
-                    $this->createPost($postData);
+                    $photos = $this->getPhotosFromPost($postData);
+                    $coverImage = count($photos) > 0 ? $photos[0] : null;
+                    $this->createPost($postData, $photos, $coverImage);
                 }
             }
 
@@ -61,6 +58,17 @@ class FetchAndSavePostsCommand extends Command
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
         }
+    }
+
+    private function initializeFacebook()
+    {
+        $this->facebook = new Facebook([
+            'app_id' => env('FACEBOOK_APP_ID', ''),
+            'app_secret' => env('FACEBOOK_APP_SECRET', ''),
+            'default_graph_version' => 'v20.0',
+        ]);
+
+        $this->accessToken = env('FACEBOOK_APP_ACCESS_TOKEN', '');
     }
 
     private function getFacebookAccountData()
@@ -86,7 +94,7 @@ class FetchAndSavePostsCommand extends Command
         return Post::query()->where('facebook_post_id', $postId)->exists();
     }
 
-    private function createPost($postData)
+    private function createPost($postData, $photos, $coverImage = null)
     {
         if (!isset($postData['message'])) {
             Log::warning('Post does not contain a message. Post ID: ' . $postData['id']);
@@ -104,17 +112,23 @@ class FetchAndSavePostsCommand extends Command
         $post->title = $firstParagraph;
         $post->body = "<p>$allParagraph</p>";
         $post->user_id = User::query()->where('username', '=', 'spccadmin')->first()->id;
-        $post->cover_image = '';
         $post->status = 'Published';
         $post->facebook_post_id = $postData['id'];
         $post->created_at = $createdAt->format('Y-m-d H:i:s');
         $post->updated_at = $createdAt->format('Y-m-d H:i:s');
+
+        if ($coverImage) {
+            $fileNameToStore = $this->saveCoverImage($coverImage);
+            $post->cover_image = $fileNameToStore;
+        } else {
+            $post->cover_image = '';
+        }
+
         $post->save();
 
         $tag = Tag::query()->where('slug', '=', 'news')->first();
         $post->tags()->sync($tag->id);
 
-        $photos = $this->getPhotosFromPost($postData);
         $this->savePhotos($post, $photos);
     }
 
@@ -147,5 +161,17 @@ class FetchAndSavePostsCommand extends Command
             $post->addMediaFromUrl($photoUrl)
                 ->toMediaCollection();
         }
+    }
+
+    private function saveCoverImage($imageUrl)
+    {
+        $imageContents = file_get_contents($imageUrl);
+        $parsedUrl = parse_url($imageUrl);
+        $basename = basename($parsedUrl['path']);
+        $fileName = $basename;
+        $filePath = 'cover_images/' . $fileName;
+        Storage::disk('public')->put($filePath, $imageContents);
+
+        return $fileName;
     }
 }

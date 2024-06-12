@@ -234,3 +234,8 @@ table.table-encode .input-grade {
 table.table-encode .input-note {
   width: 200px;
 }
+
+.body-image{
+  width: 700px;
+  height: auto;
+}
