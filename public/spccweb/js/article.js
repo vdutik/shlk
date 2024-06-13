@@ -24,124 +24,40 @@ $('.tab-nav a').click(function (e) {
 });
 
 
-$(document).ready(function() {
 
-  const swiper = new Swiper(".image-slider", {
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+$(document).ready(function(){
+    if ($('.photo-slider div').length > 0) {
+        $('.photo-slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            fade: true,
+            asNavFor: '.photo-slider-nav',
+            adaptiveHeight: true, // додано для адаптивної висоти
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        dots: true
+                    }
+                }
+            ]
+        });
 
-    slidesPerView: 3,
-      spaceBetween: 30,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
+        $('.photo-slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.photo-slider',
+            dots: true,
+            centerMode: true,
+            focusOnSelect: true
+        });
 
-    loop: true, 
-
-    speed: 500,
-
-    effect: 'fade',
-    fadeEffect: {
-        crossFade: true,
-    },
-
-    zoom: {
-        maxRatio: 2,
-        minRatio: 1,
-    },
-        keyboard:{
-        enabled: true,
-        pageUpDown: true, 
-    },
-    
-    on: {
-        init: function(){
-            console.log('start');
-            },
-        slideChange: function(){
-            console.log('change');
-            },
-        },
-      });
-//   const swiper = new Swiper('.image-slider', {
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev' //кнопки
-//     },
-
-//     pagination: {
-//         el: '.swiper-pagination',
-//         type: 'bullets',
-//         clickable: true,
-//         dynamicMainBullets: true,
-//          //пагінація
-        
-//     },
-
-
-//     simulateTouch: true, //перетаскування на ПК 
-    
-//     keyboard:{
-//         enabled: true,
-//         pageUpDown: true, //керування клавіатурою 
-//     },
-
-
-//     autoHeight: true, //автовисота картинок 
-
-//     loop: true, // безкінечний свайп
-
-//     speed: 500,
-
-//     effect: 'fade',
-//     fadeEffect: {
-//         crossFade: true,
-//     },
-
-//     breakpoints: {
-//         320: {
-//             slidePerView: 1
-//         },
-//         480: {
-//             slidePerView: 1
-//         },
-//         922: {
-//             slidePerView: 1
-//         },
-//     },
-
-//   slidesPerView: 3,
-
-//    spaceBetween: 20,
-    
-//     zoom: {
-//         maxRatio: 2,
-//         minRatio: 1,
-//     },
-
-    
-
-// //Завантаження сладій в з бд
-//    /** virtual: {
-//         slides: (function (){
-//             let slide = []
-//             for (let i = 0; i < 30; i++){
-//                 slide.push(`<div class="image-slider">Слайд №${i}<>/div`);
-//             }
-//             return slide;
-//         }()),
-//     },*/
-
-//     on: {
-//         init: function(){
-//             console.log('start');
-//         },
-//         slideChange: function(){
-//             console.log('change');
-//         },
-//     },
-// });
+        $('.photo-slider img').on('click', function(){
+            $(this).toggleClass('enlarged');
+        });
+    } else {
+        $('.photo-slider-container').hide(); // приховати контейнер, якщо немає фотографій
+    }
 });

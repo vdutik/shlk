@@ -22,54 +22,36 @@
       {!! html_entity_decode($post->body) !!}
     </div>
       <div class="row">
-          <section class="slider-container">
-            <div class="container">
-              <div class="swiper image-slider">
-              @foreach($post->media as $media)
-                <div class="swiper-wrapper">
-                  <div  data-hash="slide-{{$media->id}}" class="swiper-slide">
-                    <div class="img_box swiper-zoom-container">
-                      <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}">
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-              </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"> </div>
-            <div class="swiper-pagination"></div>
-            </div>
-
-          </section>
-      <!-- <div class="wrapper">
-        <div class="image-slider swiper-container">
-            <div class="image-slider__wrapper swiper-wrapper">
-                @foreach($post->media as $media)
-                <div data-hash="slide-{{$media->id}}" class="image-slider__slide swiper-slide">
-                    <div class="image-slider__image swiper-zoom-container">
-                        <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}">
-                    </div>
-                </div>
-                  @endforeach
-
-            </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-   </div>
-          <div class="col-12 col-lg-5">
-              <div class="form-control-label mb-2">
-                  Прикріплені фотографії
-              </div>
-              <div class="post_images">
+          <div class="photo-slider-container">
+              <div class="photo-slider">
+                  <!-- Слайди з фотографіями -->
                   @foreach($post->media as $media)
-                      <a href="{{ $media->getUrl() }}" target="_blank">
-                          <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}" width="200" max-height="100">
-                      </a>
+                      <div  data-hash="slide-{{$media->id}}">
+
+                          {{$media}}
+
+                      </div>
                   @endforeach
-              </div> -->
+
+                  <!-- Додайте більше слайдів за потреби -->
+              </div>
+              <div class="photo-slider-nav">
+                  <!-- Превьюшки -->
+                  @foreach($post->media as $media)
+                      <div  data-hash="slide-{{$media->id}}">
+
+                          <img src="{{ $media->getUrl() }}" alt="{{ $media->name }}">
+
+                      </div>
+                  @endforeach
+{{--                  <div><img src="path/to/photo1.jpg" alt="Photo 1"></div>--}}
+{{--                  <div><img src="path/to/photo2.jpg" alt="Photo 2"></div>--}}
+{{--                  <div><img src="path/to/photo3.jpg" alt="Photo 3"></div>--}}
+                  <!-- Додайте більше превью за потреби -->
+              </div>
           </div>
+
+
       </div>
   </article>
   <div class="button">

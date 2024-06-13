@@ -155,6 +155,47 @@
 
     <!-- Programs Section -->
 
+    <!-- Latest News Section -->
+    @if(count($posts) > 2)
+        <section class="section latest-news">
+            <h2 class="headline">
+                {{__('general.latest_news')}}
+            </h2>
+
+            @foreach ($posts as $post)
+                <article>
+                    @if($post->cover_image)
+                        <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}"/>
+                    @else
+                        <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
+                    @endif
+                    <h3>
+                        <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="title">
+                            {{ $post->title }}
+                        </a>
+                    </h3>
+                    <div class="meta">
+                        <span class="publish-date">{{ $post->getDateCreated() }}</span>
+                    </div>
+                    <p class="article-content">
+                        {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
+                    </p>
+
+                    <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="link">
+                        {{__('general.read_more')}}
+                    </a>
+                </article>
+            @endforeach
+
+            <div class="bg">
+                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-small-top"/>
+                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-big-top"/>
+                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-small"/>
+                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-big"/>
+            </div>
+        </section>
+    @endif
+    <!-- end Latest News Section-->
     <section class="section programs">
         <div class="content">
 
@@ -237,46 +278,5 @@
     </section>
     <!-- end Programs Section -->
 
-    <!-- Latest News Section -->
-    @if(count($posts) > 2)
-        <section class="section latest-news">
-            <h2 class="headline">
-                {{__('general.latest_news')}}
-            </h2>
-
-            @foreach ($posts as $post)
-                <article>
-                    @if($post->cover_image)
-                        <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}"/>
-                    @else
-                        <img src="{{ asset('/spccweb/img/circle-pattern.svg') }}"/>
-                    @endif
-                    <h3>
-                        <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="title">
-                            {{ $post->title }}
-                        </a>
-                    </h3>
-                    <div class="meta">
-                        <span class="publish-date">{{ $post->getDateCreated() }}</span>
-                    </div>
-                    <p class="article-content">
-                        {!! Str::limit(strip_tags(htmlspecialchars_decode($post->body)),30) !!}
-                    </p>
-
-                    <a href="<?=\LaravelLocalization::localizeUrl(route('articles',$post->post_id))?>" class="link">
-                        {{__('general.read_more')}}
-                    </a>
-                </article>
-            @endforeach
-
-            <div class="bg">
-                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-small-top"/>
-                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-big-top"/>
-                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-small"/>
-                <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-big"/>
-            </div>
-        </section>
-    @endif
-    <!-- end Latest News Section-->
 
 @endsection

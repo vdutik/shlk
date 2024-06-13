@@ -2598,3 +2598,32 @@ a.control_next {
     width: 700px;
     height: auto;
 }
+
+.photo-slider-container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden; /* додано для запобігання зайвого простору */
+}
+.photo-slider img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+.photo-slider-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.photo-slider-nav div {
+    margin: 0 5px;
+}
+.photo-slider-nav img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.photo-slider img.enlarged {
+    transform: scale(1.5);
+    transition: transform 0.3s ease-in-out;
+}

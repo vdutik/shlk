@@ -43,6 +43,12 @@
   <!-- <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> -->
 
   <script src="{{ asset('vendor/jquery-3.2.1/jquery.min.js') }}"></script>
+
+  <!-- slider JS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script src="{{ asset('spccweb/js/article.js') }}"></script>
 
 </body>
