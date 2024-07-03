@@ -85,7 +85,7 @@ class FetchAndSavePostsCommand extends Command
 
     private function getPostDetails($postId, $pageAccessToken)
     {
-        $response = $this->facebook->get("$postId?fields=attachments{subattachments.limit(50)},message,created_time", $pageAccessToken);
+        $response = $this->facebook->get("$postId?fields=attachments{subattachments.limit(70)},message,created_time", $pageAccessToken);
         return $response->getDecodedBody();
     }
 
@@ -104,6 +104,12 @@ class FetchAndSavePostsCommand extends Command
         $message = $postData['message'];
         $paragraphs = explode("\n", $message);
         $firstParagraph = trim($paragraphs[0]);
+
+        if (strlen($firstParagraph) > 200) {
+            $words = explode(' ', $firstParagraph);
+            $firstParagraph = implode(' ', array_slice($words, 0, 10)) . '...';
+        }
+
         $allParagraph = str_replace("\n", "<br>", $message);
         $createdAt = Carbon::createFromFormat(DateTimeInterface::ISO8601, $postData['created_time'])
             ->setTimezone('Europe/Kiev');
