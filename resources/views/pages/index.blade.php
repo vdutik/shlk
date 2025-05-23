@@ -122,6 +122,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="half">
+                        <div class="image">
+                            <a href="https://howareu.com/" target="_blank" rel="nofollow">
+                                <img width="150" height="150" src="{{ asset('spccweb/img/how-are-you.jpg') }}"
+                                     alt="howareyoue"/>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
