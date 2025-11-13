@@ -12,7 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('media', function (Blueprint $table) {
-            //
+            // Додаємо відсутні колонки для Spatie MediaLibrary v10
+            if (!Schema::hasColumn('media', 'uuid')) {
+                $table->uuid('uuid')->nullable()->unique()->after('model_id');
+            }
+            if (!Schema::hasColumn('media', 'conversions_disk')) {
+                $table->string('conversions_disk')->nullable()->after('disk');
+            }
+            if (!Schema::hasColumn('media', 'generated_conversions')) {
+                $table->json('generated_conversions')->after('custom_properties');
+            }
         });
     }
 
@@ -22,7 +31,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('media', function (Blueprint $table) {
-            //
+            if (Schema::hasColumn('media', 'uuid')) {
+                $table->dropColumn('uuid');
+            }
+            if (Schema::hasColumn('media', 'conversions_disk')) {
+                $table->dropColumn('conversions_disk');
+            }
+            if (Schema::hasColumn('media', 'generated_conversions')) {
+                $table->dropColumn('generated_conversions');
+            }
         });
     }
 };
