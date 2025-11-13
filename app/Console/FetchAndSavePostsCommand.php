@@ -38,25 +38,45 @@ class FetchAndSavePostsCommand extends Command
                 return;
             }
 
-            $since = Carbon::now()->subDays(env('FACEBOOK_SINCE_DATE', 3))->startOfDay()->timestamp;
+            $daysBack = (int)env('FACEBOOK_SINCE_DATE', 30);
+            $since = Carbon::now()->subDays($daysBack)->startOfDay()->timestamp;
+            $this->info("Fetching posts from last {$daysBack} days (since: " . Carbon::createFromTimestamp($since)->format('Y-m-d H:i:s') . ')');
+            
             $posts = $this->getFacebookPosts($accountData['id'], $since, $accountData['access_token']);
+            $this->info('Found ' . count($posts) . ' posts from Facebook');
 
+            $newPostsCount = 0;
+            $existingPostsCount = 0;
+            
             foreach (array_reverse($posts) as $post) {
                 $postData = $this->getPostDetails($post['id'], $accountData['access_token']);
-                if ($postData && !$this->postExists($postData['id'])) {
-                    $photos = $this->getPhotosFromPost($postData);
-                    $coverImage = count($photos) > 0 ? $photos[0] : null;
-                    $this->createPost($postData, $photos, $coverImage);
+                if ($postData) {
+                    if (!$this->postExists($postData['id'])) {
+                        $photos = $this->getPhotosFromPost($postData);
+                        $coverImage = count($photos) > 0 ? $photos[0] : null;
+                        $this->createPost($postData, $photos, $coverImage);
+                        $newPostsCount++;
+                        $this->info('New post saved: ' . substr($postData['message'] ?? 'No message', 0, 50));
+                    } else {
+                        $existingPostsCount++;
+                    }
                 }
             }
 
-            $this->info('Posts fetched and saved successfully!');
+            $this->info("Posts fetched and saved successfully! New: {$newPostsCount}, Existing: {$existingPostsCount}");
         } catch (FacebookResponseException $e) {
-            Log::error('Graph returned an error: ' . $e->getMessage());
+            $errorMsg = 'Graph returned an error: ' . $e->getMessage();
+            Log::error($errorMsg);
+            $this->error($errorMsg);
         } catch (FacebookSDKException $e) {
-            Log::error('Facebook SDK returned an error: ' . $e->getMessage());
+            $errorMsg = 'Facebook SDK returned an error: ' . $e->getMessage();
+            Log::error($errorMsg);
+            $this->error($errorMsg);
         } catch (\Exception $exception) {
-            Log::error($exception->getMessage());
+            $errorMsg = 'Exception: ' . $exception->getMessage();
+            Log::error($errorMsg);
+            $this->error($errorMsg);
+            $this->error('Stack trace: ' . $exception->getTraceAsString());
         }
     }
 
@@ -108,10 +128,16 @@ class FetchAndSavePostsCommand extends Command
         $createdAt = Carbon::createFromFormat(DateTimeInterface::ISO8601, $postData['created_time'])
             ->setTimezone('Europe/Kiev');
 
+        $user = User::query()->where('username', '=', 'spccadmin')->first();
+        if (!$user) {
+            $this->error('User "spccadmin" not found. Cannot create post.');
+            return;
+        }
+
         $post = new Post;
         $post->title = $firstParagraph;
         $post->body = "<p>$allParagraph</p>";
-        $post->user_id = User::query()->where('username', '=', 'spccadmin')->first()->id;
+        $post->user_id = $user->id;
         $post->status = 'Published';
         $post->facebook_post_id = $postData['id'];
         $post->created_at = $createdAt->format('Y-m-d H:i:s');
@@ -127,7 +153,11 @@ class FetchAndSavePostsCommand extends Command
         $post->save();
 
         $tag = Tag::query()->where('slug', '=', 'news')->first();
-        $post->tags()->sync($tag->id);
+        if ($tag) {
+            $post->tags()->sync($tag->id);
+        } else {
+            $this->warn('Tag "news" not found. Post saved without tag.');
+        }
 
         $this->savePhotos($post, $photos);
     }

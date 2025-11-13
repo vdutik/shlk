@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-debugbar": "^3.9",
+        "facebook/graph-sdk": "^5.7",
         "fakerphp/faker": "^1.23",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
