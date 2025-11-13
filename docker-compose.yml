@@ -12,15 +12,18 @@ services:
       - MYSQL_USER=shlk
       - MYSQL_PASSWORD=root
   app:
-    image: ambientum/php:7.4-nginx
+    image: webdevops/php-nginx:8.2-alpine
+    platform: linux/amd64
     container_name: shlk-app
+    working_dir: /var/www/app
     volumes:
       - .:/var/www/app
     ports:
-      - "8000:8080"
+      - "8000:80"
     environment:
       - XDEBUG_ENABLED=true
       - APP_NAME='SHLK - College'
       - APP_URL=http://localhost:8000
+      - WEB_DOCUMENT_ROOT=/var/www/app/public
     depends_on:
       - mysql

@@ -3,14 +3,14 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Fideloper\Proxy\TrustProxies as Middleware;
+use Illuminate\Http\Middleware\TrustProxies as Middleware;
 
 class TrustProxies extends Middleware
 {
     /**
      * The trusted proxies for this application.
      *
-     * @var array|string
+     * @var array<int, string>|string|null
      */
     protected $proxies;
 
@@ -19,14 +19,19 @@ class TrustProxies extends Middleware
      *
      * @var int
      */
-    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+    protected $headers =
+        Request::HEADER_X_FORWARDED_FOR |
+        Request::HEADER_X_FORWARDED_HOST |
+        Request::HEADER_X_FORWARDED_PORT |
+        Request::HEADER_X_FORWARDED_PROTO |
+        Request::HEADER_X_FORWARDED_AWS_ELB;
 
-    public function handle($request, \Closure $next, $headers = Request::HEADER_X_FORWARDED_ALL)
+    public function handle($request, \Closure $next, $headers = null)
     {
         if (!$request->secure() && env('APP_ENV') === 'production') {
             return redirect()->secure($request->getRequestUri());
         }
 
-        return $next($request);
+        return parent::handle($request, $next);
     }
 }

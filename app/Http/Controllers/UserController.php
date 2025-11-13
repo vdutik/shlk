@@ -19,7 +19,6 @@ class UserController extends Controller
     /**
      * Display a listing of the users
      *
-     * @param  \App\User  $model
      * @return \Illuminate\View\View
      */
     public function index()
@@ -163,7 +162,6 @@ class UserController extends Controller
      * Store a newly created user in storage
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
     public function storeEmployee(Request $request)
@@ -248,7 +246,6 @@ class UserController extends Controller
      * Store a newly created user in storage
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
     public function storeStudent(Request $request)
@@ -347,7 +344,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified user
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\View\View
      */
     public function editEmployee($id)
@@ -361,7 +358,7 @@ class UserController extends Controller
      * Update the specified user in storage
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updateEmployee(Request $request, $id)
@@ -429,7 +426,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified user
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\View\View
      */
     public function editStudent($id)
@@ -448,7 +445,7 @@ class UserController extends Controller
      * Update the specified user in storage
      *
      * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updateStudent(Request $request, $id)
@@ -533,7 +530,7 @@ class UserController extends Controller
     /**
      * Remove the specified user from storage
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

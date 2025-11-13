@@ -5,7 +5,7 @@ namespace App\Services\Stateless;
 
 
 use App\Models\BaseModel;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
