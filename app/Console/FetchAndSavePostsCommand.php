@@ -82,10 +82,26 @@ class FetchAndSavePostsCommand extends Command
 
     private function initializeFacebook()
     {
+        // Створюємо кастомний curl клієнт з вимкненою перевіркою SSL
+        $facebookCurl = new class extends \Facebook\HttpClients\FacebookCurl {
+            public function setoptArray(array $options)
+            {
+                // Додаємо опції для ігнорування SSL помилок
+                if (env('FACEBOOK_SSL_VERIFY', false) === false) {
+                    $options[CURLOPT_SSL_VERIFYPEER] = false;
+                    $options[CURLOPT_SSL_VERIFYHOST] = false;
+                }
+                parent::setoptArray($options);
+            }
+        };
+
+        $httpClient = new \Facebook\HttpClients\FacebookCurlHttpClient($facebookCurl);
+
         $this->facebook = new Facebook([
             'app_id' => env('FACEBOOK_APP_ID', ''),
             'app_secret' => env('FACEBOOK_APP_SECRET', ''),
             'default_graph_version' => 'v20.0',
+            'http_client_handler' => $httpClient,
         ]);
 
         $this->accessToken = env('FACEBOOK_APP_ACCESS_TOKEN', '');
