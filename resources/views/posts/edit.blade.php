@@ -107,12 +107,15 @@
             quill.clipboard.dangerouslyPasteHTML(postBody);
             quillEn.clipboard.dangerouslyPasteHTML(postBodyEn);
 
-            $("#btn-publish").click(function(){
+            $('form').on('submit', function(e){
                 let body = quill.root.innerHTML;
                 $("input#body").val(body);
 
-                let bodyEn = quillEn.root.innerHTML;
+                let bodyEn = quillEn.root.innerHTML || '';
                 $("input#body_en").val(bodyEn);
+                
+                // Показуємо приховані поля перед відправкою, щоб уникнути помилок валідації
+                $('.lang').show();
             });
 
             let selecter_lang = $('select[name="lang"]').val();
@@ -184,8 +187,8 @@
                             </div>
                             <div class="row lang en">
                                 <div class="col-12 col-lg-8">
-                                    <label class="form-control-label" for="title">Title (Eng.)</label>
-                                    <input id="title" name="title_en" class="form-control mb-3" type="text" placeholder="Enter title..." value="{{$post->title_en}}" required>
+                                    <label class="form-control-label" for="title_en">Title (Eng.)</label>
+                                    <input id="title_en" name="title_en" class="form-control mb-3" type="text" placeholder="Enter title..." value="{{$post->title_en}}">
                                 </div>
                             </div>
                             <div class="row">
@@ -218,8 +221,8 @@
 
                             <div class="row mb-7 lang en">
                                 <div class="col-12 col-lg-12">
-                                    <label class="form-control-label" for="title">Body (Eng.)</label>
-                                    <input id="body_en" name="body_en" type="hidden" value="{{ htmlspecialchars($post->body_en) }}" required>
+                                    <label class="form-control-label" for="body_en">Body (Eng.)</label>
+                                    <input id="body_en" name="body_en" type="hidden" value="{{ htmlspecialchars($post->body_en) }}">
                                     <div id="editor_en" style="font-family: 'Open Sans', sans-serif"></div>
                                 </div>
                             </div>
