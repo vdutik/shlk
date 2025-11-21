@@ -113,6 +113,10 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        if (!$post) {
+            return redirect('/posts')->with('error', 'Post not found');
+        }
+
         // Check for correct user
         if($post->status == 'Pending') {
 
@@ -136,6 +140,11 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        if (!$post) {
+            return redirect('/posts')->with('error', 'Post not found');
+        }
+
         $tags = Tag::all();
         $statuses = Post::STATUSES;
 
@@ -163,9 +172,9 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'title_en' => 'required',
+            'title_en' => 'nullable|string',
             'body' => 'required',
-            'body_en' => 'required',
+            'body_en' => 'nullable|string',
             'cover_image_name' => 'sometimes|string',
             'sort' => 'required|int|min:1',
             'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000',
@@ -195,7 +204,8 @@ class PostsController extends Controller
 
         }
         if (!$request->has('cover_image_name')){
-            $post->clearMediaCollectionExcept('default',$post->media->where('name','!=',$post->cover_image));
+            // Якщо cover_image_name не передано, очищаємо cover_image
+            // Але не видаляємо медіа файли, оскільки вони можуть бути використані в post_images
             $post->cover_image = '';
         }
 
@@ -218,9 +228,9 @@ class PostsController extends Controller
 
         // Update Post
         $post->title = $request->input('title');
-        $post->title_en = $request->input('title_en');
+        $post->title_en = $request->input('title_en') ?? null;
         $post->body = $request->input('body');
-        $post->body_en = $request->input('body_en');
+        $post->body_en = $request->input('body_en') ?? null;
         $post->updated_at = now();
         $post->sort = $request->sort;
         $post->status = $request->input('status');
@@ -246,17 +256,26 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        if (!$post) {
+            return redirect('/posts')->with('error', 'Post not found');
+        }
+
         // Check for correct user
         if(!auth()->user()->hasPermissionTo('delete posts') &&
             auth()->user()->id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
+        
+        $coverImage = $post->cover_image;
+        
         DB::transaction(function () use ($post){
             $post->tags()->sync([]);
             $post->delete();
         });
 
-        Storage::disk('public')->delete('cover_images/'. $post->cover_image);
+        if ($coverImage) {
+            Storage::disk('public')->delete('cover_images/'. $coverImage);
+        }
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
             return redirect('/posts/mod/published')->with('success', 'Post Removed');
@@ -275,6 +294,11 @@ class PostsController extends Controller
 
     public function publish($id) {
         $post = Post::find($id);
+        
+        if (!$post) {
+            return redirect('/posts/mod/approval')->with('error', 'Post not found');
+        }
+        
         $post->status = 'Published';
         $post->save();
 
