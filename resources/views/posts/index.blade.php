@@ -60,11 +60,11 @@
                                 <h3 class="card-title lang en">{{ $post->title_en }}</h3>
                                 <span>Сортувальне число {{$post->sort}} </span>
                                 <p class="card-text lang uk card-text-post">
-                                    {!! str_limit(strip_tags($post->body), 80) !!}
+                                    {!! \Str::limit(strip_tags($post->body), 80) !!}
                                 </p>
                                 <hr>
                                 <p class="card-text lang en card-text-post">
-                                    {!! str_limit(strip_tags($post->body_en), 80) !!}
+                                    {!! \Str::limit(strip_tags($post->body_en), 80) !!}
                                 </p>
                                 <p><small>Створено {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>
                                 <div class="button-group row">

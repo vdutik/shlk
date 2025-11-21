@@ -41,11 +41,11 @@
                          Сортувальне число:  {{$post->sort}}
                         </span>
                                 <p class="card-text card-text-post lang uk">
-                                    {!! str_limit(strip_tags($post->body), 80) !!}
+                                    {!! \Str::limit(strip_tags($post->body), 80) !!}
                                 </p>
                                 <hr>
                                 <p class="card-text card-text-post lang en">
-                                    {!! str_limit(strip_tags($post->body_en), 80) !!}
+                                    {!! \Str::limit(strip_tags($post->body_en), 80) !!}
                                 </p>
 
                                 <p><small>Створено {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>

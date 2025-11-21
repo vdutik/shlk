@@ -29,7 +29,7 @@
                             @if($search != null)
                             <div class="col">
                                 <a href="/feedback" class="btn btn-outline-secondary btn-sm">
-                                    {{ str_limit($search, 20) }}
+                                    {{ \Str::limit($search, 20) }}
                                     <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                                 </a>
                             </div>
@@ -70,7 +70,7 @@
                                     | {{ $msg->getDateCreated() }}
                                 </p>
                                 <p class="card-text">
-                                    {!! str_limit(strip_tags($msg->body), 200) !!}
+                                    {!! \Str::limit(strip_tags($msg->body), 200) !!}
                                 </p>
                                 <a href="/messages/{{ $msg->message_id }}" class="text-sm">Більше</a>
                             </div>

@@ -29,7 +29,7 @@
                             @if($search != null)
                             <div class="col">
                                 <a href="/user/log" class="btn btn-outline-secondary btn-sm">
-                                    {{ str_limit($search, 20) }}
+                                    {{ \Str::limit($search, 20) }}
                                     <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                                 </a>
                             </div>
