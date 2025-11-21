@@ -13,7 +13,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
         /** @var Post $posts */
         $posts = Post::where('status', 'Published')
                         ->orderBy('created_at', 'desc')
@@ -45,7 +45,7 @@ class PagesController extends Controller
 
     public function about()
     {
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
 
         return view('pages.about')->with('tot_posts', $tot_posts);
     }
@@ -53,17 +53,18 @@ class PagesController extends Controller
     public function news(?string $tag = 'news')
     {
 
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
 
-        $latest_post = Post::where('status', 'LIKE', 'Published')
+        $latest_post = Post::where('status', 'Published')
                             ->whereHas('tags',function (Builder $builder) use ($tag){
                                 $builder->where('slug', $tag);
                             })
                             ->orderBy('sort', 'desc')
-                            ->orderBy('created_at', 'desc')                            ->limit(1)
+                            ->orderBy('created_at', 'desc')
+                            ->limit(1)
                             ->get();
 
-        $posts = Post::where('status', 'LIKE', 'Published')
+        $posts = Post::where('status', 'Published')
                         ->whereHas('tags',function (Builder $builder)use ($tag){
                             $builder->where('slug', $tag);
                         })
@@ -87,7 +88,7 @@ class PagesController extends Controller
     public function posts(?string $tag = 'news')
     {
 
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
 
         $latest_post = Post::where('status', 'Published')
             ->whereHas('tags',function (Builder $builder) use ($tag){
@@ -121,9 +122,19 @@ class PagesController extends Controller
 
     public function articles($id)
     {
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
 
         $post = Post::find($id);
+        
+        if (!$post) {
+            return redirect('/news')->with('error', 'Article not found');
+        }
+        
+        // Перевірка статусу поста
+        if ($post->status != 'Published') {
+            return redirect('/news')->with('error', 'Article not available');
+        }
+        
         if (app()->getLocale() != 'uk' ) {
             $lang = app()->getLocale();
             $post->title = !empty($post->{'title_' . $lang}) ? $post->{'title_' . $lang} : $post->title;
@@ -134,7 +145,7 @@ class PagesController extends Controller
 
     public function admission()
     {
-        $tot_posts = count(Post::all());
+        $tot_posts = Post::where('status', 'Published')->count();
 
         return view('pages.admission')->with('tot_posts', $tot_posts);
     }
