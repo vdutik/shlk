@@ -94,11 +94,33 @@ class UploadService
         $this->checkExtension($uploadedFile);
 
         $fileName = $fileName ?? $uploadedFile->hashName();
+        
+        // Для підпапок використовуємо хеш замість перших символів, щоб уникнути проблем з кирилицею
         $subFolder = $this->useSubFolders
-            ? "/" . strtolower(substr($fileName, 0, 3))
+            ? "/" . substr(md5($fileName), 0, 2)
             : '';
 
-        $path = $this->storage->putFileAs($this->uploadFolderPath . $subFolder, $uploadedFile, $fileName);
+        // Якщо ім'я файлу містить кирилицю або спеціальні символи, використовуємо hashName
+        $safeFileName = $fileName;
+        if (preg_match('/[^\x00-\x7F]/', $fileName) || preg_match('/[^a-zA-Z0-9._-]/', $fileName)) {
+            // Якщо файл має кирилицю або спеціальні символи, використовуємо hashName
+            $extension = $uploadedFile->getClientOriginalExtension();
+            $safeFileName = $uploadedFile->hashName();
+            if ($extension) {
+                $fileInfo = pathinfo($safeFileName);
+                if (!isset($fileInfo['extension']) || $fileInfo['extension'] !== $extension) {
+                    $safeFileName = ($fileInfo['filename'] ?? pathinfo($safeFileName, PATHINFO_FILENAME)) . '.' . $extension;
+                }
+            }
+        }
+
+        // Переконуємося, що директорія існує
+        $fullPath = $this->uploadFolderPath . $subFolder;
+        if ($subFolder && !$this->storage->exists($fullPath)) {
+            $this->storage->makeDirectory($fullPath);
+        }
+
+        $path = $this->storage->putFileAs($fullPath, $uploadedFile, $safeFileName);
 
         if (empty($path)) {
             dd("ExceptiontthrowUploadFileNotStoredException($uploadedFile);");
