@@ -161,6 +161,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::post('annoucement', 'DashboardController@updateAnnoucement');
     });
 
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
+        Route::post('dashboard/import-facebook', 'DashboardController@importFacebookPosts')->name('dashboard.import.facebook');
+    });
+
     Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|student']], function () {
         Route::resource('grades', 'GradeController')->only([
             'index', 'show'

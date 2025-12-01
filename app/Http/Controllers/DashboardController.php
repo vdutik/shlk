@@ -12,6 +12,7 @@ use App\Models\Curriculum;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class DashboardController extends Controller
 {
@@ -141,5 +142,41 @@ class DashboardController extends Controller
         $setting->save();
 
         return redirect('/dashboard')->with('success', 'Annoucement Updated');
+    }
+
+    /**
+     * Запуск імпорту дописів з Facebook
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function importFacebookPosts()
+    {
+        try {
+            // Запускаємо команду імпорту
+            $exitCode = Artisan::call('fetch:facebook-posts');
+            
+            // Отримуємо вивід команди
+            $output = Artisan::output();
+            
+            // Обрізаємо вивід, якщо він занадто довгий
+            $output = trim($output);
+            if (strlen($output) > 200) {
+                $output = substr($output, 0, 200) . '...';
+            }
+            
+            if ($exitCode === 0) {
+                $message = 'Імпорт дописів з Facebook успішно завершено.';
+                if (!empty($output)) {
+                    $message .= ' ' . $output;
+                }
+                return redirect()->route('dashboard')->with('success', $message);
+            } else {
+                return redirect()->route('dashboard')
+                    ->with('error', 'Помилка при імпорті дописів. Код помилки: ' . $exitCode);
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Помилка при імпорті дописів: ' . $e->getMessage());
+        }
     }
 }

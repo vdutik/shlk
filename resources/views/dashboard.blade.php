@@ -8,6 +8,22 @@
     @endrole
 
     <div class="container-fluid mt--7">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row mt-5">
             <div class="col-xl-8 mb-5 mb-xl-0">
                 <div class="card shadow">
@@ -17,11 +33,19 @@
                                 <div class="col">
                                     <h3 class="mb-0">Lastest News</h3>
                                 </div>
-                                @role('admin|writer')
                                 <div class="col text-right">
+                                    @role('admin')
+                                    <form action="{{ route('dashboard.import.facebook') }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Запустити імпорт дописів з Facebook?');">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success mr-2">
+                                            <i class="ni ni-cloud-download-95"></i> Імпорт з Facebook
+                                        </button>
+                                    </form>
+                                    @endrole
+                                    @role('admin|writer')
                                     <a href="/posts" class="btn btn-sm btn-primary">See my posts</a>
+                                    @endrole
                                 </div>
-                                @endrole
                             </div>
                         </div>
                         <div class="table-responsive">
