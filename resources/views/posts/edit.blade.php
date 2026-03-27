@@ -238,9 +238,13 @@
                                     </div>
                                     <div class="post_images">
                                         @foreach($post->media as $media)
-                                            <a href="{{ $media->getUrl() }}" target="_blank"> Ідентифікатор фотографії: {{$media->id}}
-                                                <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}" width="100">
-                                            </a>
+                                            @if(!empty($media->disk))
+                                                <a href="{{ $media->getUrl() }}" target="_blank"> Ідентифікатор фотографії: {{$media->id}}
+                                                    <img src="{{ $media->getUrl('thumb') }}" alt="{{ $media->name }}" width="100">
+                                                </a>
+                                            @else
+                                                <span class="text-muted"> Бите зображення (ID: {{$media->id}})</span>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>

@@ -29,14 +29,18 @@
                 {{$medium->id}}
             </td>
             <td>
-                <a href="{{ $medium->getUrl() }}" target="_blank">
-                    <img src="{{ $medium->getUrl('thumb') }}" alt="{{ $medium->name }}" width="100">
-                </a>
+                @if(!empty($medium->disk))
+                    <a href="{{ $medium->getUrl() }}" target="_blank">
+                        <img src="{{ $medium->getUrl('thumb') }}" alt="{{ $medium->name }}" width="100">
+                    </a>
+                @else
+                    <span class="text-muted">Broken media record</span>
+                @endif
             </td>
             <td>{{ $medium->name }}</td>
             <td>
                 <div class="input-group">
-                    {{ Form::text(null, url($medium->getUrl()), ['class' => 'form-control', 'readonly' => true, 'id' => "medium-{$medium->id}"]) }}
+                    {{ Form::text(null, !empty($medium->disk) ? url($medium->getUrl()) : '-', ['class' => 'form-control', 'readonly' => true, 'id' => "medium-{$medium->id}"]) }}
                     <div class="input-group-append">
                         <button class="input-group-text btn" data-clipboard-target="#medium-{{ $medium->id }}">
                             <i class="fa fa-clipboard"></i>
@@ -46,9 +50,11 @@
             </td>
             <td>{{ $medium->updated_at->format( 'd/m/Y H:i:s') }}</td>
             <td>
-                <a href="{{ $medium->getUrl() }}" title="{{ __('media.show') }}" class="btn btn-primary btn-sm" target="_blank">
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                </a>
+                @if(!empty($medium->disk))
+                    <a href="{{ $medium->getUrl() }}" title="{{ __('media.show') }}" class="btn btn-primary btn-sm" target="_blank">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                @endif
 
                 <a href="{{ route('media.show', $medium) }}" title="{{ __('media.download') }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-download" aria-hidden="true"></i>

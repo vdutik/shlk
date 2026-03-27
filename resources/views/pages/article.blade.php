@@ -27,8 +27,9 @@
                   <!-- Слайди з фотографіями -->
                   @foreach($post->media as $media)
                       <div  data-hash="slide-{{$media->id}}">
-
-                          {{$media}}
+                          @if(!empty($media->disk))
+                              <img src="{{ $media->getUrl() }}" alt="{{ $media->name }}">
+                          @endif
 
                       </div>
                   @endforeach
@@ -39,8 +40,9 @@
                   <!-- Превьюшки -->
                   @foreach($post->media as $media)
                       <div  data-hash="slide-{{$media->id}}">
-
-                          <img src="{{ $media->getUrl() }}" alt="{{ $media->name }}">
+                          @if(!empty($media->disk))
+                              <img src="{{ $media->getUrl() }}" alt="{{ $media->name }}">
+                          @endif
 
                       </div>
                   @endforeach
