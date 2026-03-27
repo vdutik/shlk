@@ -13,6 +13,7 @@ use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class FacultyController extends Controller
 {
@@ -351,9 +352,17 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
+        $currentEmployeeNo = $user->employee->employee_no;
+
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
-            'employee_no' => 'required|min:4|max:5',
+            'employee_no' => [
+                'required',
+                'min:4',
+                'max:5',
+                Rule::unique('employee', 'employee_no')->ignore($currentEmployeeNo, 'employee_no'),
+            ],
             'date_employed' => 'required|date',
             'first_name' => 'required|min:3|max:50',
             'middle_name' => 'nullable|min:3|max:50',
@@ -361,7 +370,8 @@ class FacultyController extends Controller
             'birthdate' => 'required|date',
             'contact_no' => 'nullable|min:6|max:11',
             'address' => 'nullable|min:6|max:100',
-            'email' => 'nullable',
+            'username' => ['required', Rule::unique('users', 'username')->ignore($user->id)],
+            'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => 'nullable|confirmed|min:4',
         ]);
 
@@ -370,15 +380,13 @@ class FacultyController extends Controller
             // Get just ext
             $extension = $request->file('profile_picture')->getClientOriginalExtension();
 
-            $filename = $request->input('student_no') . '.' . $extension;
+            $filename = $request->input('employee_no') . '.' . $extension;
 
             $request->file('profile_picture')
                         ->storeAs('/profile_pictures', $filename, "public");
         }
 
         // Update Employee
-        $user = User::find($id);
-
         if ($request->hasFile('profile_picture')) {
             $user->profile_picture = $filename;
         }
@@ -390,7 +398,6 @@ class FacultyController extends Controller
         $user->birthdate = $request->input('birthdate');
         $user->contact_no = $request->input('contact_no');
         $user->address = $request->input('address');
-        $user->username = $request->input('employee_no');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
 
