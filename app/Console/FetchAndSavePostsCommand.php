@@ -11,6 +11,7 @@ use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,9 +55,12 @@ class FetchAndSavePostsCommand extends Command
                     if (!$this->postExists($postData['id'])) {
                         $photos = $this->getPhotosFromPost($postData);
                         $coverImage = count($photos) > 0 ? $photos[0] : null;
-                        $this->createPost($postData, $photos, $coverImage);
-                        $newPostsCount++;
-                        $this->info('New post saved: ' . substr($postData['message'] ?? 'No message', 0, 50));
+                        if ($this->createPost($postData, $photos, $coverImage)) {
+                            $newPostsCount++;
+                            $this->info('✅ New post saved: ' . Str::limit($postData['message'] ?? 'No message', 50, ''));
+                        } else {
+                            $this->warn('⚠️ Post skipped: ' . Str::limit($postData['message'] ?? 'No message', 50, ''));
+                        }
                     } else {
                         $existingPostsCount++;
                     }
@@ -130,11 +134,11 @@ class FetchAndSavePostsCommand extends Command
         return Post::query()->where('facebook_post_id', $postId)->exists();
     }
 
-    private function createPost($postData, $photos, $coverImage = null)
+    private function createPost($postData, $photos, $coverImage = null): bool
     {
         if (!isset($postData['message'])) {
             Log::warning('Post does not contain a message. Post ID: ' . $postData['id']);
-            return;
+            return false;
         }
 
         $message = $postData['message'];
@@ -147,11 +151,11 @@ class FetchAndSavePostsCommand extends Command
         $user = User::query()->where('username', '=', 'spccadmin')->first();
         if (!$user) {
             $this->error('User "spccadmin" not found. Cannot create post.');
-            return;
+            return false;
         }
 
         $post = new Post;
-        $post->title = $firstParagraph;
+        $post->title = $this->buildSafeTitle($firstParagraph, $createdAt);
         $post->body = "<p>$allParagraph</p>";
         $post->user_id = $user->id;
         $post->status = 'Published';
@@ -176,6 +180,18 @@ class FetchAndSavePostsCommand extends Command
         }
 
         $this->savePhotos($post, $photos);
+        return true;
+    }
+
+    private function buildSafeTitle(string $firstParagraph, Carbon $createdAt): string
+    {
+        $cleanTitle = trim(preg_replace('/\s+/u', ' ', strip_tags($firstParagraph)));
+
+        if ($cleanTitle === '') {
+            $cleanTitle = 'Facebook post ' . $createdAt->format('Y-m-d H:i');
+        }
+
+        return Str::limit($cleanTitle, 250, '');
     }
 
     private function getPhotosFromPost($postData)
