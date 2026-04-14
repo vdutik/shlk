@@ -11,6 +11,7 @@ use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -191,7 +192,27 @@ class FetchAndSavePostsCommand extends Command
             $cleanTitle = 'Facebook post ' . $createdAt->format('Y-m-d H:i');
         }
 
-        return Str::limit($cleanTitle, 250, '');
+        return Str::limit($cleanTitle, $this->getPostsTitleMaxLength(), '');
+    }
+
+    private function getPostsTitleMaxLength(): int
+    {
+        try {
+            $maxLength = DB::table('information_schema.columns')
+                ->where('table_schema', DB::getDatabaseName())
+                ->where('table_name', 'posts')
+                ->where('column_name', 'title')
+                ->value('CHARACTER_MAXIMUM_LENGTH');
+
+            if (is_numeric($maxLength) && (int) $maxLength > 0) {
+                return (int) $maxLength;
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Cannot detect posts.title max length: ' . $e->getMessage());
+        }
+
+        // Safe fallback for older MySQL setups with utf8mb4.
+        return 191;
     }
 
     private function getPhotosFromPost($postData)
